@@ -1,13 +1,12 @@
 #include "Player.hpp"
 
-Player::Player(std::string playerID, std::string playerName, Field *field, UUID *uuidGen, ResourceGeneratorFactory *resourceGeneratorFactory, CombatObjectTypeFactory *combatObjectTypeFactory)
+Player::Player(std::string playerID, std::string playerName, Field *field, UUID *uuidGen, CombatObjectTypeFactory *combatObjectTypeFactory)
 {
     this->playerID = playerID;
     this->playerName = playerName;
     this->field = field;
 
     this->uuidGen = uuidGen;
-    this->resourceGeneratorFactory = resourceGeneratorFactory;
     this->combatObjectTypeFactory = combatObjectTypeFactory;
 }
 
@@ -16,8 +15,6 @@ Player ::~Player()
     delete this->field;
     delete this->base;
     delete this->uuidGen;
-    delete this->resourceGeneratorFactory;
-    delete this->combatObjectTypeFactory;
 }
 
 std::string Player::getPlayerID()
@@ -107,4 +104,14 @@ void Player::interactionObject(unsigned int fromRowNumber, unsigned int fromColu
 
 void Player::eventHandler(Event *event)
 {
+}
+
+v8::Local<v8::Object> Player::getInfo()
+{
+    v8::Local<v8::Object> info = Nan::New<v8::Object>();
+
+    SetObjField(info, "playerName", playerName);
+    SetObjField(info, "playerID", playerID);
+    SetObjField(info, "base", field->getObjectData(base));
+    return info;
 }

@@ -2,6 +2,7 @@
 #define Game_hpp
 
 #include <string>
+#include <map>
 
 #include "../gameRoom/GameRoom.hpp"
 #include "../field/Field.hpp"
@@ -10,11 +11,13 @@
 #include "../player/Player.hpp"
 #include "../mediator/fieldMediator/FieldMediator.hpp"
 #include "../eventProvider/EventProvider.hpp"
+#include "../memento/GameRoomMemento.hpp"
 
 class Game : public EventProvider
 {
 private:
     std::vector<GameRoom *> gameRooms;
+    std::map<std::string, std::vector<GameRoomMemento *>> historyGameRooms;
 
     UUID *uuidGen;
     ResourceGeneratorFactory *resourceGeneratorFactory;
@@ -51,10 +54,10 @@ public:
     std::string executeСommand(std::string playerID, std::string command);
 
     /* for room  */
-    void createBase(std::string roomID, std::string playerID, unsigned int rowNumber, unsigned int columnNumber);
-    void createUnit(std::string roomID, std::string playerID, unsigned int rowNumber, unsigned int columnNumber, std::string type);
-    void moveObject(std::string roomID, unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber);
-    void interactionObject(std::string roomID, unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber);
+    // void createBase(std::string roomID, std::string playerID, unsigned int rowNumber, unsigned int columnNumber);
+    // void createUnit(std::string roomID, std::string playerID, unsigned int rowNumber, unsigned int columnNumber, std::string type);
+    // void moveObject(std::string roomID, unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber);
+    // void interactionObject(std::string roomID, unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber);
     /*  */
 
     v8::Local<v8::Object> getGameRoomsInfo();

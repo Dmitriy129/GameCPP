@@ -22,7 +22,7 @@ bool ResourceGenerator::isMoveable() { return false; }
 void ResourceGenerator::operator+(Object *object)
 {
     this->playerID = object->getPlayerID();
-    std::cout << "Now " << this->getObjectType() << " is owned by playerID: " << this->getPlayerID() << "\n";
+    // std::cout << "Now " << this->getObjectType() << " is owned by playerID: " << this->getPlayerID() << "\n";
     if (object->getObjectType().find("Archer") != std::string::npos)
         setStrategy(new StrategyResArcher);
     if (object->getObjectType().find("Cavalry") != std::string::npos)
@@ -39,7 +39,12 @@ double ResourceGenerator::getResPerStep() { return resPerStep; }
 
 double ResourceGenerator::getCoefficient() { return coefficient; }
 
-double ResourceGenerator::getResPerStepForUnit() { return resPerStep * coefficient; }
+double ResourceGenerator::getResPerStepForUnit()
+{
+    double ret = resPerStep * coefficient;
+    coefficient *= 1.1;
+    return ret;
+}
 
 void ResourceGenerator::useStrategy() { coefficient = strategy->use(); }
 

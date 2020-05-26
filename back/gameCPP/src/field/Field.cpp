@@ -356,6 +356,7 @@ v8::Local<v8::Array> Field::getObjectsData()
 
 v8::Local<v8::Object> Field::getObjectData(unsigned int rowNumber, unsigned int columnNumber)
 {
+    // return getObjectData(fieldGrid[rowNumber][columnNumber].getObject());
     v8::Local<v8::Object> data = Nan::New<v8::Object>();
     std::string objectType("empty_");
     Object *object = fieldGrid[rowNumber][columnNumber].getObject();
@@ -369,6 +370,14 @@ v8::Local<v8::Object> Field::getObjectData(unsigned int rowNumber, unsigned int 
     return data;
 }
 
+v8::Local<v8::Object> Field::getObjectData(Object *object)
+{
+    for (unsigned int rowNumber = 0; rowNumber < rowsQuantity; rowNumber++)
+        for (unsigned int columnNumber = 0; columnNumber < columnsQuantity; columnNumber++)
+            if (object == fieldGrid[rowNumber][columnNumber].getObject())
+                return getObjectData(rowNumber, columnNumber);
+}
+
 v8::Local<v8::Object> Field::getLandscapeData(unsigned int rowNumber, unsigned int columnNumber)
 {
     v8::Local<v8::Object> data = Nan::New<v8::Object>();
@@ -378,20 +387,13 @@ v8::Local<v8::Object> Field::getLandscapeData(unsigned int rowNumber, unsigned i
 
 void Field::eventHandler(Event *event)
 {
-    // std::cout << "#field fire ev1#\n";
-
     if (event->getSEventId() == "object death")
     {
-        // std::cout << "#field fire ev11#\n";
-
         std::cout << "*Field* Event: \"" << event->getSEventId() << "\" started \n";
         removeObject((Object *)event->getSource());
-        // removeUnit((Unit *)event->getSource());
     }
     else if (event->getSEventId() == "object updated")
     {
-        // std::cout << "#field fire ev12#\n";
-
         for (unsigned int rowNumber = 0; rowNumber < rowsQuantity; rowNumber++)
             for (unsigned int columnNumber = 0; columnNumber < columnsQuantity; columnNumber++)
                 if (fieldGrid[rowNumber][columnNumber].getObject() == (Object *)event->getSource())
@@ -404,13 +406,13 @@ void Field::eventHandler(Event *event)
 //memento
 v8::Local<v8::Object> Field::getFullInfo()
 {
-    v8::Local<v8::Object> fullData = Nan::New<v8::Object>();
-    v8::Isolate *isolate = fullData->GetIsolate();
+    v8::Local<v8::Object> info = Nan::New<v8::Object>();
+    v8::Isolate *isolate = info->GetIsolate();
     v8::Local<v8::Context> context = v8::Context::New(isolate);
 
     v8::Local<v8::Array> landscapesArray = Nan::New<v8::Array>();
-    v8::Local<v8::Array> combatObjArray = Nan::New<v8::Array>();
-    v8::Local<v8::Array> neutrallObjArray = Nan::New<v8::Array>();
+    v8::Local<v8::Array> unitsArray = Nan::New<v8::Array>();
+    v8::Local<v8::Array> resGenArray = Nan::New<v8::Array>();
     for (unsigned int i = 0; i < rowsQuantity; i++)
     {
         for (unsigned int j = 0; j < columnsQuantity; j++)
@@ -420,11 +422,17 @@ v8::Local<v8::Object> Field::getFullInfo()
             {
                 if (std::string("InfantryTank InfantryDPS CavalryTank CavalryDPS ArcherTank ArcherDPS").find(fieldGrid[i][j].getObject()->getObjectType()) != std::string::npos)
                 {
+                    SetArrField(unitsArray, unitsArray->Length(), getObjectData(i, j));
                 }
                 else if (std::string("Sawmill GoldMine Farm").find(fieldGrid[i][j].getObject()->getObjectType()) != std::string::npos)
                 {
+                    SetArrField(resGenArray, resGenArray->Length(), getObjectData(i, j));
                 }
             }
         }
     }
+    SetObjField(info, "landscapes", landscapesArray);
+    SetObjField(info, "units", unitsArray);
+    SetObjField(info, "resGen", resGenArray);
+    return info;
 }
