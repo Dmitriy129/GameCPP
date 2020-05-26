@@ -14,9 +14,9 @@ CavalryTank::CavalryTank(std::string playerID, std::string unitID, CombatObjectT
 
 // std::string CavalryTank::getObjectType() { return "CavalryTank"; }
 
-// v8::Local<v8::Object> CavalryTank::getInfo()
+// v8::Local<v8::Object> CavalryTank::getFullInfo()
 // {
-//     v8::Local<v8::Object> info = Unit::getInfo();
+//     v8::Local<v8::Object> info = Unit::getFullInfo();
 //     v8::Local<v8::Object> stats;
 
 //     //SetObjField(info, "objectType", getObjectType());

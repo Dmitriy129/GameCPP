@@ -8,9 +8,9 @@ double UnitDPS::getDamageAttack()
     return this->getDamage();
 }
 
-v8::Local<v8::Object> UnitDPS::getInfo()
+v8::Local<v8::Object> UnitDPS::getFullInfo()
 {
-    v8::Local<v8::Object> info = Unit::getInfo();
+    v8::Local<v8::Object> info = Unit::getFullInfo();
     v8::Local<v8::Object> stats;
 
     GetObjField(info, "stats", stats);

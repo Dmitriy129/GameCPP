@@ -28,9 +28,9 @@ void CombatObject::underAttack(double damage, double armor)
 
 double CombatObject::getDamageAttack() { return this->getDamage(); }
 
-v8::Local<v8::Object> CombatObject::getInfo()
+v8::Local<v8::Object> CombatObject::getFullInfo()
 {
-    v8::Local<v8::Object> info = Object::getInfo();
+    v8::Local<v8::Object> info = Object::getFullInfo();
 
     SetObjField(info, "combatOrNeutral", "combat");
 

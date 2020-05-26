@@ -136,9 +136,9 @@ void Base::eventHandler(Event *event)
     }
 }
 
-v8::Local<v8::Object> Base::getInfo()
+v8::Local<v8::Object> Base::getFullInfo()
 {
-    v8::Local<v8::Object> info = CombatObject::getInfo();
+    v8::Local<v8::Object> info = CombatObject::getFullInfo();
     SetObjField(info, "type", "Base");
     return info;
 }

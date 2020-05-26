@@ -7,9 +7,9 @@
 
 // std::string Sawmill::getObjectType() { return "Sawmill"; }
 
-// v8::Local<v8::Object> Sawmill::getInfo()
+// v8::Local<v8::Object> Sawmill::getFullInfo()
 // {
-//     v8::Local<v8::Object> info = ResourceGenerator::getInfo();
+//     v8::Local<v8::Object> info = ResourceGenerator::getFullInfo();
 
 //     SetObjField(info, "objectType", "Sawmill");
 

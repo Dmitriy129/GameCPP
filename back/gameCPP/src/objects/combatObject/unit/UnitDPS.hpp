@@ -13,7 +13,7 @@ protected:
 
 public:
     double getDamageAttack();
-    v8::Local<v8::Object> getInfo();
+    v8::Local<v8::Object> getFullInfo();
 };
 
 #endif /* UnitDPS_hpp */

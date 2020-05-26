@@ -361,7 +361,7 @@ v8::Local<v8::Object> Field::getObjectData(unsigned int rowNumber, unsigned int 
     std::string objectType("empty_");
     Object *object = fieldGrid[rowNumber][columnNumber].getObject();
     if (object != nullptr)
-        data = object->getInfo();
+        data = object->getFullInfo();
     else
         SetObjField(data, "objectType", objectType);
     SetObjField(data, "x", columnNumber);

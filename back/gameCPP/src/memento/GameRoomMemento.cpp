@@ -9,7 +9,7 @@ GameRoomMemento::GameRoomMemento(std::string filename, GameRoom *gameRoom)
 {
     this->file.open(filename);
     this->gameRoom = gameRoom;
-    file << JSONStringified(gameRoom->getInfo());
+    file << JSONStringified(gameRoom->getFullInfo());
 }
 
 GameRoomMemento::~GameRoomMemento()

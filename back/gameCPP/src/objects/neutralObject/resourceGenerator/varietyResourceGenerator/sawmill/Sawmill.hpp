@@ -14,7 +14,7 @@ private:
 public:
     // void getResPerStepForUnit() override;
     // std::string getObjectType();
-    // v8::Local<v8::Object> getInfo();
+    // v8::Local<v8::Object> getFullInfo();
 };
 
 #endif /* Sawmill_hpp */
