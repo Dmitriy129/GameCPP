@@ -212,17 +212,17 @@ GameRoom *Game::getGameRoom(std::string roomID)
     return *response;
 }
 
-void Game::createBase(std::string roomID, std::string playerID, unsigned int rowNumber, unsigned int columnNumber)
-{
-    getGameRoom(roomID)->createBase(playerID, rowNumber, columnNumber);
-}
-void Game::createUnit(std::string roomID, std::string playerID, unsigned int rowNumber, unsigned int columnNumber, std::string type)
-{
-    // std::cout << "#1\n";
+// void Game::createBase(std::string roomID, std::string playerID, unsigned int rowNumber, unsigned int columnNumber)
+// {
+//     getGameRoom(roomID)->createBase(playerID, rowNumber, columnNumber);
+// }
+// void Game::createUnit(std::string roomID, std::string playerID, unsigned int rowNumber, unsigned int columnNumber, std::string type)
+// {
+//     // std::cout << "#1\n";
 
-    getGameRoom(roomID)->createUnit(playerID, rowNumber, columnNumber, type);
-    // std::cout << "#1\n";
-}
+//     getGameRoom(roomID)->createUnit(playerID, rowNumber, columnNumber, type);
+//     // std::cout << "#1\n";
+// }
 
 std::string Game::executeСommand(std::string playerID, std::string command)
 {

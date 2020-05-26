@@ -47,6 +47,7 @@ public:
     std::vector<std::string> getObjects();
 
     Mediator *getMediator() const;
+    FieldCell &getFieldCell(unsigned int rowNumber, unsigned int columnNumber);
 
     void addObject(unsigned int rowNumber, unsigned int columnNumber, Object *object);
     void updateLandscape(unsigned int rowNumber, unsigned int columnNumber, std::string landscapeType /* Landscape *landscape */);
@@ -54,11 +55,11 @@ public:
     void removeObject(unsigned int rowNumber, unsigned int columnNumber);
     void moveObject(unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber);
 
-    FieldCell &getFieldCell(unsigned int rowNumber, unsigned int columnNumber);
 
     v8::Local<v8::Array> getLandscapesData();
     v8::Local<v8::Array> getObjectsData();
     v8::Local<v8::Object> getLandscapeData(unsigned int rowNumber, unsigned int columnNumber);
+    v8::Local<v8::Object> getObjectData(Object *object);
     v8::Local<v8::Object> getObjectData(unsigned int rowNumber, unsigned int columnNumber);
     void eventHandler(Event *event) override;
 

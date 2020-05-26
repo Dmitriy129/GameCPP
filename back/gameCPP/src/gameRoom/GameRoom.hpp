@@ -46,7 +46,7 @@ public:
 
     /* for player  */
     void createBase(std::string playerID, unsigned int rowNumber, unsigned int columnNumber);
-    void createUnit(std::string playerID, unsigned int rowNumber, unsigned int columnNumber, std::string type);
+    // void createUnit(std::string playerID, unsigned int rowNumber, unsigned int columnNumber, std::string type);
     void moveObject(std::string playerID, unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber);
     void interactionObject(std::string playerID, unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber);
     /*  */
@@ -62,6 +62,8 @@ public:
 
     v8::Local<v8::Object> getGameRoomFieldData();
     v8::Local<v8::Object> getGameRoomData();
+
+    v8::Local<v8::Object> getGameRoomInfo();
     void eventHandler(Event *event) override;
 };
 

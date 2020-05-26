@@ -80,6 +80,7 @@ Unit *Base::factoryUnit(UnitTankFactory *factory, unsigned int type, std::string
     if (type == CAV_TANK || type == CAV_DPS)
         return factory->createCavalry(playerID, unitID, combatObjectTypeFactory);
     std::cout << "error# unknown unit class\n *in file \"base\"\n";
+    return nullptr;
 }
 
 Unit *Base::factoryUnit(UnitDPSFactory *factory, unsigned int type, std::string unitID, CombatObjectTypeFactory *combatObjectTypeFactory)
@@ -92,6 +93,7 @@ Unit *Base::factoryUnit(UnitDPSFactory *factory, unsigned int type, std::string 
     if (type == CAV_TANK || type == CAV_DPS)
         return factory->createCavalry(playerID, unitID, combatObjectTypeFactory);
     std::cout << "error# unknown unit class\n *in file \"base\"\n";
+    return nullptr;
 }
 
 /*

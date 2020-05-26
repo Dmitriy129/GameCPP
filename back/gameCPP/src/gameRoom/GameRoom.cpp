@@ -102,7 +102,7 @@ std::vector<std::string> GameRoom::getPlayersNames()
 
 void GameRoom::addPlayer(std::string playerID, std::string PlayerName)
 {
-    Player *player = new Player(playerID, PlayerName, field, uuidGen, resourceGeneratorFactory, combatObjectTypeFactory);
+    Player *player = new Player(playerID, PlayerName, field, uuidGen, combatObjectTypeFactory);
     player->attachEvent("log", this);
 
     this->players.push_back(player);
@@ -128,15 +128,14 @@ void GameRoom::createBase(std::string playerID, unsigned int rowNumber, unsigned
     if (player != *players.end())
         player->createBase(rowNumber, columnNumber);
 }
-void GameRoom::createUnit(std::string playerID, unsigned int rowNumber, unsigned int columnNumber, std::string type)
-{
-    Player *player = (*std::find_if(players.begin(), players.end(), [playerID](Player *player) {
-        return (player->getPlayerID() == playerID);
-    }));
-    if (player != *players.end())
-        ;
-    // player->createUnit(rowNumber, columnNumber, type);
-}
+// void GameRoom::createUnit(std::string playerID, unsigned int rowNumber, unsigned int columnNumber, std::string type)
+// {
+//     Player *player = (*std::find_if(players.begin(), players.end(), [playerID](Player *player) {
+//         return (player->getPlayerID() == playerID);
+//     }));
+//     if (player != *players.end())
+//         player->createUnit(rowNumber, columnNumber, type);
+// }
 void GameRoom::moveObject(std::string playerID, unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber)
 {
 }
@@ -160,7 +159,6 @@ std::string GameRoom::removePlayer(std::string playerID)
 void GameRoom::createMemento()
 {
     //fild
-    
 }
 void GameRoom::setMemento(std::string ID)
 {
@@ -189,18 +187,25 @@ v8::Local<v8::Object> GameRoom::getGameRoomData()
 
 void GameRoom::eventHandler(Event *event)
 {
-
-    // std::cout << "#gr ev#" << "\n";
     if (event->getSEventId() == "object updated")
     {
-
-        // std::cout << "#gr ev#" << "object updated " << "\n";
-
         v8::Local<v8::Object> data = Nan::New<v8::Object>();
         SetObjField(data, "objectInfo", event->getData());
         SetObjField(data, "roomID", getRoomID());
-        // std::cout << "#gr ev#" << getRoomID() << "\n";
 
         fireEvent("object updated", data);
     }
 };
+
+v8::Local<v8::Object> GameRoom::getGameRoomInfo()
+{
+    v8::Local<v8::Object> info = Nan::New<v8::Object>();
+    v8::Local<v8::Array> playersInfo = Nan::New<v8::Array>();
+
+    SetObjField(info, "field", field->getFullInfo());
+    // for (unsigned int index = 0; index < players.size(); index++)
+    // SetArrField(playersInfo, index, players);
+    std::for_each(players.begin(), players.end(), [this, &playersInfo](Player *player) { SetArrField(playersInfo, playersInfo->Length(), player->getInfo()); });
+    SetObjField(info, "playersInfo", playersInfo);
+    return info;
+}

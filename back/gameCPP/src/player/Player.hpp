@@ -4,7 +4,6 @@
 #include "../field/Field.hpp"
 #include "../objects/combatObject/base/Base.hpp"
 #include "../uuid/UUID.hpp"
-#include "../objects/neutralObject/resourceGenerator/ResourceGeneratorFactory.hpp"
 #include "../TypeСonstants.hpp"
 #include "../eventProvider/EventProvider.hpp"
 
@@ -14,14 +13,13 @@ private:
     Field *field;
     Base *base;
     UUID *uuidGen;
-    ResourceGeneratorFactory *resourceGeneratorFactory;
     CombatObjectTypeFactory *combatObjectTypeFactory;
 
     std::string playerID;
     std::string playerName;
 
 public:
-    Player(std::string playerID, std::string playerName, Field *field, UUID *uuidGen, ResourceGeneratorFactory *resourceGeneratorFactory, CombatObjectTypeFactory *combatObjectTypeFactory);
+    Player(std::string playerID, std::string playerName, Field *field, UUID *uuidGen, CombatObjectTypeFactory *combatObjectTypeFactory);
     ~Player();
 
     std::string getPlayerID();
@@ -32,7 +30,7 @@ public:
     void moveObject(unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber);
     void interactionObject(unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber);
     void eventHandler(Event *event) override;
-
+    v8::Local<v8::Object> getInfo();
 };
 
 #endif /* Player_hpp */
