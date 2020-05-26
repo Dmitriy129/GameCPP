@@ -205,7 +205,7 @@ v8::Local<v8::Object> GameRoom::getGameRoomInfo()
     SetObjField(info, "field", field->getFullInfo());
     // for (unsigned int index = 0; index < players.size(); index++)
     // SetArrField(playersInfo, index, players);
-    std::for_each(players.begin(), players.end(), [this, &playersInfo](Player *player) { SetArrField(playersInfo, playersInfo->Length(), player->getInfo()); });
+    std::for_each(players.begin(), players.end(), [this, &playersInfo](Player *player) { SetArrField(playersInfo, playersInfo->Length(), player->getFullInfo()); });
     SetObjField(info, "playersInfo", playersInfo);
     return info;
 }

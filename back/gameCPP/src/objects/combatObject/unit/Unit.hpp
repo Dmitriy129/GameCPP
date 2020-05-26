@@ -25,7 +25,7 @@ public:
     void operator+(Object *object) override;
 
     //  std::string getObjectType() override;
-    v8::Local<v8::Object> getInfo();
+    v8::Local<v8::Object> getFullInfo();
 
     void eventHandler(Event *event) override;
 };

@@ -30,7 +30,7 @@ public:
     void moveObject(unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber);
     void interactionObject(unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber);
     void eventHandler(Event *event) override;
-    v8::Local<v8::Object> getInfo();
+    v8::Local<v8::Object> getFullInfo();
 };
 
 #endif /* Player_hpp */

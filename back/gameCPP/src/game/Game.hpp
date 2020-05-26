@@ -62,6 +62,7 @@ public:
 
     v8::Local<v8::Object> getGameRoomsInfo();
     void eventHandler(Event *event) override;
+    void saveRoom();
 };
 
 #endif /* Game_hpp */

@@ -106,7 +106,7 @@ void Player::eventHandler(Event *event)
 {
 }
 
-v8::Local<v8::Object> Player::getInfo()
+v8::Local<v8::Object> Player::getFullInfo()
 {
     v8::Local<v8::Object> info = Nan::New<v8::Object>();
 

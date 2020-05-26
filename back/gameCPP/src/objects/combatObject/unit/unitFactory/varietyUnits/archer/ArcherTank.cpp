@@ -14,9 +14,9 @@ ArcherTank::ArcherTank(std::string playerID, std::string unitID, CombatObjectTyp
 
 // std::string ArcherTank::getObjectType() { return "ArcherTank"; }
 
-// v8::Local<v8::Object> ArcherTank::getInfo()
+// v8::Local<v8::Object> ArcherTank::getFullInfo()
 // {
-//     v8::Local<v8::Object> info = Unit::getInfo();
+//     v8::Local<v8::Object> info = Unit::getFullInfo();
 //     v8::Local<v8::Object> stats;
 
 //     //SetObjField(info, "objectType", getObjectType());

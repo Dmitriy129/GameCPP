@@ -45,7 +45,7 @@ public:
     void operator+(Object *object) override;
     // double getDamageAttack() override;
     //  std::string getObjectType();
-    v8::Local<v8::Object> getInfo();
+    v8::Local<v8::Object> getFullInfo();
 
     /*  */
     void eventHandler(Event *event) override;

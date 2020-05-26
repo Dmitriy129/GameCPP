@@ -14,9 +14,9 @@ InfantryTank::InfantryTank(std::string playerID, std::string unitID, CombatObjec
 
 // std::string InfantryTank::getObjectType() { return "InfantryTank"; }
 
-// v8::Local<v8::Object> InfantryTank::getInfo()
+// v8::Local<v8::Object> InfantryTank::getFullInfo()
 // {
-//     v8::Local<v8::Object> info = Unit::getInfo();
+//     v8::Local<v8::Object> info = Unit::getFullInfo();
 //     v8::Local<v8::Object> stats;
 
 //     //SetObjField(info, "objectType", getObjectType());

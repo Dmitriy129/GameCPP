@@ -9,9 +9,9 @@ void UnitTank::underAttack(double damage, double armor)
     this->setHealth(this->getHealth() - damage);
 }
 
-v8::Local<v8::Object> UnitTank::getInfo()
+v8::Local<v8::Object> UnitTank::getFullInfo()
 {
-    v8::Local<v8::Object> info = Unit::getInfo();
+    v8::Local<v8::Object> info = Unit::getFullInfo();
     v8::Local<v8::Object> stats;
 
     GetObjField(info, "stats", stats);

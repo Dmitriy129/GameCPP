@@ -14,9 +14,9 @@ InfantryDPS::InfantryDPS(std::string playerID, std::string unitID, CombatObjectT
 }
 // std::string InfantryDPS::getObjectType() { return "InfantryDPS"; }
 
-// v8::Local<v8::Object> InfantryDPS::getInfo()
+// v8::Local<v8::Object> InfantryDPS::getFullInfo()
 // {
-//     v8::Local<v8::Object> info = Unit::getInfo();
+//     v8::Local<v8::Object> info = Unit::getFullInfo();
 //     v8::Local<v8::Object> stats;
 
 //     //SetObjField(info, "objectType", getObjectType());

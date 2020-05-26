@@ -50,9 +50,9 @@ void ResourceGenerator::useStrategy() { coefficient = strategy->use(); }
 
 void ResourceGenerator::setStrategy(Strategy *strategy) { this->strategy = strategy; }
 
-v8::Local<v8::Object> ResourceGenerator::getInfo()
+v8::Local<v8::Object> ResourceGenerator::getFullInfo()
 {
-    v8::Local<v8::Object> info = NeutralObject::getInfo();
+    v8::Local<v8::Object> info = NeutralObject::getFullInfo();
 
     SetObjField(info, "combatOrNeutral", "neutral");
 

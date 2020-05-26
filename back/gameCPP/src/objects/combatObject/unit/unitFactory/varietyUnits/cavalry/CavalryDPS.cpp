@@ -14,9 +14,9 @@ CavalryDPS::CavalryDPS(std::string playerID, std::string unitID, CombatObjectTyp
 }
 // std::string CavalryDPS::getObjectType() { return "CavalryDPS"; }
 
-// v8::Local<v8::Object> CavalryDPS::getInfo()
+// v8::Local<v8::Object> CavalryDPS::getFullInfo()
 // {
-//     v8::Local<v8::Object> info = Unit::getInfo();
+//     v8::Local<v8::Object> info = Unit::getFullInfo();
 //     v8::Local<v8::Object> stats;
 
 //     //SetObjField(info, "objectType", getObjectType());

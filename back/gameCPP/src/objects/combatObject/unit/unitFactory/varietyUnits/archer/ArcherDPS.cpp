@@ -15,9 +15,9 @@ ArcherDPS::ArcherDPS(std::string playerID, std::string unitID, CombatObjectTypeF
 
 // std::string ArcherDPS::getObjectType() { return "ArcherDPS"; }
 
-// v8::Local<v8::Object> ArcherDPS::getInfo()
+// v8::Local<v8::Object> ArcherDPS::getFullInfo()
 // {
-//     v8::Local<v8::Object> info = Unit::getInfo();
+//     v8::Local<v8::Object> info = Unit::getFullInfo();
 //     v8::Local<v8::Object> stats;
 
 //     //SetObjField(info, "objectType", getObjectType());
