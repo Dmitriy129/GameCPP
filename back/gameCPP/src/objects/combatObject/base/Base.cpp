@@ -1,15 +1,17 @@
 
 #include "Base.hpp"
 
-Base::Base(std::string playerID, unsigned int maxQuantityOfUnits, double health, double armor, CombatObjectTypeFactory *combatObjectTypeFactory) : maxQuantityOfUnits(maxQuantityOfUnits), quantityOfUnits(0)
+Base::Base(std::string playerID, std::string ID, unsigned int maxQuantityOfUnits, double health, double armor, CombatObjectTypeFactory *combatObjectTypeFactory) : maxQuantityOfUnits(maxQuantityOfUnits), quantityOfUnits(0)
 {
     // // std::cout << "kek/n";
     // armyOfUnits.push_back(nullptr);
     // this->maxQuantityOfUnits = maxQuantityOfUnits;
     // this->quantityOfUnits = 0;
     this->playerID = playerID;
+    this->ID = ID;
     // this->type = new CombatObjectType(health, 0, armor);
     type = combatObjectTypeFactory->getCombatObjectType(80, 40, 1);
+    objectType = "Base";
 }
 
 Base::~Base()
@@ -139,6 +141,6 @@ void Base::eventHandler(Event *event)
 v8::Local<v8::Object> Base::getFullInfo()
 {
     v8::Local<v8::Object> info = CombatObject::getFullInfo();
-    SetObjField(info, "type", "Base");
+    SetObjProperty(info, "type", objectType);
     return info;
 }

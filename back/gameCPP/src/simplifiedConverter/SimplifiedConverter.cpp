@@ -19,7 +19,7 @@
 //     this->isolate = isolate;
 // }
 
-bool SimplifiedConverter::GetObjField(v8::Local<v8::Object> obj, std::string propertyName, unsigned int &value)
+bool SimplifiedConverter::GetObjProperty(v8::Local<v8::Object> obj, std::string propertyName, unsigned int &value)
 {
     v8::Isolate *isolate = obj->GetIsolate();
 
@@ -40,7 +40,7 @@ bool SimplifiedConverter::GetObjField(v8::Local<v8::Object> obj, std::string pro
     return false;
 }
 
-bool SimplifiedConverter::GetObjField(v8::Local<v8::Object> obj, std::string propertyName, double &value)
+bool SimplifiedConverter::GetObjProperty(v8::Local<v8::Object> obj, std::string propertyName, double &value)
 {
     v8::Isolate *isolate = obj->GetIsolate();
 
@@ -61,7 +61,7 @@ bool SimplifiedConverter::GetObjField(v8::Local<v8::Object> obj, std::string pro
     return false;
 }
 
-bool SimplifiedConverter::GetObjField(v8::Local<v8::Object> obj, std::string propertyName, std::string &value)
+bool SimplifiedConverter::GetObjProperty(v8::Local<v8::Object> obj, std::string propertyName, std::string &value)
 {
 
     v8::Isolate *isolate = obj->GetIsolate();
@@ -82,7 +82,7 @@ bool SimplifiedConverter::GetObjField(v8::Local<v8::Object> obj, std::string pro
     return false;
 }
 
-bool SimplifiedConverter::GetObjField(v8::Local<v8::Object> obj, std::string propertyName, v8::Local<v8::Object> &value)
+bool SimplifiedConverter::GetObjProperty(v8::Local<v8::Object> obj, std::string propertyName, v8::Local<v8::Object> &value)
 {
     v8::Isolate *isolate = obj->GetIsolate();
 
@@ -103,19 +103,19 @@ bool SimplifiedConverter::GetObjField(v8::Local<v8::Object> obj, std::string pro
     return false;
 }
 
-bool SimplifiedConverter::SetObjField(v8::Local<v8::Object> &obj, std::string propertyName, unsigned int value)
+bool SimplifiedConverter::SetObjProperty(v8::Local<v8::Object> &obj, std::string propertyName, unsigned int value)
 {
     obj->Set(Nan::New(propertyName.c_str()).ToLocalChecked(), Nan::New(value));
     return true;
 }
 
-bool SimplifiedConverter::SetObjField(v8::Local<v8::Object> &obj, std::string propertyName, double value)
+bool SimplifiedConverter::SetObjProperty(v8::Local<v8::Object> &obj, std::string propertyName, double value)
 {
     obj->Set(Nan::New(propertyName.c_str()).ToLocalChecked(), Nan::New(value));
     return true;
 }
 
-bool SimplifiedConverter::SetObjField(v8::Local<v8::Object> &obj, std::string propertyName, std::string value)
+bool SimplifiedConverter::SetObjProperty(v8::Local<v8::Object> &obj, std::string propertyName, std::string value)
 {
     v8::Isolate *isolate = obj->GetIsolate();
 
@@ -127,7 +127,7 @@ bool SimplifiedConverter::SetObjField(v8::Local<v8::Object> &obj, std::string pr
     return false;
 }
 
-bool SimplifiedConverter::SetObjField(v8::Local<v8::Object> &obj, std::string propertyName, v8::Local<v8::Array> value)
+bool SimplifiedConverter::SetObjProperty(v8::Local<v8::Object> &obj, std::string propertyName, v8::Local<v8::Array> value)
 {
     v8::Isolate *isolate = obj->GetIsolate();
 
@@ -139,7 +139,7 @@ bool SimplifiedConverter::SetObjField(v8::Local<v8::Object> &obj, std::string pr
     return false;
 }
 
-bool SimplifiedConverter::SetObjField(v8::Local<v8::Object> &obj, std::string propertyName, v8::Local<v8::Object> value)
+bool SimplifiedConverter::SetObjProperty(v8::Local<v8::Object> &obj, std::string propertyName, v8::Local<v8::Object> value)
 {
     v8::Isolate *isolate = obj->GetIsolate();
 
@@ -151,7 +151,7 @@ bool SimplifiedConverter::SetObjField(v8::Local<v8::Object> &obj, std::string pr
     return false;
 }
 
-bool SimplifiedConverter::SetObjField(v8::Local<v8::Object> &obj, std::string propertyName, v8::Local<v8::Value> value)
+bool SimplifiedConverter::SetObjProperty(v8::Local<v8::Object> &obj, std::string propertyName, v8::Local<v8::Value> value)
 {
     v8::Isolate *isolate = obj->GetIsolate();
 
@@ -163,7 +163,7 @@ bool SimplifiedConverter::SetObjField(v8::Local<v8::Object> &obj, std::string pr
     return false;
 }
 
-bool SimplifiedConverter::SetObjField(v8::Local<v8::Object> &obj, unsigned int index, v8::Local<v8::Object> value)
+bool SimplifiedConverter::SetObjProperty(v8::Local<v8::Object> &obj, unsigned int index, v8::Local<v8::Object> value)
 {
     v8::Isolate *isolate = obj->GetIsolate();
 
@@ -175,7 +175,7 @@ bool SimplifiedConverter::SetObjField(v8::Local<v8::Object> &obj, unsigned int i
     return false;
 }
 
-bool SimplifiedConverter::SetArrField(v8::Local<v8::Array> &array, unsigned int index, std::string value)
+bool SimplifiedConverter::SetArrProperty(v8::Local<v8::Array> &array, unsigned int index, std::string value)
 {
     v8::Isolate *isolate = array->GetIsolate();
 
@@ -187,7 +187,7 @@ bool SimplifiedConverter::SetArrField(v8::Local<v8::Array> &array, unsigned int 
     return false;
 }
 
-bool SimplifiedConverter::SetArrField(v8::Local<v8::Array> &array, unsigned int index, v8::Local<v8::Object> value)
+bool SimplifiedConverter::SetArrProperty(v8::Local<v8::Array> &array, unsigned int index, v8::Local<v8::Object> value)
 {
     v8::Isolate *isolate = array->GetIsolate();
 
@@ -199,7 +199,7 @@ bool SimplifiedConverter::SetArrField(v8::Local<v8::Array> &array, unsigned int 
     return false;
 }
 
-bool SimplifiedConverter::SetArrField(v8::Local<v8::Array> &array, unsigned int index, v8::Local<v8::Array> value)
+bool SimplifiedConverter::SetArrProperty(v8::Local<v8::Array> &array, unsigned int index, v8::Local<v8::Array> value)
 {
     v8::Isolate *isolate = array->GetIsolate();
 

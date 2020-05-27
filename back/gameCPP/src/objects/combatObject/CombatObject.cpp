@@ -32,16 +32,16 @@ v8::Local<v8::Object> CombatObject::getFullInfo()
 {
     v8::Local<v8::Object> info = Object::getFullInfo();
 
-    SetObjField(info, "combatOrNeutral", "combat");
+    SetObjProperty(info, "combatOrNeutral", "combat");
 
     v8::Local<v8::Object> stats = Nan::New<v8::Object>();
 
-    SetObjField(stats, "health", health);
-    SetObjField(stats, "maxHealth", getMaxHealth());
-    SetObjField(stats, "damage", getDamage());
-    SetObjField(stats, "armor", getArmor());
+    SetObjProperty(stats, "health", health);
+    SetObjProperty(stats, "maxHealth", getMaxHealth());
+    SetObjProperty(stats, "damage", getDamage());
+    SetObjProperty(stats, "armor", getArmor());
 
-    SetObjField(info, "stats", stats);
+    SetObjProperty(info, "stats", stats);
 
     return info;
 }

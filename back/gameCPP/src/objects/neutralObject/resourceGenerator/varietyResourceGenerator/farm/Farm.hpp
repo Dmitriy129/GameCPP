@@ -8,10 +8,10 @@
 class Farm : public ResourceGenerator
 {
 private:
-    std::string objectType = "Farm";
     std::string resType = "Food";
 
 public:
+    Farm(std::string ID);
     // void getResPerStepForUnit() override;
     // //  std::string getObjectType();
 };

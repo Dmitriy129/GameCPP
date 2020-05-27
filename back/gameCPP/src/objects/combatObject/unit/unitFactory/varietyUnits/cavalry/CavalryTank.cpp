@@ -10,6 +10,7 @@ CavalryTank::CavalryTank(std::string playerID, std::string unitID, CombatObjectT
 
     critChance = 0.15;
     critAbsorption = 0.5;
+    objectType = "CavalryTank";
 }
 
 // std::string CavalryTank::getObjectType() { return "CavalryTank"; }
@@ -19,8 +20,8 @@ CavalryTank::CavalryTank(std::string playerID, std::string unitID, CombatObjectT
 //     v8::Local<v8::Object> info = Unit::getFullInfo();
 //     v8::Local<v8::Object> stats;
 
-//     //SetObjField(info, "objectType", getObjectType());
-//     GetObjField(info, "stats", stats);
-//     SetObjField(stats, "critInfo", UnitTank::getCritInfo());
-//     SetObjField(info, "stats", stats);
+//     //SetObjProperty(info, "objectType", getObjectType());
+//     GetObjProperty(info, "stats", stats);
+//     SetObjProperty(stats, "critInfo", UnitTank::getCritInfo());
+//     SetObjProperty(info, "stats", stats);
 // }

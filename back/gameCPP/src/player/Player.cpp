@@ -29,7 +29,7 @@ std::string Player::getPlayerName()
 void Player::createBase(unsigned int rowNumber, unsigned int columnNumber)
 {
 
-    this->base = new Base(playerID, /* maxQuantityOfUnits */ 100, 1000, 4, combatObjectTypeFactory);
+    this->base = new Base(playerID, uuidGen->generateUUID(), 100, 1000, 4, combatObjectTypeFactory);
     this->field->addObject(rowNumber, columnNumber, base);
 }
 
@@ -110,8 +110,8 @@ v8::Local<v8::Object> Player::getFullInfo()
 {
     v8::Local<v8::Object> info = Nan::New<v8::Object>();
 
-    SetObjField(info, "playerName", playerName);
-    SetObjField(info, "playerID", playerID);
-    SetObjField(info, "base", field->getObjectData(base));
+    SetObjProperty(info, "playerName", playerName);
+    SetObjProperty(info, "playerID", playerID);
+    SetObjProperty(info, "base", field->getObjectData(base));
     return info;
 }

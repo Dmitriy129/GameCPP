@@ -31,7 +31,7 @@ private:
     void unitDie(Unit *unit);
 
 public:
-    Base(std::string playerID, unsigned int maxQuantityOfUnits, double health, double armor, CombatObjectTypeFactory *combatObjectTypeFactory);
+    Base(std::string playerID, std::string ID, unsigned int maxQuantityOfUnits, double health, double armor, CombatObjectTypeFactory *combatObjectTypeFactory);
     ~Base();
     bool isMoveable() override;
     Unit *createUnit(unsigned int type, std::string unitID, CombatObjectTypeFactory *combatObjectTypeFactory);

@@ -7,7 +7,7 @@
 #include "../gameRoom/GameRoom.hpp"
 #include "../field/Field.hpp"
 #include "../uuid/UUID.hpp"
-#include "../objects/neutralObject/resourceGenerator/ResourceGeneratorFactory.hpp"
+#include "../objects/neutralObject/NeutralObjectFactory.hpp"
 #include "../player/Player.hpp"
 #include "../mediator/fieldMediator/FieldMediator.hpp"
 #include "../eventProvider/EventProvider.hpp"
@@ -20,14 +20,14 @@ private:
     std::map<std::string, std::vector<GameRoomMemento *>> historyGameRooms;
 
     UUID *uuidGen;
-    ResourceGeneratorFactory *resourceGeneratorFactory;
+    NeutralObjectFactory *neutralObjectFactory;
     CombatObjectTypeFactory *combatObjectTypeFactory;
     Mediator *mediator;
 
 public:
     Game();
     ~Game();
-    void addGameRoom(std::string roomID, std::string roomName, unsigned int rowsQuantity, unsigned int columnsQuantity, unsigned int maximumObjectsQuantity);
+    void addGameRoom(std::string editorID, std::string roomID, std::string roomName, unsigned int rowsQuantity, unsigned int columnsQuantity, unsigned int maximumObjectsQuantity);
     std::string removeGameRoom(std::string roomID);
     GameRoom *getGameRoom(std::string roomID);
 
@@ -62,7 +62,9 @@ public:
 
     v8::Local<v8::Object> getGameRoomsInfo();
     void eventHandler(Event *event) override;
-    void saveRoom();
+
+    void saveRoom(std::string editorID, std::string roomID);
+    void loadRoom(std::string editorID, std::string roomID, std::string saveID);
 };
 
 #endif /* Game_hpp */

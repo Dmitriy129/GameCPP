@@ -332,9 +332,9 @@ v8::Local<v8::Array> Field::getLandscapesData()
         v8::Local<v8::Array> columns = Nan::New<v8::Array>();
         for (unsigned int columnNumber = 0; columnNumber < columnsQuantity; columnNumber++)
         {
-            SetArrField(columns, columnNumber, getLandscapeData(rowNumber, columnNumber));
+            SetArrProperty(columns, columnNumber, getLandscapeData(rowNumber, columnNumber));
         }
-        SetArrField(rows, rowNumber, columns);
+        SetArrProperty(rows, rowNumber, columns);
     }
     return rows;
 }
@@ -347,9 +347,9 @@ v8::Local<v8::Array> Field::getObjectsData()
         v8::Local<v8::Array> columns = Nan::New<v8::Array>();
         for (unsigned int columnNumber = 0; columnNumber < columnsQuantity; columnNumber++)
         {
-            SetArrField(columns, columnNumber, getObjectData(rowNumber, columnNumber));
+            SetArrProperty(columns, columnNumber, getObjectData(rowNumber, columnNumber));
         }
-        SetArrField(rows, rowNumber, columns);
+        SetArrProperty(rows, rowNumber, columns);
     }
     return rows;
 }
@@ -363,9 +363,9 @@ v8::Local<v8::Object> Field::getObjectData(unsigned int rowNumber, unsigned int 
     if (object != nullptr)
         data = object->getFullInfo();
     else
-        SetObjField(data, "objectType", objectType);
-    SetObjField(data, "x", columnNumber);
-    SetObjField(data, "y", rowNumber);
+        SetObjProperty(data, "objectType", objectType);
+    SetObjProperty(data, "x", columnNumber);
+    SetObjProperty(data, "y", rowNumber);
 
     return data;
 }
@@ -381,7 +381,7 @@ v8::Local<v8::Object> Field::getObjectData(Object *object)
 v8::Local<v8::Object> Field::getLandscapeData(unsigned int rowNumber, unsigned int columnNumber)
 {
     v8::Local<v8::Object> data = Nan::New<v8::Object>();
-    SetObjField(data, "lanscapeType", fieldGrid[rowNumber][columnNumber].getLandscape()->getLandscapeType());
+    SetObjProperty(data, "lanscapeType", fieldGrid[rowNumber][columnNumber].getLandscape()->getLandscapeType());
     return data;
 }
 
@@ -417,22 +417,28 @@ v8::Local<v8::Object> Field::getFullInfo()
     {
         for (unsigned int j = 0; j < columnsQuantity; j++)
         {
-            SetArrField(landscapesArray, i * columnsQuantity + j, fieldGrid[i][j].getLandscape()->getLandscapeType());
+            SetArrProperty(landscapesArray, i * columnsQuantity + j, fieldGrid[i][j].getLandscape()->getLandscapeType());
             if (fieldGrid[i][j].getObject() != nullptr)
             {
+                std::cout << "!!!!!" << fieldGrid[i][j].getObject()->getObjectType();
                 if (std::string("InfantryTank InfantryDPS CavalryTank CavalryDPS ArcherTank ArcherDPS").find(fieldGrid[i][j].getObject()->getObjectType()) != std::string::npos)
                 {
-                    SetArrField(unitsArray, unitsArray->Length(), getObjectData(i, j));
+                    SetArrProperty(unitsArray, unitsArray->Length(), getObjectData(i, j));
                 }
                 else if (std::string("Sawmill GoldMine Farm").find(fieldGrid[i][j].getObject()->getObjectType()) != std::string::npos)
                 {
-                    SetArrField(resGenArray, resGenArray->Length(), getObjectData(i, j));
+                    SetArrProperty(resGenArray, resGenArray->Length(), getObjectData(i, j));
                 }
             }
         }
     }
-    SetObjField(info, "landscapes", landscapesArray);
-    SetObjField(info, "units", unitsArray);
-    SetObjField(info, "resGen", resGenArray);
+    SetObjProperty(info, "landscapes", landscapesArray);
+    SetObjProperty(info, "units", unitsArray);
+    SetObjProperty(info, "resGen", resGenArray);
+    SetObjProperty(info, "rowsQuantity", rowsQuantity);
+    SetObjProperty(info, "columnsQuantity", columnsQuantity);
+    SetObjProperty(info, "currentObjectsQuantity", currentObjectsQuantity);
+    SetObjProperty(info, "maximumObjectsQuantity", maximumObjectsQuantity);
+
     return info;
 }

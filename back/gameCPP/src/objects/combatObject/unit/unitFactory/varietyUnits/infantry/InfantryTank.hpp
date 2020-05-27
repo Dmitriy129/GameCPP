@@ -8,11 +8,11 @@
 class InfantryTank : public UnitTank, public InfantryClass
 {
 private:
-    std::string objectType = "InfantryTank";
+    // std::string objectType = "InfantryTank";
 
 public:
     InfantryTank(std::string playerID, std::string unitID, CombatObjectTypeFactory *combatObjectTypeFactory);
-    //  std::string getObjectType();
+    // std::string getObjectType();
     // v8::Local<v8::Object> getFullInfo();
 };
 

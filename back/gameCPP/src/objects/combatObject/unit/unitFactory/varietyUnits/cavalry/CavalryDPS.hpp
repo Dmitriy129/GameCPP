@@ -8,7 +8,7 @@
 class CavalryDPS : public UnitDPS, public CavalryClass
 {
 private:
-    std::string objectType = "CavalryDPS";
+        // std::string objectType = "CavalryDPS";
 
 public:
     CavalryDPS(std::string playerID, std::string unitID, CombatObjectTypeFactory *combatObjectTypeFactory);

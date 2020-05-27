@@ -8,7 +8,7 @@
 class ArcherTank : public UnitTank, public ArcherClass
 {
 private:
-    std::string objectType = "ArcherTank";
+        // std::string objectType = "ArcherTank";
 
 public:
     ArcherTank(std::string playerID, std::string unitID, CombatObjectTypeFactory *combatObjectTypeFactory);

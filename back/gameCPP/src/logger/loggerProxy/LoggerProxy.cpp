@@ -85,8 +85,8 @@ void LoggerProxy::eventHandler(Event *event)
     // std::cout << "#**evh lp s\n";
     v8::Local<v8::Object> objResponse = Nan::New<v8::Object>();
 
-    SetObjField(objResponse, "logType", event->getSEventId());
-    SetObjField(objResponse, "data", event->getData());
+    SetObjProperty(objResponse, "logType", event->getSEventId());
+    SetObjProperty(objResponse, "data", event->getData());
 
     this << objResponse;
     // printLog(objResponse);

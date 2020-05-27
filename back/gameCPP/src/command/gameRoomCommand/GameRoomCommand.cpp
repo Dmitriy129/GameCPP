@@ -25,9 +25,9 @@ void GameRoomCommand::execute(v8::Local<v8::Value> request)
 
     /*  */
 
-    if (!GetObjField(objRequest, "task", task))
+    if (!GetObjProperty(objRequest, "task", task))
         return;
-    if (!GetObjField(objRequest, "params", params))
+    if (!GetObjProperty(objRequest, "params", params))
         return;
 
     // std::cout << "#grce 1#\n";
@@ -46,11 +46,11 @@ void GameRoomCommand::execute(v8::Local<v8::Value> request)
         /*  */ std::string playerName;
         /* * * * * */
 
-        if (!GetObjField(params, "playerInfo", playerInfo))
+        if (!GetObjProperty(params, "playerInfo", playerInfo))
             return;
-        if (!GetObjField(playerInfo, "playerID", playerID))
+        if (!GetObjProperty(playerInfo, "playerID", playerID))
             return;
-        if (!GetObjField(playerInfo, "playerName", playerName))
+        if (!GetObjProperty(playerInfo, "playerName", playerName))
             return;
 
         // std::cout << "#grce addpl#\n";
@@ -61,26 +61,41 @@ void GameRoomCommand::execute(v8::Local<v8::Value> request)
     {
 
         /* * * * * */
-        std::string playerID;
+        std::string userID;
         /* * * * * */
 
-        if (!GetObjField(params, "playerID", playerID))
-            return;
-        PlayerCommand *playerCommand = new PlayerCommand(gameRoom->getPlayer(playerID) /* , isolate */);
+        Command *command;
+
+        if (GetObjProperty(params, "playerID", userID))
+        {
+            Player *player = gameRoom->getPlayer(userID);
+            if (player == nullptr)
+                return;
+            command = new PlayerCommand(player /* , isolate */);
+        }
+        else if (GetObjProperty(params, "editorID", userID))
+        {
+            Editor *editor = gameRoom->getEditor(userID);
+            if (editor == nullptr)
+                return;
+            command = new EditorCommand(editor /* , isolate */);
+        }
 
         if (task == MOVE)
         {
-            playerCommand->execute(request);
+            command->execute(request);
         }
         else if (task == ADD_OBJ)
         {
+            command->execute(request);
+
             // std::cout << "#grce add obj#\n";
 
             /* * * * * */
             unsigned int objectType;
             /* * * * * */
 
-            if (!GetObjField(params, "objectType", objectType))
+            if (!GetObjProperty(params, "objectType", objectType))
                 return;
             if (objectType == NEUT_OBJ)
             {
@@ -90,11 +105,10 @@ void GameRoomCommand::execute(v8::Local<v8::Value> request)
             {
                 // std::cout << "#grce add obj comb#\n";
 
-                // PlayerCommand *playerCommand = new PlayerCommand(gameRoom->getPlayer(playerID) /* , isolate */);
-                playerCommand->execute(request);
+                // command *command = new command(gameRoom->getPlayer(userID) /* , isolate */);
             }
         }
-        delete playerCommand;
+        delete command;
     }
     // std::cout << "#grcee#\n";
 }

@@ -1,11 +1,10 @@
-
-#include "PlayerCommand.hpp"
-PlayerCommand::PlayerCommand(Player *player) /* , v8::Isolate *isolate) : Command(isolate) */
+#include "EditorCommand.hpp"
+EditorCommand::EditorCommand(Editor *editor) /* , v8::Isolate *isolate) : Command(isolate) */
 {
-    this->player = player;
+    this->editor = editor;
 }
 
-void PlayerCommand::execute(v8::Local<v8::Value> request)
+void EditorCommand::execute(v8::Local<v8::Value> request)
 {
     // std::cout << "#pces#\n";
 
@@ -56,7 +55,7 @@ void PlayerCommand::execute(v8::Local<v8::Value> request)
             return;
         // std::cout << "#pcem#\n";
 
-        player->moveObject(fromY, fromX, toY, toX);
+        editor->moveObject(fromY, fromX, toY, toX);
     }
     else if (task == ADD_OBJ)
     {
@@ -64,30 +63,23 @@ void PlayerCommand::execute(v8::Local<v8::Value> request)
         // std::cout << "#pce add obj#\n";
 
         /* * * * * */
-        v8::Local<v8::Object> combatObjectInfo;
+        v8::Local<v8::Object> neutralObjectInfo;
         /*  */ unsigned int x;
         /*  */ unsigned int y;
-        /*  */ unsigned int combatObjectType;
+        /*  */ unsigned int neutralObjectType;
         /* * * * * */
 
-        if (!GetObjProperty(params, "combatObjectInfo", combatObjectInfo))
+        if (!GetObjProperty(params, "neutralObjectInfo", neutralObjectInfo))
             return;
-        if (!GetObjProperty(combatObjectInfo, "x", x))
+        if (!GetObjProperty(neutralObjectInfo, "x", x))
             return;
-        if (!GetObjProperty(combatObjectInfo, "y", y))
+        if (!GetObjProperty(neutralObjectInfo, "y", y))
             return;
-        if (!GetObjProperty(combatObjectInfo, "combatObjectType", combatObjectType))
+        if (!GetObjProperty(neutralObjectInfo, "neutralObjectType", neutralObjectType))
             return;
 
         // std::cout << "#grce add obj comb check#\n";
 
-        if (combatObjectType == BASE)
-        {
-            player->createBase(y, x);
-        }
-        else
-        {
-            player->createUnit(y, x, combatObjectType);
-        }
+        editor->createResourceGenerator(y, x, neutralObjectType);
     }
 }

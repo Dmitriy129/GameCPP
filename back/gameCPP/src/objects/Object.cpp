@@ -7,9 +7,9 @@ v8::Local<v8::Object> Object::getFullInfo()
 {
     v8::Local<v8::Object> info = Nan::New<v8::Object>();
 
-    SetObjField(info, "objectType", objectType);
-    SetObjField(info, "ID", ID);
-    SetObjField(info, "playerID", playerID);
+    SetObjProperty(info, "objectType", objectType);
+    SetObjProperty(info, "ID", ID);
+    SetObjProperty(info, "playerID", playerID);
 
     return info;
 }

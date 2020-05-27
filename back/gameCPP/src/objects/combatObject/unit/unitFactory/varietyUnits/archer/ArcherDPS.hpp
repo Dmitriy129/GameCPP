@@ -8,7 +8,7 @@
 class ArcherDPS : public UnitDPS, public ArcherClass
 {
 private:
-    std::string objectType = "ArcherDPS";
+    // std::string objectType = "ArcherDPS";
 
 public:
     ArcherDPS(std::string playerID, std::string unitID, CombatObjectTypeFactory *combatObjectTypeFactory);

@@ -101,18 +101,18 @@ void GameProxy::addGameRoom(const v8::FunctionCallbackInfo<v8::Value> &args)
 
     /*  */
 
-    if (!GetObjField(obj, "roomID", roomID, isolate))
+    if (!GetObjProperty(obj, "roomID", roomID, isolate))
         return;
-    if (!GetObjField(obj, "roomName", roomName, isolate))
-        return;
-
-    if (!GetObjField(obj, "rows", rowsQuantity, isolate))
+    if (!GetObjProperty(obj, "roomName", roomName, isolate))
         return;
 
-    if (!GetObjField(obj, "columns", columnsQuantity, isolate))
+    if (!GetObjProperty(obj, "rows", rowsQuantity, isolate))
         return;
 
-    if (!GetObjField(obj, "maxObjects", maxObjectsQuantity, isolate))
+    if (!GetObjProperty(obj, "columns", columnsQuantity, isolate))
+        return;
+
+    if (!GetObjProperty(obj, "maxObjects", maxObjectsQuantity, isolate))
         return;
 
     GameProxy *gameProxy = ObjectWrap::Unwrap<GameProxy>(args.Holder());
@@ -151,13 +151,13 @@ void GameProxy::addPlayerToGameRoom(const v8::FunctionCallbackInfo<v8::Value> &a
 
     /*  */
 
-    if (!GetObjField(obj, "roomID", roomID, isolate))
+    if (!GetObjProperty(obj, "roomID", roomID, isolate))
         return;
-    if (!GetObjField(obj, "player", player, isolate))
+    if (!GetObjProperty(obj, "player", player, isolate))
         return;
-    if (!GetObjField(player, "playerID", playerID, isolate))
+    if (!GetObjProperty(player, "playerID", playerID, isolate))
         return;
-    if (!GetObjField(player, "playerName", playerName, isolate))
+    if (!GetObjProperty(player, "playerName", playerName, isolate))
         return;
 
     GameProxy *gameProxy = ObjectWrap::Unwrap<GameProxy>(args.Holder());
@@ -189,11 +189,11 @@ void GameProxy::removePlayerFromGameRoom(const v8::FunctionCallbackInfo<v8::Valu
 
     /*  */
 
-    if (!GetObjField(obj, "roomID", roomID, isolate))
+    if (!GetObjProperty(obj, "roomID", roomID, isolate))
         return;
-    if (!GetObjField(obj, "player", player, isolate))
+    if (!GetObjProperty(obj, "player", player, isolate))
         return;
-    if (!GetObjField(player, "playerID", playerID, isolate))
+    if (!GetObjProperty(player, "playerID", playerID, isolate))
         return;
 
     GameProxy *gameProxy = ObjectWrap::Unwrap<GameProxy>(args.Holder());
@@ -222,7 +222,7 @@ void GameProxy::removePlayerEveryWhere(const v8::FunctionCallbackInfo<v8::Value>
     std::string playerID;
     /*  */
 
-    if (!GetObjField(obj, "playerID", playerID, isolate))
+    if (!GetObjProperty(obj, "playerID", playerID, isolate))
         return;
 
     GameProxy *gameProxy = ObjectWrap::Unwrap<GameProxy>(args.Holder());
@@ -309,11 +309,11 @@ void GameProxy::getGameRoomFieldCellInfo(const v8::FunctionCallbackInfo<v8::Valu
     unsigned int y;
     /*  */
 
-    if (!GetObjField(obj, "roomID", roomID, isolate))
+    if (!GetObjProperty(obj, "roomID", roomID, isolate))
         return;
-    if (!GetObjField(obj, "x", x, isolate))
+    if (!GetObjProperty(obj, "x", x, isolate))
         return;
-    if (!GetObjField(obj, "y", y, isolate))
+    if (!GetObjProperty(obj, "y", y, isolate))
         return;
 
     GameProxy *gameProxy = ObjectWrap::Unwrap<GameProxy>(args.Holder());
@@ -351,7 +351,7 @@ void GameProxy::getGameRoomPlayersIDList(const v8::FunctionCallbackInfo<v8::Valu
     std::string roomID;
     /*  */
 
-    if (!GetObjField(obj, "roomID", roomID, isolate))
+    if (!GetObjProperty(obj, "roomID", roomID, isolate))
         return;
 
     GameProxy *gameProxy = ObjectWrap::Unwrap<GameProxy>(args.Holder());
@@ -387,7 +387,7 @@ void GameProxy::getGameRoomFieldLandscapes(const v8::FunctionCallbackInfo<v8::Va
     std::string roomID;
     /*  */
 
-    if (!GetObjField(obj, "roomID", roomID, isolate))
+    if (!GetObjProperty(obj, "roomID", roomID, isolate))
         return;
 
     GameProxy *gameProxy = ObjectWrap::Unwrap<GameProxy>(args.Holder());
@@ -433,7 +433,7 @@ void GameProxy::getGameRoomFieldObjects(const v8::FunctionCallbackInfo<v8::Value
     std::string roomID;
     /*  */
 
-    if (!GetObjField(obj, "roomID", roomID, isolate))
+    if (!GetObjProperty(obj, "roomID", roomID, isolate))
         return;
 
     GameProxy *gameProxy = ObjectWrap::Unwrap<GameProxy>(args.Holder());
@@ -483,21 +483,21 @@ void GameProxy::addUnit(const v8::FunctionCallbackInfo<v8::Value> &args)
     std::string unitType;
     /*  */
 
-    if (!GetObjField(obj, "roomID", roomID, isolate))
+    if (!GetObjProperty(obj, "roomID", roomID, isolate))
         return;
-    if (!GetObjField(obj, "playerID", playerID, isolate))
-        return;
-
-    if (!GetObjField(obj, "unitInfo", unitInfo, isolate))
+    if (!GetObjProperty(obj, "playerID", playerID, isolate))
         return;
 
-    if (!GetObjField(unitInfo, "x", x, isolate))
+    if (!GetObjProperty(obj, "unitInfo", unitInfo, isolate))
         return;
 
-    if (!GetObjField(unitInfo, "y", y, isolate))
+    if (!GetObjProperty(unitInfo, "x", x, isolate))
         return;
 
-    if (!GetObjField(unitInfo, "unitType", unitType, isolate))
+    if (!GetObjProperty(unitInfo, "y", y, isolate))
+        return;
+
+    if (!GetObjProperty(unitInfo, "unitType", unitType, isolate))
         return;
 
     GameProxy *gameProxy = ObjectWrap::Unwrap<GameProxy>(args.Holder());
@@ -537,15 +537,15 @@ void GameProxy::addBase(const v8::FunctionCallbackInfo<v8::Value> &args)
     unsigned int y;
     /*  */
 
-    if (!GetObjField(obj, "roomID", roomID, isolate))
+    if (!GetObjProperty(obj, "roomID", roomID, isolate))
         return;
-    if (!GetObjField(obj, "playerID", playerID, isolate))
+    if (!GetObjProperty(obj, "playerID", playerID, isolate))
         return;
-    if (!GetObjField(obj, "baseInfo", baseInfo, isolate))
+    if (!GetObjProperty(obj, "baseInfo", baseInfo, isolate))
         return;
-    if (!GetObjField(baseInfo, "x", x, isolate))
+    if (!GetObjProperty(baseInfo, "x", x, isolate))
         return;
-    if (!GetObjField(baseInfo, "y", y, isolate))
+    if (!GetObjProperty(baseInfo, "y", y, isolate))
         return;
 
     GameProxy *gameProxy = ObjectWrap::Unwrap<GameProxy>(args.Holder());

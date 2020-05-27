@@ -55,7 +55,6 @@ public:
     void removeObject(unsigned int rowNumber, unsigned int columnNumber);
     void moveObject(unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber);
 
-
     v8::Local<v8::Array> getLandscapesData();
     v8::Local<v8::Array> getObjectsData();
     v8::Local<v8::Object> getLandscapeData(unsigned int rowNumber, unsigned int columnNumber);
