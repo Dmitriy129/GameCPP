@@ -1,14 +1,16 @@
 
 
-const my_game = require('./back/gameCPP/build/Release/my_game_cpp.node');
+const my_game = require('./gameCPP/build/Release/my_game_cpp.node');
 
 const gameTest = new my_game.UIFacade();
+var roomID = "ROOM" + Date.now();
 
 console.log(gameTest.sendRequest({
     task: 0,
     params: {
-        roomID: "ROOM1234567890",
+        roomID: roomID,
         roomName: "KoKoKo33",
+        editorID: "EDITOR1234567890",
         fieldInfo: {
             rowsQuantity: 5,
             columnsQuantity: 5,
@@ -22,7 +24,7 @@ console.log("----------------------------");
 console.log(gameTest.sendRequest({
     task: 1,
     params: {
-        roomID: "ROOM1234567890",
+        roomID: roomID,
         playerInfo: {
             playerID: "USER1234567890",
             playerName: "Banana12"
@@ -37,7 +39,7 @@ console.log("----------------------------");
 console.log(gameTest.sendRequest({
     task: 2,
     params: {
-        roomID: "ROOM1234567890",
+        roomID: roomID,
         playerID: "USER1234567890",
         objectType: 0,
         combatObjectInfo: {
@@ -53,7 +55,7 @@ console.log("----------------------------");
 console.log(gameTest.sendRequest({
     task: 2,
     params: {
-        roomID: "ROOM1234567890",
+        roomID: roomID,
         playerID: "USER1234567890",
         objectType: 0,
         combatObjectInfo: {
@@ -70,7 +72,7 @@ console.log("----------------------------");
 console.log(gameTest.sendRequest({
     task: 1,
     params: {
-        roomID: "ROOM1234567890",
+        roomID: roomID,
         playerInfo: {
             playerID: "USER12345678901",
             playerName: "Banana121"
@@ -83,7 +85,7 @@ console.log("----------------------------");
 console.log(gameTest.sendRequest({
     task: 2,
     params: {
-        roomID: "ROOM1234567890",
+        roomID: roomID,
         playerID: "USER12345678901",
         objectType: 0,
         combatObjectInfo: {
@@ -99,7 +101,7 @@ console.log("----------------------------");
 console.log(gameTest.sendRequest({
     task: 2,
     params: {
-        roomID: "ROOM1234567890",
+        roomID: roomID,
         playerID: "USER12345678901",
         objectType: 0,
         combatObjectInfo: {
@@ -110,23 +112,14 @@ console.log(gameTest.sendRequest({
     }
 }))
 
-console.log("----------------------------");
-
-console.log(gameTest.sendRequest({
-    task: 4,
-    params: {
-        roomID: "ROOM1234567890",
-    }
-}))
-
-
+/*
 
 console.log("----------------------------");
 
 console.log(gameTest.sendRequest({
     task: 3,
     params: {
-        roomID: "ROOM1234567890",
+        roomID: roomID,
         playerID: "USER1234567890",
         moveInfo: {
             moveFrom: {
@@ -143,7 +136,7 @@ console.log(gameTest.sendRequest({
 console.log(gameTest.sendRequest({
     task: 3,
     params: {
-        roomID: "ROOM1234567890",
+        roomID: roomID,
         playerID: "USER1234567890",
         moveInfo: {
             moveFrom: {
@@ -160,7 +153,7 @@ console.log(gameTest.sendRequest({
 console.log(gameTest.sendRequest({
     task: 3,
     params: {
-        roomID: "ROOM1234567890",
+        roomID: roomID,
         playerID: "USER1234567890",
         moveInfo: {
             moveFrom: {
@@ -177,7 +170,7 @@ console.log(gameTest.sendRequest({
 console.log(gameTest.sendRequest({
     task: 3,
     params: {
-        roomID: "ROOM1234567890",
+        roomID: roomID,
         playerID: "USER1234567890",
         moveInfo: {
             moveFrom: {
@@ -194,7 +187,7 @@ console.log(gameTest.sendRequest({
 console.log(gameTest.sendRequest({
     task: 3,
     params: {
-        roomID: "ROOM1234567890",
+        roomID: roomID,
         playerID: "USER1234567890",
         moveInfo: {
             moveFrom: {
@@ -209,9 +202,92 @@ console.log(gameTest.sendRequest({
     }
 }))
 
+ */
+
+console.log("----------------------------");
+
+console.log(gameTest.sendRequest({
+    task: 2,
+    params: {
+        roomID: roomID,
+        editorID: "EDITOR1234567890",
+        objectType: 1,
+        neutralObjectInfo: {
+            x: 1,
+            y: 2,
+            neutralObjectType: 0,
+        }
+    }
+}))
+
+console.log("----------------------------");
+console.log(gameTest.sendRequest({
+    task: 2,
+    params: {
+        roomID: roomID,
+        editorID: "EDITOR1234567890",
+        objectType: 1,
+        neutralObjectInfo: {
+            x: 1,
+            y: 3,
+            neutralObjectType: 0,
+        }
+    }
+}))
+console.log("----------------------------");
 
 
-console.log()
+
+console.log(gameTest.sendRequest({
+    task: 3,
+    params: {
+        roomID: roomID,
+        playerID: "USER1234567890",
+        moveInfo: {
+            moveFrom: {
+                fromX: 2,
+                fromY: 2,
+            },
+            moveTo: {
+                toX: 1,
+                toY: 2,
+            }
+        }
+    }
+}))
+
+console.log(gameTest.sendRequest({
+    task: 3,
+    params: {
+        roomID: roomID,
+        playerID: "USER12345678901",
+        moveInfo: {
+            moveFrom: {
+                fromX: 4,
+                fromY: 4,
+            },
+            moveTo: {
+                toX: 1,
+                toY: 3,
+            }
+        }
+    }
+}))
+
+
+
+console.log("----------------------------");
+
+
+
+
+console.log(gameTest.sendRequest({
+    task: 6,
+    params: {
+        roomID: roomID,
+        editorID: "EDITOR1234567890",
+    }
+}))
 
 
 
@@ -223,7 +299,7 @@ console.log()
 {
     task: "add Object", //1
     params: {
-        roomID: "ROOM1234567890",
+        roomID: roomID,
         playerID: "USER1234567890",
         objectType: COMB_OBJ or NEUT_OBJ
         combatObjectInfo:{
@@ -241,7 +317,7 @@ console.log()
 {
     task: "add Room", //2
     params: {
-        roomID: "ROOM1234567890",
+        roomID: roomID,
         roomName: "KoKoKo33"
         fieldInfo:{
             rowsQuantity: 10,
@@ -253,7 +329,7 @@ console.log()
 {
     task: "add Player", //3
     params: {
-        roomID: "ROOM1234567890",
+        roomID: roomID,
         playerInfo: {
             playerID: "USER1234567890",
             playerName: "Banana12"
@@ -309,7 +385,7 @@ console.log()
 // // }
 // // ));
 // // console.log(gameTest.addGameRoom({
-// //     roomID: "ROOM1234567890",
+// //     roomID: roomID,
 // //     roomName: "blabla22",
 // //     rows: 7,
 // //     columns: 9,
@@ -324,7 +400,7 @@ console.log()
 
 // // console.log(gameTest.addPlayerToGameRoom(
 // //     {
-// //         roomID: "ROOM1234567890",
+// //         roomID: roomID,
 // //         player: {
 // //             playerID: "USER2445565764",
 // //             playerName: "ChocoPie05"
@@ -350,7 +426,7 @@ console.log()
 
 // // // console.log(gameTest.getGameRoomPlayersIDList(
 // // //    {
-// // //        roomID: "ROOM1234567890",
+// // //        roomID: roomID,
 // // //    }
 // // // ));
 
@@ -399,3 +475,23 @@ console.log()
 
 
 
+
+
+/* Save */
+
+var save = {
+    task: 6,
+    params: {
+        roomID: roomID,
+        editorID: "EDITOR1234567890",
+    }
+}
+
+var load = {
+    task: 7,
+    params: {
+        roomID: roomID,
+        editorID: "EDITOR1234567890",
+        saveID: "SAVE1234567890",
+    }
+}

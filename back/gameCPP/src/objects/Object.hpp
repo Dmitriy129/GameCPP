@@ -10,7 +10,7 @@
 class Object : public EventProvider
 {
 protected:
-    std::string objectType = "Object";
+    std::string objectType;
     std::string ID;
     std::string playerID;
 

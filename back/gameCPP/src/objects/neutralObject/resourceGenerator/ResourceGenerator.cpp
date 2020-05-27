@@ -54,15 +54,15 @@ v8::Local<v8::Object> ResourceGenerator::getFullInfo()
 {
     v8::Local<v8::Object> info = NeutralObject::getFullInfo();
 
-    SetObjField(info, "combatOrNeutral", "neutral");
+    SetObjProperty(info, "combatOrNeutral", "neutral");
 
     v8::Local<v8::Object> stats = Nan::New<v8::Object>();
 
-    SetObjField(stats, "resType", resType);
-    SetObjField(stats, "resPerStep", resPerStep);
-    SetObjField(stats, "coefficient", coefficient);
+    SetObjProperty(stats, "resType", resType);
+    SetObjProperty(stats, "resPerStep", resPerStep);
+    SetObjProperty(stats, "coefficient", coefficient);
 
-    SetObjField(info, "stats", stats);
+    SetObjProperty(info, "stats", stats);
 
     return info;
 }

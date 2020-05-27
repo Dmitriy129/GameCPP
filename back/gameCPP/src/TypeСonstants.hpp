@@ -7,7 +7,19 @@ enum eTask
     ADD_PLAYER, //in room
     ADD_OBJ,    //\/ \/ \/ eObjectType
     MOVE,       //in player
+    UPD_LAND,   //in editor
     GET_FIELD,  //in room
+    SAVE_ROOM,  //add
+    LOAD_ROOM,  //add
+};
+
+enum eLandscapeType
+{
+    FOREST,
+    MOUNTAIN,
+    PLAIN,
+    SWAMP,
+
 };
 
 enum eObjectType

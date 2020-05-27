@@ -8,7 +8,7 @@
 class CavalryTank : public UnitTank, public CavalryClass
 {
 private:
-    std::string objectType = "CavalryTank";
+        // std::string objectType = "CavalryTank";
 
 public:
     CavalryTank(std::string playerID, std::string unitID, CombatObjectTypeFactory *combatObjectTypeFactory);

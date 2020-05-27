@@ -11,6 +11,7 @@ CavalryDPS::CavalryDPS(std::string playerID, std::string unitID, CombatObjectTyp
 
     critChance = 0.2;
     critDamage = 2.3;
+    objectType = "CavalryDPS";
 }
 // std::string CavalryDPS::getObjectType() { return "CavalryDPS"; }
 
@@ -19,8 +20,8 @@ CavalryDPS::CavalryDPS(std::string playerID, std::string unitID, CombatObjectTyp
 //     v8::Local<v8::Object> info = Unit::getFullInfo();
 //     v8::Local<v8::Object> stats;
 
-//     //SetObjField(info, "objectType", getObjectType());
-//     GetObjField(info, "stats", stats);
-//     SetObjField(stats, "critInfo", UnitDPS::getCritInfo());
-//     SetObjField(info, "stats", stats);
+//     //SetObjProperty(info, "objectType", getObjectType());
+//     GetObjProperty(info, "stats", stats);
+//     SetObjProperty(stats, "critInfo", UnitDPS::getCritInfo());
+//     SetObjProperty(info, "stats", stats);
 // }

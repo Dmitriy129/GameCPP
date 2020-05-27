@@ -108,11 +108,11 @@ void UIFacade::eventHandler(Event *event)
     v8::Local<v8::Object> objResponse = Nan::New<v8::Object>();
     // std::cout << "#UI ev2#\n";
 
-    SetObjField(objResponse, "eventType", event->getSEventId());
-    SetObjField(objResponse, "data", event->getData());
+    SetObjProperty(objResponse, "eventType", event->getSEventId());
+    SetObjProperty(objResponse, "data", event->getData());
     // std::cout << "#UI ev3#\n";
 
-    SetArrField(this->response, this->response->Length(), objResponse);
+    SetArrProperty(this->response, this->response->Length(), objResponse);
     // std::cout << "#UI ev4#\n";
 };
 

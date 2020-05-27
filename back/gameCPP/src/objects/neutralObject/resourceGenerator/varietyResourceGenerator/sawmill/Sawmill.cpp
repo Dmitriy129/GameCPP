@@ -1,5 +1,11 @@
 #include "Sawmill.hpp"
 
+Sawmill::Sawmill(std::string ID)
+{
+    this->ID = ID;
+    objectType = "Sawmill";
+};
+
 // void Sawmill::getResPerStepForUnit()
 // {
 //     std::cout << "You have earned " << resPerStep * useStrategy() << " wood";
@@ -11,7 +17,7 @@
 // {
 //     v8::Local<v8::Object> info = ResourceGenerator::getFullInfo();
 
-//     SetObjField(info, "objectType", "Sawmill");
+//     SetObjProperty(info, "objectType", "Sawmill");
 
 //     return info;
 // }
