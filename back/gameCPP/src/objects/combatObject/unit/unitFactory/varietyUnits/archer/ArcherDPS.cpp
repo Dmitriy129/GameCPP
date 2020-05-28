@@ -18,11 +18,7 @@ ArcherDPS::ArcherDPS(std::string playerID, std::string unitID, CombatObjectTypeF
 
 // v8::Local<v8::Object> ArcherDPS::getFullInfo()
 // {
-//     v8::Local<v8::Object> info = Unit::getFullInfo();
-//     v8::Local<v8::Object> stats;
+//     v8::Local<v8::Object> info = UnitDPS::getFullInfo();
 
-//     //SetObjProperty(info, "objectType", getObjectType());
-//     GetObjProperty(info, "stats", stats);
-//     SetObjProperty(stats, "critInfo", UnitDPS::getCritInfo());
-//     SetObjProperty(info, "stats", stats);
+//     return info;
 // }

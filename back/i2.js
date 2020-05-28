@@ -61,7 +61,7 @@ console.log(gameTest.sendRequest({
         combatObjectInfo: {
             x: 2,
             y: 1,
-            combatObjectType: 2,
+            combatObjectType: 3,
         }
     }
 }))

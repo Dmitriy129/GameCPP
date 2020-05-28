@@ -5,7 +5,7 @@
 //     this->file.open(filename);
 //     file << JSONStringified(data);
 // }
-GameRoomMemento::GameRoomMemento(std::string filename, GameRoom *gameRoom) : gameRoom(gameRoom)
+GameRoomMemento::GameRoomMemento(std::string filename, GameRoom *&gameRoom) : gameRoom(gameRoom)
 {
     std::string dir = "saves/" + gameRoom->getRoomName() + "#" + gameRoom->getRoomID();
     // mkdir(dir);

@@ -17,7 +17,7 @@ protected:
 public:
     std::string getObjectType();
     std::string getPlayerID();
-    v8::Local<v8::Object> getFullInfo();
+    virtual v8::Local<v8::Object> getFullInfo();
     virtual bool isMoveable() = 0;
     virtual void operator+(Object *object) = 0;
 };
