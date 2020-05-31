@@ -17,23 +17,37 @@ ResourceGenerator::ResourceGenerator()
     playerID = "empty";
     coefficient = 1;
 }
+ResourceGenerator::~ResourceGenerator()
+{
+    delete strategy;
+}
 
-bool ResourceGenerator::isMoveable() { return false; }
+bool ResourceGenerator::isMoveable()
+{
+    return false;
+}
 
 void ResourceGenerator::operator+(Object *object)
 {
-    this->playerID = object->getPlayerID();
-    unsigned int objectType = object->getObjectType();
-    // std::cout << "Now " << this->getObjectType() << " is owned by playerID: " << this->getPlayerID() << "\n";
-    if (objectType == ARCH_DPS || objectType == ARCH_TANK)
-        setStrategy(new StrategyResArcher);
-    if (objectType == CAV_DPS || objectType == CAV_TANK)
-        setStrategy(new StrategyResCavalry);
-    if (objectType == INF_DPS || objectType == INF_TANK)
-        setStrategy(new StrategyResInfantry);
+    if (this->playerID != object->getPlayerID())
+    {
+        this->playerID = object->getPlayerID();
+        unsigned int objectType = object->getObjectType();
+        // std::cout << "Now " << this->getObjectType() << " is owned by playerID: " << this->getPlayerID() << "\n";
+        if (objectType == ARCH_DPS || objectType == ARCH_TANK)
+            setStrategy(new StrategyResArcher);
+        if (objectType == CAV_DPS || objectType == CAV_TANK)
+            setStrategy(new StrategyResCavalry);
+        if (objectType == INF_DPS || objectType == INF_TANK)
+            setStrategy(new StrategyResInfantry);
 
+        useStrategy();
+    }
     getResPerStepForUnit();
 }
+void ResourceGenerator::setCoefficient(double coefficient) { this->coefficient = coefficient; }
+
+void ResourceGenerator::setPlayerID(std::string playerID) { this->playerID = playerID; }
 
 std::string ResourceGenerator::getResType() { return resType; }
 

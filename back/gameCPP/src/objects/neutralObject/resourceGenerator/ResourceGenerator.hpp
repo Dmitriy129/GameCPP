@@ -23,7 +23,10 @@ protected:
 
 public:
     ResourceGenerator();
+    ~ResourceGenerator();
     void operator+(Object *object) override;
+    void setCoefficient(double coefficient);
+    void setPlayerID(std::string playerID);
     std::string getResType();
     double getResPerStep();
     double getCoefficient();

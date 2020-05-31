@@ -29,6 +29,8 @@ public:
     // GameRoom(std::string roomID, std::string roomName, Field *field);
     ~GameRoom();
 
+    friend class GameRoomMemento;
+
     //about room
     std::string getRoomID();
     std::string getRoomName();
@@ -57,7 +59,7 @@ public:
     CombatObjectTypeFactory *getCombatObjectTypeFactory();
     Mediator *getMediator();
 
-    Editor *getEditor(std::string editorID);
+    Editor *getEditor();
     Player *getPlayer(std::string playerID);
     unsigned int getPlayersQuantity();
     std::vector<std::string> getPlayersID();

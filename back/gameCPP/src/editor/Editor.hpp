@@ -21,6 +21,7 @@ public:
     void updateLandscape(unsigned int rowNumber, unsigned int columnNumber, unsigned int type);
     void moveObject(unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber);
     void removeObject(unsigned int rowNumber, unsigned int columnNumber);
+
 };
 
 #endif /* Editor_hpp */

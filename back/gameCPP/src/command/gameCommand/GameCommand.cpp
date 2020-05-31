@@ -70,6 +70,10 @@ void GameCommand::execute(v8::Local<v8::Value> request)
         }
         else if (task == LOAD_ROOM)
         {
+            unsigned int saveID;
+            if (!GetObjProperty(params, "saveID", saveID))
+                return;
+            game->loadRoom(editorID, roomID, saveID);
         }
     }
     else if (task == GET_FIELD || task == ADD_OBJ || task == ADD_PLAYER || task == MOVE)

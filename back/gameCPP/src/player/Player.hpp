@@ -24,6 +24,7 @@ public:
 
     std::string getPlayerID();
     std::string getPlayerName();
+    Base *getBase();
 
     void createBase(unsigned int rowNumber, unsigned int columnNumber);
     void createUnit(unsigned int rowNumber, unsigned int columnNumber, unsigned int type);

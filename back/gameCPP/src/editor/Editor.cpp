@@ -29,3 +29,4 @@ void Editor::removeObject(unsigned int rowNumber, unsigned int columnNumber)
 {
     removeObject(rowNumber, columnNumber);
 }
+

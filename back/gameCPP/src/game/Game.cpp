@@ -262,15 +262,16 @@ void Game::eventHandler(Event *event)
 void Game::saveRoom(std::string editorID, std::string roomID)
 {
     GameRoom *gameRoom = getGameRoom(roomID);
-    if (gameRoom->getEditor(editorID))
+    if (gameRoom->getEditor())
         historyGameRooms[roomID].push_back(new GameRoomMemento(std::string(roomID + "#" + std::to_string(historyGameRooms[roomID].size())), gameRoom));
 }
-void Game::loadRoom(std::string editorID, std::string roomID, std::string saveID)
+void Game::loadRoom(std::string editorID, std::string roomID, unsigned int saveID)
 {
     GameRoom *gameRoom = getGameRoom(roomID);
-    if (gameRoom->getEditor(editorID))
+    if (gameRoom->getEditor())
     {
-        std::__1::__wrap_iter<GameRoomMemento **> gameRoomMemento = std::find_if(historyGameRooms[roomID].begin(), historyGameRooms[roomID].end(), [saveID](GameRoomMemento *gameRoomMemento) { return gameRoomMemento->getSaveID() == saveID; });
-        (*gameRoomMemento)->restoreMemento(); //todo
+        std::cout << "##########Game::loadRoom\n";
+        // std::__1::__wrap_iter<GameRoomMemento **> gameRoomMemento = std::find_if(historyGameRooms[roomID].begin(), historyGameRooms[roomID].end(), [saveID](GameRoomMemento *gameRoomMemento) { return gameRoomMemento->getSaveID() == saveID; });
+        historyGameRooms[roomID][saveID]->restoreMemento();
     }
 }

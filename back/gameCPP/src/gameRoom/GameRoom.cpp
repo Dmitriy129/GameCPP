@@ -71,9 +71,10 @@ CombatObjectTypeFactory *GameRoom::getCombatObjectTypeFactory() { return combatO
 Mediator *GameRoom::getMediator() { return mediator; }
 
 //about players
-Editor *GameRoom::getEditor(std::string editorID)
+Editor *GameRoom::getEditor()
 {
-    return editorID == editor->getEditorID() ? editor : nullptr;
+    // return editorID == editor->getEditorID() ? editor : nullptr;
+    return editor;
 }
 
 Player *GameRoom::getPlayer(std::string playerID)
@@ -221,7 +222,11 @@ v8::Local<v8::Object> GameRoom::getFullInfo()
     SetObjProperty(info, "field", field->getFullInfo());
     // for (unsigned int index = 0; index < players.size(); index++)
     // SetArrProperty(playersInfo, index, players);
+    std::cout << "##########GameRoom::getFullInfo\n";
     std::for_each(players.begin(), players.end(), [this, &playersInfo](Player *player) { SetArrProperty(playersInfo, playersInfo->Length(), player->getFullInfo()); });
+    std::cout << "##########GameRoom::getFullInfo\n";
     SetObjProperty(info, "playersInfo", playersInfo);
+    std::cout << "##########GameRoom::getFullInfo\n";
+
     return info;
 }

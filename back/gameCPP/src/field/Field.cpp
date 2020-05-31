@@ -412,11 +412,12 @@ v8::Local<v8::Object> Field::getFullInfo()
 
     v8::Local<v8::Array> landscapesArray = Nan::New<v8::Array>();
     v8::Local<v8::Array> unitsArray = Nan::New<v8::Array>();
-    v8::Local<v8::Array> resGenArray = Nan::New<v8::Array>();
+    v8::Local<v8::Array> resGensArray = Nan::New<v8::Array>();
     for (unsigned int i = 0; i < rowsQuantity; i++)
     {
         for (unsigned int j = 0; j < columnsQuantity; j++)
         {
+
             SetArrProperty(landscapesArray, i * columnsQuantity + j, fieldGrid[i][j].getLandscape()->getLandscapeType());
             if (fieldGrid[i][j].getObject() != nullptr)
             {
@@ -428,18 +429,19 @@ v8::Local<v8::Object> Field::getFullInfo()
                 }
                 else if (objectType >= 7)
                 {
-                    SetArrProperty(resGenArray, resGenArray->Length(), getObjectData(i, j));
+                    SetArrProperty(resGensArray, resGensArray->Length(), getObjectData(i, j));
                 }
             }
         }
     }
     SetObjProperty(info, "landscapes", landscapesArray);
     SetObjProperty(info, "units", unitsArray);
-    SetObjProperty(info, "resGen", resGenArray);
+    SetObjProperty(info, "resGens", resGensArray);
     SetObjProperty(info, "rowsQuantity", rowsQuantity);
     SetObjProperty(info, "columnsQuantity", columnsQuantity);
     SetObjProperty(info, "currentObjectsQuantity", currentObjectsQuantity);
     SetObjProperty(info, "maximumObjectsQuantity", maximumObjectsQuantity);
+    std::cout << "############Field::getFullInfo\n";
 
     return info;
 }
