@@ -1,15 +1,15 @@
 #include "Swamp.hpp"
 
-std::string Swamp::getLandscapeType()
+unsigned int Swamp::getLandscapeType()
 {
-    return "Swamp";
+    return SWAMP;
 }
-bool Swamp::checkAccessMove(std::string objectType)
+bool Swamp::checkAccessMove(unsigned int objectType)
 {
     return true;
 }
 
-bool Swamp::checkAccessInteraction(std::string objectType)
+bool Swamp::checkAccessInteraction(unsigned int objectType)
 {
     return true;
 }

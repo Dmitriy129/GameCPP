@@ -10,7 +10,7 @@ InfantryTank::InfantryTank(std::string playerID, std::string unitID, CombatObjec
 
     critChance = 0.15;
     critAbsorption = 0.5;
-    objectType = "InfantryTank";
+    objectType = INF_TANK;
 }
 
 // std::string InfantryTank::getObjectType() { return "InfantryTank"; }

@@ -11,7 +11,7 @@ ArcherDPS::ArcherDPS(std::string playerID, std::string unitID, CombatObjectTypeF
 
     critChance = 0.2;
     critDamage = 2;
-    objectType = "ArcherDPS";
+    objectType = ARCH_DPS;
 }
 
 // std::string ArcherDPS::getObjectType() { return "ArcherDPS"; }

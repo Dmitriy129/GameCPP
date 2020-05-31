@@ -22,7 +22,7 @@ private:
     UUID *uuidGen;
     NeutralObjectFactory *neutralObjectFactory;
     CombatObjectTypeFactory *combatObjectTypeFactory;
-    Mediator *mediator;
+    // Mediator *mediator;
 
 public:
     Game();
@@ -47,9 +47,9 @@ public:
     unsigned int getFieldColumnsQuantity(std::string roomID);
 
     //game->rooms(roomID)->{players or field}
-    std::vector<std::string> getGameRoomPlayersIDList(std::string roomID);   // add done
-    std::vector<std::string> getGameRoomFieldLandscapes(std::string roomID); // add done
-    std::vector<std::string> getGameRoomFieldObjects(std::string roomID);    // add
+    std::vector<std::string> getGameRoomPlayersIDList(std::string roomID); // add done
+    // std::vector<std::string> getGameRoomFieldLandscapes(std::string roomID); // add done
+    // std::vector<std::string> getGameRoomFieldObjects(std::string roomID);    // add
 
     std::string executeСommand(std::string playerID, std::string command);
 

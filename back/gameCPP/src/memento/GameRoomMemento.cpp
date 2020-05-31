@@ -36,11 +36,30 @@ std::string GameRoomMemento::getSaveID() { return saveID; }
 //     return JSONParse(jsonStr);
 // }
 
-void GameRoomMemento::getMemento()
+void GameRoomMemento::restoreMemento()
 {
     std::string jsonStr;
     ifile >> jsonStr;
     v8::Local<v8::Object> info = JSONParse(jsonStr);
+    unsigned int rowsQuantity;
+    unsigned int columnsQuantity;
+    unsigned int maximumObjectsQuantity;
 
+    if (GetObjProperty(info, "rowsQuantity", rowsQuantity))
+        return;
+    if (GetObjProperty(info, "columnsQuantity", columnsQuantity))
+        return;
+    if (GetObjProperty(info, "maximumObjectsQuantity", maximumObjectsQuantity))
+        return;
+
+    Field *restoredField = new Field(rowsQuantity, columnsQuantity, maximumObjectsQuantity, gameRoom->getMediator());
+
+    for (unsigned int row = 0; row < rowsQuantity; row++)
+        for (unsigned int column = 0; column < rowsQuantity; column++)
+        {
+            unsigned int landscapeType;
+        }
+
+    // GameRoom *restoredGameRoom = new GameRoom(gameRoom->getEditor(), gameRoom->getRoomID(), gameRoom->getRoomName(), )
     //todo
 }

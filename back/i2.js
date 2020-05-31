@@ -77,7 +77,7 @@ console.log(gameTest.sendRequest({
         neutralObjectInfo: {
             x: 1,
             y: 2,
-            neutralObjectType: 0,
+            neutralObjectType: 7,
         }
     }
 }))

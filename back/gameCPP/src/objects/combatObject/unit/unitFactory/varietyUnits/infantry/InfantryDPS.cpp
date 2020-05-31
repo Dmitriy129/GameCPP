@@ -11,7 +11,7 @@ InfantryDPS::InfantryDPS(std::string playerID, std::string unitID, CombatObjectT
 
     critChance = 0.2;
     critDamage = 2.3;
-    objectType = "InfantryDPS";
+    objectType = INF_DPS;
 }
 // std::string InfantryDPS::getObjectType() { return "InfantryDPS"; }
 

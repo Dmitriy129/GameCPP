@@ -7,6 +7,8 @@
 
 class ArcherClass : public virtual Unit
 {
+public:
+    ArcherClass();
 };
 
 #endif /* ArcherClass_hpp */

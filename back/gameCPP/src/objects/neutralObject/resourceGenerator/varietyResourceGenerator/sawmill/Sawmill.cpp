@@ -3,7 +3,7 @@
 Sawmill::Sawmill(std::string ID)
 {
     this->ID = ID;
-    objectType = "Sawmill";
+    objectType = GEN_SAWMILL;
 };
 
 // void Sawmill::getResPerStepForUnit()

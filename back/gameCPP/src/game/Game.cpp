@@ -4,7 +4,7 @@ Game::Game()
     this->uuidGen = new UUID;
     this->neutralObjectFactory = new NeutralObjectFactory;
     this->combatObjectTypeFactory = new CombatObjectTypeFactory;
-    this->mediator = new FieldMediator;
+    // this->mediator = new FieldMediator;
 }
 Game::~Game()
 {
@@ -12,11 +12,12 @@ Game::~Game()
     delete this->uuidGen;
     delete this->neutralObjectFactory;
     delete this->combatObjectTypeFactory;
-    delete this->mediator;
+    // delete this->mediator;
 }
 void Game::addGameRoom(std::string editorID, std::string roomID, std::string roomName, unsigned int rowsQuantity, unsigned int columnsQuantity, unsigned int maximumObjectsQuantity)
 {
-    GameRoom *room = new GameRoom(editorID, roomID, roomName, new Field(rowsQuantity, columnsQuantity, maximumObjectsQuantity, mediator), uuidGen, neutralObjectFactory, combatObjectTypeFactory /* , isolate */);
+    Mediator *mediator = new FieldMediator;
+    GameRoom *room = new GameRoom(editorID, roomID, roomName, new Field(rowsQuantity, columnsQuantity, maximumObjectsQuantity, mediator), uuidGen, neutralObjectFactory, combatObjectTypeFactory, mediator /* , isolate */);
     gameRooms.push_back(room);
     // gameRooms.push_back(new GameRoom(roomID, roomName, new Field(rowsQuantity, columnsQuantity, maximumObjectsQuantity, mediator), uuidGen, NeutralObjectFactory, combatObjectTypeFactory));
     room->attachEvent("object updated", this);
@@ -147,35 +148,35 @@ std::vector<std::string> Game::getGameRoomPlayersIDList(std::string roomID)
     return response;
 }
 
-std::vector<std::string> Game::getGameRoomFieldLandscapes(std::string roomID)
-{
-    std::vector<std::string> response;
-    GameRoom *room = getGameRoom(roomID);
-    if (room)
-    {
+// std::vector<std::string> Game::getGameRoomFieldLandscapes(std::string roomID)
+// {
+//     std::vector<std::string> response;
+//     GameRoom *room = getGameRoom(roomID);
+//     if (room)
+//     {
 
-        std::cout << "Game::getGameRoomFieldLandscapes true\n";
-        response = room->getLandscapes();
-    }
-    else
-        std::cout << "Game::getGameRoomFieldLandscapes false\n";
-    return response;
-}
+//         std::cout << "Game::getGameRoomFieldLandscapes true\n";
+//         response = room->getLandscapes();
+//     }
+//     else
+//         std::cout << "Game::getGameRoomFieldLandscapes false\n";
+//     return response;
+// }
 
-std::vector<std::string> Game::getGameRoomFieldObjects(std::string roomID)
-{
-    std::vector<std::string> response;
-    GameRoom *room = getGameRoom(roomID);
-    if (room)
-    {
+// std::vector<std::string> Game::getGameRoomFieldObjects(std::string roomID)
+// {
+//     std::vector<std::string> response;
+//     GameRoom *room = getGameRoom(roomID);
+//     if (room)
+//     {
 
-        std::cout << "Game::getGameRoomFieldObjects true\n";
-        response = room->getObjects();
-    }
-    else
-        std::cout << "Game::getGameRoomFieldObjects false\n";
-    return response;
-}
+//         std::cout << "Game::getGameRoomFieldObjects true\n";
+//         response = room->getObjects();
+//     }
+//     else
+//         std::cout << "Game::getGameRoomFieldObjects false\n";
+//     return response;
+// }
 
 unsigned int Game::getFieldRowsQuantity(std::string roomID)
 {
@@ -270,6 +271,6 @@ void Game::loadRoom(std::string editorID, std::string roomID, std::string saveID
     if (gameRoom->getEditor(editorID))
     {
         std::__1::__wrap_iter<GameRoomMemento **> gameRoomMemento = std::find_if(historyGameRooms[roomID].begin(), historyGameRooms[roomID].end(), [saveID](GameRoomMemento *gameRoomMemento) { return gameRoomMemento->getSaveID() == saveID; });
-        (*gameRoomMemento)->getMemento(); //todo
+        (*gameRoomMemento)->restoreMemento(); //todo
     }
 }

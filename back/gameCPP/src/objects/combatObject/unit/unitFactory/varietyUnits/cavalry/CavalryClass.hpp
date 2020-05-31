@@ -7,6 +7,8 @@
 
 class CavalryClass : public virtual Unit
 {
+public:
+    CavalryClass();
 };
 
 #endif /* CavalryClass_hpp */

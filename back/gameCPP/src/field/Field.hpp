@@ -43,14 +43,14 @@ public:
     unsigned int getColumnsQuantity() const;
     unsigned int getMaximumObject() const;
     unsigned int getCurrentObject() const;
-    std::vector<std::string> getLandscapes();
-    std::vector<std::string> getObjects();
+    // std::vector<std::string> getLandscapes();
+    // std::vector<std::string> getObjects();
 
     Mediator *getMediator() const;
     FieldCell &getFieldCell(unsigned int rowNumber, unsigned int columnNumber);
 
     void addObject(unsigned int rowNumber, unsigned int columnNumber, Object *object);
-    void updateLandscape(unsigned int rowNumber, unsigned int columnNumber, std::string landscapeType /* Landscape *landscape */);
+    void updateLandscape(unsigned int rowNumber, unsigned int columnNumber, unsigned int landscapeType /* Landscape *landscape */);
     void removeObject(Object *object);
     void removeObject(unsigned int rowNumber, unsigned int columnNumber);
     void moveObject(unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber);

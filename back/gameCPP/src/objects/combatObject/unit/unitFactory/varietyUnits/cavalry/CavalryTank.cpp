@@ -10,7 +10,7 @@ CavalryTank::CavalryTank(std::string playerID, std::string unitID, CombatObjectT
 
     critChance = 0.15;
     critAbsorption = 0.5;
-    objectType = "CavalryTank";
+    objectType = CAV_TANK;
 }
 
 // std::string CavalryTank::getObjectType() { return "CavalryTank"; }

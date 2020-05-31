@@ -8,9 +8,9 @@
 class Plain : public Landscape
 {
 public:
-    std::string getLandscapeType() override;
-    bool checkAccessMove(std::string objectType) override;
-    bool checkAccessInteraction(std::string objectType) override;
+    unsigned int getLandscapeType() override;
+    bool checkAccessMove(unsigned int objectType) override;
+    bool checkAccessInteraction(unsigned int objectType) override;
 };
 
 #endif /* Plain_hpp */

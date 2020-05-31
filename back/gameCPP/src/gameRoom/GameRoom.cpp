@@ -1,6 +1,6 @@
 #include "GameRoom.hpp"
 
-GameRoom::GameRoom(std::string editorID, std::string roomID, std::string roomName, Field *field, UUID *uuidGen, NeutralObjectFactory *NeutralObjectFactory, CombatObjectTypeFactory *combatObjectTypeFactory)
+GameRoom::GameRoom(std::string editorID, std::string roomID, std::string roomName, Field *field, UUID *uuidGen, NeutralObjectFactory *NeutralObjectFactory, CombatObjectTypeFactory *combatObjectTypeFactory, Mediator *mediator)
 {
     this->roomID = roomID;
     this->roomName = roomName;
@@ -8,6 +8,7 @@ GameRoom::GameRoom(std::string editorID, std::string roomID, std::string roomNam
     this->uuidGen = uuidGen;
     this->neutralObjectFactory = neutralObjectFactory;
     this->combatObjectTypeFactory = combatObjectTypeFactory;
+    this->mediator = mediator;
     // this->field->SetIsolate(isolate);
     this->field->attachEvent("object updated", this);
     // this->field->attachEvent("log", this);
@@ -51,18 +52,29 @@ unsigned int GameRoom::getFieldColumnsQuantity()
     return this->field->getColumnsQuantity();
 }
 
-std::vector<std::string> GameRoom::getLandscapes()
-{
-    return this->field->getLandscapes();
-}
+// std::vector<std::string> GameRoom::getLandscapes()
+// {
+//     return this->field->getLandscapes();
+// }
 
-std::vector<std::string> GameRoom::getObjects()
-{
-    return this->field->getObjects();
-}
+// std::vector<std::string> GameRoom::getObjects()
+// {
+//     return this->field->getObjects();
+// }
+
+UUID *GameRoom::getUuidGen() { return uuidGen; }
+
+NeutralObjectFactory *GameRoom::getNeutralObjectFactory() { return neutralObjectFactory; }
+
+CombatObjectTypeFactory *GameRoom::getCombatObjectTypeFactory() { return combatObjectTypeFactory; }
+
+Mediator *GameRoom::getMediator() { return mediator; }
 
 //about players
-Editor *GameRoom::getEditor(std::string editorID) { return editorID == editor->getEditorID() ? editor : nullptr; }
+Editor *GameRoom::getEditor(std::string editorID)
+{
+    return editorID == editor->getEditorID() ? editor : nullptr;
+}
 
 Player *GameRoom::getPlayer(std::string playerID)
 {
@@ -147,7 +159,7 @@ void GameRoom::addPlayer(std::string playerID, std::string PlayerName)
 // {
 // }
 
-std::string GameRoom::removePlayer(std::string playerID)
+void GameRoom::removePlayer(std::string playerID)
 {
     // for (int i = 0; i < this->players.size(); i++)
     //     if (elem->getPlayerID() == playerID)
@@ -157,7 +169,7 @@ std::string GameRoom::removePlayer(std::string playerID)
                             return (player->getPlayerID() == playerID ? true : false);
                         })),
                         this->players.end());
-    return "removed";
+    // return "removed";
 }
 
 // void GameRoom::saveMemento(std::string roomID)

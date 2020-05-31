@@ -17,6 +17,7 @@ private:
     UUID *uuidGen;
     NeutralObjectFactory *neutralObjectFactory;
     CombatObjectTypeFactory *combatObjectTypeFactory;
+    Mediator *mediator;
 
     Editor *editor;
     std::vector<Player *> players;
@@ -24,7 +25,7 @@ private:
     std::string roomName;
 
 public:
-    GameRoom(std::string editorID, std::string roomID, std::string roomName, Field *field, UUID *uuidGen, NeutralObjectFactory *NeutralObjectFactory, CombatObjectTypeFactory *combatObjectTypeFactory);
+    GameRoom(std::string editorID, std::string roomID, std::string roomName, Field *field, UUID *uuidGen, NeutralObjectFactory *NeutralObjectFactory, CombatObjectTypeFactory *combatObjectTypeFactory, Mediator *mediator);
     // GameRoom(std::string roomID, std::string roomName, Field *field);
     ~GameRoom();
 
@@ -36,12 +37,12 @@ public:
     FieldCell *getFieldCell(unsigned int x, unsigned int y);
     unsigned int getFieldRowsQuantity();
     unsigned int getFieldColumnsQuantity();
-    std::vector<std::string> getLandscapes();
-    std::vector<std::string> getObjects();
+    // std::vector<std::string> getLandscapes();
+    // std::vector<std::string> getObjects();
 
     //about players
     void addPlayer(std::string playerID, std::string PlayerName);
-    std::string removePlayer(std::string playerID);
+    void removePlayer(std::string playerID);
     // */
 
     /* for player  */
@@ -50,6 +51,11 @@ public:
     // void moveObject(std::string playerID, unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber);
     // void interactionObject(std::string playerID, unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber);
     /*  */
+
+    UUID *getUuidGen();
+    NeutralObjectFactory *getNeutralObjectFactory();
+    CombatObjectTypeFactory *getCombatObjectTypeFactory();
+    Mediator *getMediator();
 
     Editor *getEditor(std::string editorID);
     Player *getPlayer(std::string playerID);
