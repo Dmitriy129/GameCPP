@@ -12,19 +12,14 @@ Player::Player(std::string playerID, std::string playerName, Field *field, UUID 
 
 Player ::~Player()
 {
-    delete this->field;
-    delete this->base;
-    delete this->uuidGen;
+    // delete this->field;
+    // delete this->base;
+    // delete this->uuidGen;
 }
 
-std::string Player::getPlayerID()
-{
-    return this->playerID;
-}
-std::string Player::getPlayerName()
-{
-    return this->playerName;
-}
+std::string Player::getPlayerID() { return this->playerID; }
+std::string Player::getPlayerName() { return this->playerName; }
+Base *Player::getBase() { return this->base; }
 
 void Player::createBase(unsigned int rowNumber, unsigned int columnNumber)
 {
@@ -112,6 +107,9 @@ v8::Local<v8::Object> Player::getFullInfo()
 
     SetObjProperty(info, "playerName", playerName);
     SetObjProperty(info, "playerID", playerID);
+    std::cout << "##########Player::getFullInfo\n";
     SetObjProperty(info, "base", field->getObjectData(base));
+    // std::cout << "##########Player::getFullInfo\n";
+
     return info;
 }

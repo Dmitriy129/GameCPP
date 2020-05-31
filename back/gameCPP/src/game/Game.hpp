@@ -64,7 +64,7 @@ public:
     void eventHandler(Event *event) override;
 
     void saveRoom(std::string editorID, std::string roomID);
-    void loadRoom(std::string editorID, std::string roomID, std::string saveID);
+    void loadRoom(std::string editorID, std::string roomID, unsigned int saveID);
 };
 
 #endif /* Game_hpp */

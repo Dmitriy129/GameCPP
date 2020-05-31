@@ -75,7 +75,7 @@ void GameRoomCommand::execute(v8::Local<v8::Value> request)
         }
         else if (GetObjProperty(params, "editorID", userID))
         {
-            Editor *editor = gameRoom->getEditor(userID);
+            Editor *editor = gameRoom->getEditor();
             if (editor == nullptr)
                 return;
             command = new EditorCommand(editor /* , isolate */);

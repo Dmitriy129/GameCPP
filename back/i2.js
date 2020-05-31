@@ -12,8 +12,8 @@ console.log(gameTest.sendRequest({
         roomName: "KoKoKo33",
         editorID: "EDITOR1234567890",
         fieldInfo: {
-            rowsQuantity: 5,
-            columnsQuantity: 5,
+            rowsQuantity: 8,
+            columnsQuantity: 8,
             maximumObjectsQuantity: 100,
         }
     }
@@ -106,6 +106,7 @@ console.log("----------------------------");
 
 
 
+console.log("---------------SAVE-------------");
 
 console.log(gameTest.sendRequest({
     task: 6,
@@ -116,4 +117,91 @@ console.log(gameTest.sendRequest({
 }))
 
 
+console.log("---------------ADDOBJ----------");
+
+console.log(gameTest.sendRequest({
+    task: 2,
+    params: {
+        roomID: roomID,
+        playerID: "USER1234567890",
+        objectType: 0,
+        combatObjectInfo: {
+            x: 2,
+            y: 3,
+            combatObjectType: 4,
+        }
+    }
+}))
+
+console.log("---------------ADDOBJ----------");
+
+//create resGen
+console.log(gameTest.sendRequest({
+    task: 2,
+    params: {
+        roomID: roomID,
+        editorID: "EDITOR1234567890",
+        objectType: 1,
+        neutralObjectInfo: {
+            x: 4,
+            y: 3,
+            neutralObjectType: 8,
+        }
+    }
+}))
+
+console.log("---------------MOVEOBJ---------");
+
+//move
+console.log(gameTest.sendRequest({
+    task: 3,
+    params: {
+        roomID: roomID,
+        playerID: "USER1234567890",
+        moveInfo: {
+            moveFrom: {
+                fromX: 2,
+                fromY: 3,
+            },
+            moveTo: {
+                toX: 4,
+                toY: 3,
+            }
+        }
+    }
+}))
+
+console.log("---------------SAVE-------------");
+
+console.log(gameTest.sendRequest({
+    task: 6,
+    params: {
+        roomID: roomID,
+        editorID: "EDITOR1234567890",
+    }
+}))
+
+
+console.log("---------------LOAD------------");
+
+
+console.log(gameTest.sendRequest({
+    task: 7,
+    params: {
+        roomID: roomID,
+        editorID: "EDITOR1234567890",
+        saveID: 0,
+    }
+}))
+
+
+console.log("---------------SAVE-------------");
+
+console.log(gameTest.sendRequest({
+    task: 6,
+    params: {
+        roomID: roomID,
+        editorID: "EDITOR1234567890",
+    }
+}))
 

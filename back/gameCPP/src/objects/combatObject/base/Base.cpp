@@ -17,8 +17,8 @@ Base::Base(std::string playerID, std::string ID, unsigned int maxQuantityOfUnits
 
 Base::~Base()
 {
-    for (int i = 0; i < quantityOfUnits; i++)
-        delete armyOfUnits[i];
+    // for (int i = 0; i < quantityOfUnits; i++)
+    // delete armyOfUnits[i];
     armyOfUnits.clear();
 }
 
