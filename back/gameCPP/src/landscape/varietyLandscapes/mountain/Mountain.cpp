@@ -1,15 +1,15 @@
 #include "Mountain.hpp"
 
-std::string Mountain::getLandscapeType()
+unsigned int Mountain::getLandscapeType()
 {
-    return "Mountain";
+    return MOUNTAIN;
 }
-bool Mountain::checkAccessMove(std::string objectType)
+bool Mountain::checkAccessMove(unsigned int objectType)
 {
     return false;
 }
 
-bool Mountain::checkAccessInteraction(std::string objectType)
+bool Mountain::checkAccessInteraction(unsigned int objectType)
 {
     return false;
 }

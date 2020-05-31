@@ -3,7 +3,7 @@
 Farm::Farm(std::string ID)
 {
     this->ID = ID;
-    objectType = "Farm";
+    objectType = GEN_FARM;
 };
 // void Farm::getResPerStepForUnit()
 // {

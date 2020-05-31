@@ -111,26 +111,26 @@ FieldCell &Field::getFieldCell(unsigned int rowNumber, unsigned int columnNumber
 {
     return fieldGrid[rowNumber][columnNumber];
 }
-std::vector<std::string> Field::getLandscapes()
-{
-    std::vector<std::string> landscapes;
+// std::vector<std::string> Field::getLandscapes()
+// {
+//     std::vector<std::string> landscapes;
 
-    for (unsigned int i = 0; i < rowsQuantity; i++)
-        for (unsigned int j = 0; j < this->columnsQuantity; j++)
-            // std::cout << this->fieldGrid[i][j].getLandscape()->getLandscapeType() << " --- " << i << " " << j << "\n";
+//     for (unsigned int i = 0; i < rowsQuantity; i++)
+//         for (unsigned int j = 0; j < this->columnsQuantity; j++)
+//             // std::cout << this->fieldGrid[i][j].getLandscape()->getLandscapeType() << " --- " << i << " " << j << "\n";
 
-            landscapes.push_back(this->fieldGrid[i][j].getLandscape()->getLandscapeType());
-    return landscapes;
-}
+//             landscapes.push_back(this->fieldGrid[i][j].getsLandscape()->getLandscapeType());
+//     return landscapes;
+// }
 
-std::vector<std::string> Field::getObjects()
-{
-    std::vector<std::string> objects;
-    for (int i = 0; i < this->rowsQuantity; i++)
-        for (int j = 0; j < this->columnsQuantity; j++)
-            objects.push_back(this->fieldGrid[i][j].getObject() != nullptr ? this->fieldGrid[i][j].getObject()->getObjectType() : "__empty");
-    return objects;
-}
+// std::vector<std::string> Field::getObjects()
+// {
+//     std::vector<int> objects;
+//     for (int i = 0; i < this->rowsQuantity; i++)
+//         for (int j = 0; j < this->columnsQuantity; j++)
+//             objects.push_back(this->fieldGrid[i][j].getObject() != nullptr ? this->fieldGrid[i][j].getObject()->getObjectType() : -1);
+//     return objects;
+// }
 Mediator *Field::getMediator() const
 {
     return mediator;
@@ -176,7 +176,7 @@ void Field::addObject(unsigned int rowNumber, unsigned int columnNumber, Object 
     fireEvent("object updated", getObjectData(rowNumber, columnNumber));
 }
 
-void Field::updateLandscape(unsigned int rowNumber, unsigned int columnNumber, std::string landscapeType /* Landscape *landscape */)
+void Field::updateLandscape(unsigned int rowNumber, unsigned int columnNumber, unsigned int landscapeType /* Landscape *landscape */)
 {
     fieldGrid[rowNumber][columnNumber].setLandscape(new LandscapeProxy(landscapeType));
 }
@@ -421,11 +421,12 @@ v8::Local<v8::Object> Field::getFullInfo()
             if (fieldGrid[i][j].getObject() != nullptr)
             {
                 std::cout << "!!!!!" << fieldGrid[i][j].getObject()->getObjectType();
-                if (std::string("InfantryTank InfantryDPS CavalryTank CavalryDPS ArcherTank ArcherDPS").find(fieldGrid[i][j].getObject()->getObjectType()) != std::string::npos)
+                unsigned int objectType = fieldGrid[i][j].getObject()->getObjectType();
+                if (objectType > 0 && objectType < 7)
                 {
                     SetArrProperty(unitsArray, unitsArray->Length(), getObjectData(i, j));
                 }
-                else if (std::string("Sawmill GoldMine Farm").find(fieldGrid[i][j].getObject()->getObjectType()) != std::string::npos)
+                else if (objectType >= 7)
                 {
                     SetArrProperty(resGenArray, resGenArray->Length(), getObjectData(i, j));
                 }

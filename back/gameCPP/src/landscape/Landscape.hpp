@@ -5,13 +5,15 @@
 #include <stdio.h>
 #include <string>
 
+#include "../TypeСonstants.hpp"
+
 class Landscape
 {
 public:
     // Landscape() = default;
-    virtual std::string getLandscapeType() = 0;
-    virtual bool checkAccessMove(std::string objectType) = 0;
-    virtual bool checkAccessInteraction(std::string objectType) = 0;
+    virtual unsigned int getLandscapeType() = 0;
+    virtual bool checkAccessMove(unsigned int objectType) = 0;
+    virtual bool checkAccessInteraction(unsigned int objectType) = 0;
 };
 
 #endif /* Landscape_hpp */

@@ -6,16 +6,18 @@
 #include <string>
 // #include "combatObject"
 #include "../eventProvider/EventProvider.hpp"
+#include "../TypeСonstants.hpp"
 
 class Object : public EventProvider
 {
 protected:
-    std::string objectType;
+    unsigned int objectType;
+    unsigned int move = 0;
     std::string ID;
     std::string playerID;
 
 public:
-    std::string getObjectType();
+    unsigned int getObjectType();
     std::string getPlayerID();
     virtual v8::Local<v8::Object> getFullInfo();
     virtual bool isMoveable() = 0;

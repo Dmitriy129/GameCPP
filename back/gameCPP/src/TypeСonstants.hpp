@@ -22,13 +22,13 @@ enum eLandscapeType
 
 };
 
-enum eObjectType
+enum eCombNeutType
 {
     COMB_OBJ, //in player
     NEUT_OBJ, //in editor
 };
 
-enum eCombatObjectType //in player
+enum eObjectType //in player
 {
     BASE,
     ARCH_TANK,
@@ -37,13 +37,9 @@ enum eCombatObjectType //in player
     INF_DPS,
     CAV_TANK,
     CAV_DPS,
-};
-
-enum eNeutralObjectType //in room
-{
     GEN_GOLD,
     GEN_SAWMILL,
-    GEN_FARM
-
+    GEN_FARM,
 };
+
 #endif /* TypeСonstants_hpp */

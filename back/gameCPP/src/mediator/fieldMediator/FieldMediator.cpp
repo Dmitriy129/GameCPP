@@ -14,14 +14,12 @@ void FieldMediator::interactionObjObj(Object *object1, Object *object2)
 {
     if (object1 == nullptr || object2 == nullptr)
         return;
-    std::string resGenerators = "Farm GoldMine Sawmill";
-    if (resGenerators.find(object2->getObjectType()) != std::string::npos)
+    if (object2->getObjectType() >= 7)
     {
         *object2 + object1;
         return;
     }
-
-    if (object1->getPlayerID() == object2->getPlayerID())
+    else if (object1->getPlayerID() == object2->getPlayerID())
     {
         std::cout << "You can not attack allies."
                   << std::endl

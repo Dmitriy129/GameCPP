@@ -15,7 +15,7 @@ void Editor::createResourceGenerator(unsigned int rowNumber, unsigned int column
     field->addObject(rowNumber, columnNumber, neutralObjectFactory->createResourceGenerator(type, uuidGen->generateUUID()));
 }
 
-void Editor::updateLandscape(unsigned int rowNumber, unsigned int columnNumber, std::string type)
+void Editor::updateLandscape(unsigned int rowNumber, unsigned int columnNumber, unsigned int type)
 {
     field->updateLandscape(rowNumber, columnNumber, type);
 }

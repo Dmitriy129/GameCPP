@@ -10,7 +10,7 @@ ArcherTank::ArcherTank(std::string playerID, std::string unitID, CombatObjectTyp
 
     critChance = 0.1;
     critAbsorption = 0.3;
-    objectType = "ArcherTank";
+    objectType = ARCH_TANK;
 }
 
 // std::string ArcherTank::getObjectType() { return "ArcherTank"; }

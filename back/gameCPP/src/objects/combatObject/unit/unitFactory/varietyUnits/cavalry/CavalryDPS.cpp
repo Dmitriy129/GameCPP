@@ -11,7 +11,7 @@ CavalryDPS::CavalryDPS(std::string playerID, std::string unitID, CombatObjectTyp
 
     critChance = 0.2;
     critDamage = 2.3;
-    objectType = "CavalryDPS";
+    objectType = CAV_DPS;
 }
 // std::string CavalryDPS::getObjectType() { return "CavalryDPS"; }
 

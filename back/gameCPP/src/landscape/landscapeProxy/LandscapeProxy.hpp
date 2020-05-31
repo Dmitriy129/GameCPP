@@ -17,11 +17,11 @@ private:
 
 public:
     LandscapeProxy();
-    LandscapeProxy(std::string landscapeType);
+    LandscapeProxy(unsigned int landscapeType);
     ~LandscapeProxy();
-    std::string getLandscapeType() override;
-    bool checkAccessMove(std::string objectType) override;
-    bool checkAccessInteraction(std::string objectType) override;
+    unsigned int getLandscapeType() override;
+    bool checkAccessMove(unsigned int objectType) override;
+    bool checkAccessInteraction(unsigned int objectType) override;
 };
 
 #endif /* LandscapeProxy_hpp */

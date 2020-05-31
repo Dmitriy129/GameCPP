@@ -15,6 +15,7 @@ ResourceGenerator::ResourceGenerator()
 {
     resPerStep = 10;
     playerID = "empty";
+    coefficient = 1;
 }
 
 bool ResourceGenerator::isMoveable() { return false; }
@@ -22,12 +23,13 @@ bool ResourceGenerator::isMoveable() { return false; }
 void ResourceGenerator::operator+(Object *object)
 {
     this->playerID = object->getPlayerID();
+    unsigned int objectType = object->getObjectType();
     // std::cout << "Now " << this->getObjectType() << " is owned by playerID: " << this->getPlayerID() << "\n";
-    if (object->getObjectType().find("Archer") != std::string::npos)
+    if (objectType == ARCH_DPS || objectType == ARCH_TANK)
         setStrategy(new StrategyResArcher);
-    if (object->getObjectType().find("Cavalry") != std::string::npos)
+    if (objectType == CAV_DPS || objectType == CAV_TANK)
         setStrategy(new StrategyResCavalry);
-    if (object->getObjectType().find("Infantry") != std::string::npos)
+    if (objectType == INF_DPS || objectType == INF_TANK)
         setStrategy(new StrategyResInfantry);
 
     getResPerStepForUnit();

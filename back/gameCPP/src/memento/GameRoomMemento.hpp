@@ -22,6 +22,6 @@ public:
     std::string getSaveID();
 
     // v8::Local<v8::Object> getMemento();
-    void getMemento();
+    void restoreMemento();
 };
 #endif /* GameRoomMemento_hpp */

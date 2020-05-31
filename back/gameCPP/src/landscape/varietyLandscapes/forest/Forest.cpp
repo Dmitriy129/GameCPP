@@ -1,14 +1,14 @@
 #include "Forest.hpp"
 
-std::string Forest::getLandscapeType()
+unsigned int Forest::getLandscapeType()
 {
-    return "Forest";
+    return FOREST;
 }
-bool Forest::checkAccessMove(std::string objectType)
+bool Forest::checkAccessMove(unsigned int objectType)
 {
     return true;
 }
-bool Forest::checkAccessInteraction(std::string objectType)
+bool Forest::checkAccessInteraction(unsigned int objectType)
 {
     return true;
 }

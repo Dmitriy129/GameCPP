@@ -7,6 +7,8 @@
 
 class InfantryClass : public virtual Unit
 {
+public:
+    InfantryClass();
 };
 
 #endif /* InfantryClass_hpp */

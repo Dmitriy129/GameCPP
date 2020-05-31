@@ -3,7 +3,7 @@
 GoldMine::GoldMine(std::string ID)
 {
     this->ID = ID;
-    objectType = "GoldMine";
+    objectType = GEN_GOLD;
 };
 
 // void GoldMine::getResPerStepForUnit()

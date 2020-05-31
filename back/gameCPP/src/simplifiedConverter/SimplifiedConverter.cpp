@@ -105,14 +105,22 @@ bool SimplifiedConverter::GetObjProperty(v8::Local<v8::Object> obj, std::string 
 
 bool SimplifiedConverter::SetObjProperty(v8::Local<v8::Object> &obj, std::string propertyName, unsigned int value)
 {
-    obj->Set(Nan::New(propertyName.c_str()).ToLocalChecked(), Nan::New(value));
-    return true;
+    if (obj->IsObject())
+    {
+        obj->Set(Nan::New(propertyName.c_str()).ToLocalChecked(), Nan::New(value));
+        return true;
+    }
+    return false;
 }
 
 bool SimplifiedConverter::SetObjProperty(v8::Local<v8::Object> &obj, std::string propertyName, double value)
 {
-    obj->Set(Nan::New(propertyName.c_str()).ToLocalChecked(), Nan::New(value));
-    return true;
+    if (obj->IsObject())
+    {
+        obj->Set(Nan::New(propertyName.c_str()).ToLocalChecked(), Nan::New(value));
+        return true;
+    }
+    return false;
 }
 
 bool SimplifiedConverter::SetObjProperty(v8::Local<v8::Object> &obj, std::string propertyName, std::string value)
@@ -170,6 +178,18 @@ bool SimplifiedConverter::SetObjProperty(v8::Local<v8::Object> &obj, unsigned in
     if (obj->IsObject())
     {
         obj->Set(index, value);
+        return true;
+    }
+    return false;
+}
+
+bool SimplifiedConverter::SetArrProperty(v8::Local<v8::Array> &array, unsigned int index, unsigned int value)
+{
+    v8::Isolate *isolate = array->GetIsolate();
+
+    if (array->IsArray())
+    {
+        array->Set(index, v8::Uint32::New(isolate, value));
         return true;
     }
     return false;

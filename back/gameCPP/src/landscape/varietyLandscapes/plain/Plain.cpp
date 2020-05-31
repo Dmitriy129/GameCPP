@@ -1,15 +1,15 @@
 #include "Plain.hpp"
 
-std::string Plain::getLandscapeType()
+unsigned int Plain::getLandscapeType()
 {
-    return "Plain";
+    return PLAIN;
 }
-bool Plain::checkAccessMove(std::string objectType)
+bool Plain::checkAccessMove(unsigned int objectType)
 {
     return true;
 }
 
-bool Plain::checkAccessInteraction(std::string objectType)
+bool Plain::checkAccessInteraction(unsigned int objectType)
 {
     return true;
 }
