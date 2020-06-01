@@ -8,6 +8,7 @@ Player::Player(std::string playerID, std::string playerName, Field *field, UUID 
 
     this->uuidGen = uuidGen;
     this->combatObjectTypeFactory = combatObjectTypeFactory;
+    resourceBag = new ResourceBag;
 }
 
 Player ::~Player()
@@ -20,6 +21,7 @@ Player ::~Player()
 std::string Player::getPlayerID() { return this->playerID; }
 std::string Player::getPlayerName() { return this->playerName; }
 Base *Player::getBase() { return this->base; }
+ResourceBag *Player::getResourceBag() { return resourceBag; }
 
 void Player::createBase(unsigned int rowNumber, unsigned int columnNumber)
 {
@@ -85,6 +87,7 @@ void Player::createUnit(unsigned int rowNumber, unsigned int columnNumber, unsig
     Unit *unit = base->createUnit(type, uuidGen->generateUUID(), combatObjectTypeFactory);
 
     unit->attachEvent("object death", field);
+    unit->attachEvent("found resources", this);
 
     field->addObject(rowNumber, columnNumber, unit);
 }
@@ -99,17 +102,28 @@ void Player::interactionObject(unsigned int fromRowNumber, unsigned int fromColu
 
 void Player::eventHandler(Event *event)
 {
+    if (event->getSEventId() == "found resources")
+    {
+        unsigned int type;
+        double quantity;
+
+        if (!GetObjProperty(event->getData()->ToObject(), "type", type))
+            return;
+        if (!GetObjProperty(event->getData()->ToObject(), "quantity", quantity))
+            return;
+        resourceBag->addResource(type, quantity);
+    }
 }
 
 v8::Local<v8::Object> Player::getFullInfo()
 {
     v8::Local<v8::Object> info = Nan::New<v8::Object>();
+    v8::Local<v8::Object> ResourceBag = Nan::New<v8::Object>();
 
+    SetObjProperty(info, "resourceBag", resourceBag->getFullInfo());
     SetObjProperty(info, "playerName", playerName);
     SetObjProperty(info, "playerID", playerID);
-    std::cout << "##########Player::getFullInfo\n";
     SetObjProperty(info, "base", field->getObjectData(base));
-    // std::cout << "##########Player::getFullInfo\n";
 
     return info;
 }

@@ -14,7 +14,7 @@
 class ResourceGenerator : public NeutralObject, public Context
 {
 protected:
-    std::string resType;
+    unsigned int resType;
     double resPerStep;
     double coefficient;
 
@@ -27,7 +27,7 @@ public:
     void operator+(Object *object) override;
     void setCoefficient(double coefficient);
     void setPlayerID(std::string playerID);
-    std::string getResType();
+    unsigned int getResType();
     double getResPerStep();
     double getCoefficient();
     double getResPerStepForUnit();

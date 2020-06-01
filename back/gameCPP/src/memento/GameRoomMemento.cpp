@@ -38,7 +38,7 @@ GameRoomMemento::~GameRoomMemento()
 
 void GameRoomMemento::restoreMemento()
 {
-    std::cout << "##########Game::loadRoom\n";
+    // std::cout << "##########Game::loadRoom\n";
     std::string jsonStr;
     ifile >> jsonStr;
     std::cout << jsonStr << std::endl;
@@ -53,19 +53,19 @@ void GameRoomMemento::restoreMemento()
     unsigned int rowsQuantity;
     unsigned int columnsQuantity;
     unsigned int maximumObjectsQuantity;
-    std::cout << "##########Game::loadRoom\n";
+    // std::cout << "##########Game::loadRoom\n";
 
     if (!GetObjProperty(fieldInfo, "rowsQuantity", rowsQuantity))
         return;
-    std::cout << rowsQuantity << "##########Game::loadRoom\n";
+    // std::cout << rowsQuantity << "##########Game::loadRoom\n";
 
     if (!GetObjProperty(fieldInfo, "columnsQuantity", columnsQuantity))
         return;
-    std::cout << columnsQuantity << "##########Game::loadRoom\n";
+    // std::cout << columnsQuantity << "##########Game::loadRoom\n";
 
     if (!GetObjProperty(fieldInfo, "maximumObjectsQuantity", maximumObjectsQuantity))
         return;
-    std::cout << maximumObjectsQuantity << "##########Game::loadRoom\n";
+    // std::cout << maximumObjectsQuantity << "##########Game::loadRoom\n";
     //landscape + delete obj
     for (unsigned int row = 0; row < rowsQuantity; row++)
         for (unsigned int column = 0; column < columnsQuantity; column++)
@@ -80,13 +80,13 @@ void GameRoomMemento::restoreMemento()
                 cell.setObject(nullptr);
             }
         }
-    std::cout << "##########Game::loadRoom\n";
+    // std::cout << "##########Game::loadRoom\n";
     //players
 
     v8::Local<v8::Array> playersInfo;
     if (!GetObjProperty(info, "playersInfo", playersInfo))
         return;
-    std::cout << "##########Game::loadRoom\n";
+    // std::cout << "##########Game::loadRoom\n";
 
     std::for_each(gameRoom->players.begin(), gameRoom->players.end(), [](Player *player) { delete player; });
     gameRoom->players.clear();
@@ -97,16 +97,16 @@ void GameRoomMemento::restoreMemento()
         v8::Local<v8::Object> player;
         if (!GetArrProperty(playersInfo, 0, player))
             return;
-        std::cout << "##########Game::loadRoom\n";
+        // std::cout << "##########Game::loadRoom\n";
 
         std::string playerID;
         std::string playerName;
         if (!GetObjProperty(player, "playerID", playerID))
             return;
-        std::cout << "##########Game::loadRoom\n";
+        // std::cout << "##########Game::loadRoom\n";
         if (!GetObjProperty(player, "playerName", playerName))
             return;
-        std::cout << "##########Game::loadRoom\n";
+        // std::cout << "##########Game::loadRoom\n";
 
         gameRoom->addPlayer(playerID, playerName);
 
@@ -125,14 +125,32 @@ void GameRoomMemento::restoreMemento()
                 return;
             if (!GetObjProperty(stats, "health", health))
                 return;
-            std::cout << "##########Game::loadRoom\n";
+            // std::cout << "##########Game::loadRoom\n";
 
             gameRoom->getPlayer(playerID)->createBase(row, column);
             gameRoom->getPlayer(playerID)->getBase()->setHealth(health);
         }
+        { //add resource
+            v8::Local<v8::Object> resourceBag;
+            std::map<unsigned int, double> restoredResourceBag;
+            // unsigned int type;
+            // double quantity;
+            // std::cout << "##########Game::loadRoom\n";s
+
+            if (!GetObjProperty(player, "resourceBag", resourceBag))
+                return;
+            // std::cout << "##########Game::loadRoom\n";
+
+            if (!ObjToMap(resourceBag, restoredResourceBag))
+                return;
+            // std::cout << "##########Game::loadRoom\n";
+
+            for (std::map<unsigned int, double>::iterator it = restoredResourceBag.begin(); it != restoredResourceBag.end(); ++it)
+                gameRoom->getPlayer(playerID)->getResourceBag()->addResource(it->first, it->second);
+        }
     }
 
-    std::cout << "##########Game::loadRoom\n";
+    // std::cout << "##########Game::loadRoom\n";
     //units
 
     {
@@ -166,18 +184,18 @@ void GameRoomMemento::restoreMemento()
         }
     }
 
-    std::cout << "##########Game::loadRoom\n";
+    // std::cout << "##########Game::loadRoom\n";
     { //resGens
         v8::Local<v8::Array> resGens;
-        std::cout << "##########Game::loadRoom\n";
+        // std::cout << "##########Game::loadRoom\n";
 
         if (!GetObjProperty(fieldInfo, "resGens", resGens))
             return;
-        std::cout << "##########Game::loadRoom\n";
+        // std::cout << "##########Game::loadRoom\n";
 
         for (unsigned int index = 0; index < resGens->Length(); index++)
         {
-            std::cout << "##########Game::loadRoom\n";
+            // std::cout << "##########Game::loadRoom\n";
             v8::Local<v8::Object> resGen;
             /*  */ std::string playerID;
             /*  */ unsigned int objectType, row, column;
@@ -201,7 +219,7 @@ void GameRoomMemento::restoreMemento()
             gameRoom->editor->createResourceGenerator(row, column, objectType);
             static_cast<ResourceGenerator *>(gameRoom->getFieldCell(row, column)->getObject())->setCoefficient(coefficient);
             static_cast<ResourceGenerator *>(gameRoom->getFieldCell(row, column)->getObject())->setPlayerID(playerID);
-            std::cout << "##########Game::loadRoom\n";
+            // std::cout << "##########Game::loadRoom\n";
         }
     }
 
@@ -216,5 +234,5 @@ void GameRoomMemento::restoreMemento()
 
     // GameRoom *restoredGameRoom = new GameRoom(gameRoom->getEditor(), gameRoom->getRoomID(), gameRoom->getRoomName(), )
     //todo
-    std::cout << "##########Game::loadRoom\n";
+    // std::cout << "##########Game::loadRoom\n";
 }

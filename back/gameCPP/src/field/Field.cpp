@@ -356,10 +356,12 @@ v8::Local<v8::Array> Field::getObjectsData()
 
 v8::Local<v8::Object> Field::getObjectData(unsigned int rowNumber, unsigned int columnNumber)
 {
+
     // return getObjectData(fieldGrid[rowNumber][columnNumber].getObject());
     v8::Local<v8::Object> data = Nan::New<v8::Object>();
     std::string objectType("empty_");
     Object *object = fieldGrid[rowNumber][columnNumber].getObject();
+
     if (object != nullptr)
         data = object->getFullInfo();
     else
@@ -372,10 +374,15 @@ v8::Local<v8::Object> Field::getObjectData(unsigned int rowNumber, unsigned int 
 
 v8::Local<v8::Object> Field::getObjectData(Object *object)
 {
+    std::cout << "##########Field::getObjectData\n";
+
     for (unsigned int rowNumber = 0; rowNumber < rowsQuantity; rowNumber++)
         for (unsigned int columnNumber = 0; columnNumber < columnsQuantity; columnNumber++)
             if (object == fieldGrid[rowNumber][columnNumber].getObject())
+            {
+                std::cout << rowNumber << "_" << columnNumber << "##########Field::getObjectData\n";
                 return getObjectData(rowNumber, columnNumber);
+            }
 }
 
 v8::Local<v8::Object> Field::getLandscapeData(unsigned int rowNumber, unsigned int columnNumber)

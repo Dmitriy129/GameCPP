@@ -123,6 +123,21 @@ bool SimplifiedConverter::GetObjProperty(v8::Local<v8::Object> obj, std::string 
     return false;
 }
 
+bool SimplifiedConverter::GetObjProperty(v8::Local<v8::Object> obj, unsigned int index, double &value)
+{
+    v8::Isolate *isolate = obj->GetIsolate();
+
+    if (obj->IsObject())
+    {
+        // v8::Local<v8::Value> propertyValue;
+        // Nan::HasRealIndexedProperty(obj, index).ToLocal(&propertyValue);
+        // value = propertyValue->ToNumber(isolate)->Value();
+        GetObjProperty(obj, std::to_string(index), value);
+        return true;
+    }
+    return false;
+}
+
 bool SimplifiedConverter::SetObjProperty(v8::Local<v8::Object> &obj, std::string propertyName, unsigned int value)
 {
     if (obj->IsObject())
@@ -170,9 +185,14 @@ bool SimplifiedConverter::SetObjProperty(v8::Local<v8::Object> &obj, std::string
 bool SimplifiedConverter::SetObjProperty(v8::Local<v8::Object> &obj, std::string propertyName, v8::Local<v8::Object> value)
 {
     v8::Isolate *isolate = obj->GetIsolate();
+    // std::cout << "##########SimplifiedConverter::SetObjProperty\n";
 
     if (obj->IsObject())
     {
+        // std::cout << JSONStringified(obj) << "##########SimplifiedConverter::SetObjProperty\n";
+        // std::cout << propertyName << "##########SimplifiedConverter::SetObjProperty\n";
+        // std::cout << JSONStringified(value) << "##########SimplifiedConverter::SetObjProperty\n";
+
         obj->Set(v8::String::NewFromUtf8(isolate, propertyName.c_str(), v8::NewStringType::kNormal).ToLocalChecked(), value);
         return true;
     }
@@ -198,6 +218,18 @@ bool SimplifiedConverter::SetObjProperty(v8::Local<v8::Object> &obj, unsigned in
     if (obj->IsObject())
     {
         obj->Set(index, value);
+        return true;
+    }
+    return false;
+}
+
+bool SimplifiedConverter::SetObjProperty(v8::Local<v8::Object> &obj, unsigned int index, double value)
+{
+    v8::Isolate *isolate = obj->GetIsolate();
+
+    if (obj->IsObject())
+    {
+        obj->Set(index, Nan::New(value));
         return true;
     }
     return false;
@@ -298,6 +330,22 @@ bool SimplifiedConverter::GetArrProperty(v8::Local<v8::Array> arr, unsigned int 
         v8::Local<v8::Value> propertyValue;
         Nan::CloneElementAt(arr, index).ToLocal(&propertyValue);
         value = propertyValue->ToObject(isolate);
+        return true;
+    }
+    return false;
+}
+
+bool SimplifiedConverter::ObjToMap(v8::Local<v8::Object> obj, std::map<unsigned int, double> &map)
+{
+    v8::Isolate *isolate = obj->GetIsolate();
+    v8::Local<v8::Context> context = v8::Context::New(isolate);
+
+    v8::Local<v8::Array> keys = obj->GetPropertyNames(context).ToLocalChecked();
+    for (unsigned int index = 0; index < keys->Length(); index++)
+    {
+        double value;
+        GetObjProperty(obj, static_cast<uint32_t>(index), value);
+        map[index] = value;
         return true;
     }
     return false;

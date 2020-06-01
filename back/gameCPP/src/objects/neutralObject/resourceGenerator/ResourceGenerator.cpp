@@ -43,13 +43,19 @@ void ResourceGenerator::operator+(Object *object)
 
         useStrategy();
     }
-    getResPerStepForUnit();
+    v8::Local<v8::Object> data = Nan::New<v8::Object>();
+    if (!SetObjProperty(data, "type", resType))
+        return;
+    if (!SetObjProperty(data, "quantity", getResPerStepForUnit()))
+        return;
+
+    object->fireEvent("found resources", data);
 }
 void ResourceGenerator::setCoefficient(double coefficient) { this->coefficient = coefficient; }
 
 void ResourceGenerator::setPlayerID(std::string playerID) { this->playerID = playerID; }
 
-std::string ResourceGenerator::getResType() { return resType; }
+unsigned int ResourceGenerator::getResType() { return resType; }
 
 double ResourceGenerator::getResPerStep() { return resPerStep; }
 
