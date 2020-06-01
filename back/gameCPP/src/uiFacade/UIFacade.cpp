@@ -7,7 +7,7 @@ UIFacade::UIFacade()
 {
     // std::cout << "#**UIFacade con start\n";
 
-    this->game = new Game();
+    this->game = Game::getInstance();
 
     // std::cout << "#**UIFacade con 1\n";
 
@@ -27,7 +27,6 @@ UIFacade::UIFacade()
 }
 UIFacade::~UIFacade()
 {
-    delete this->game;
     delete this->logger;
 }
 
