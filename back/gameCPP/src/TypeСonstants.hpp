@@ -42,4 +42,11 @@ enum eObjectType //in player
     GEN_FARM,
 };
 
+enum eResourceType
+{
+    GOLD,
+    WOOD,
+    FOOD,
+};
+
 #endif /* TypeСonstants_hpp */

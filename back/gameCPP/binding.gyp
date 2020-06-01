@@ -142,6 +142,8 @@
                 "src/simplifiedConverter/SimplifiedConverter.hpp",
                 "src/player/Player.cpp",
                 "src/player/Player.hpp",
+                "src/player/resourceBag/ResourceBag.cpp",
+                "src/player/resourceBag/ResourceBag.hpp",
                 "src/strategy/Context.cpp",
                 "src/strategy/Context.hpp",
                 "src/strategy/Strategy.cpp",

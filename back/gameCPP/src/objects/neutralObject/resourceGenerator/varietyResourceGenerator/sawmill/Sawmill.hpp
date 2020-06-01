@@ -7,9 +7,6 @@
 
 class Sawmill : public ResourceGenerator
 {
-private:
-    std::string resType = "Wood";
-
 public:
     Sawmill(std::string ID);
     // void getResPerStepForUnit() override;
