@@ -60,93 +60,91 @@ void Game::removePlayerFromGameRoom(std::string roomID, std::string playerID)
 
 void Game::removePlayerEveryWhere(std::string playerID)
 {
-
-    std::vector<GameRoom *> gameRoomList = getGameRoomsList();
-    std::for_each(gameRoomList.begin(), gameRoomList.end(), [playerID](GameRoom *&gameRoom) { gameRoom->removePlayer(playerID); });
+    std::for_each(gameRooms.begin(), gameRooms.end(), [playerID](GameRoom *&gameRoom) { gameRoom->removePlayer(playerID); });
     std::cout << "Game::removePlayerEveryWhere true\n";
 }
 
-std::vector<GameRoom *> Game::getGameRoomsList()
-{
-    return gameRooms;
-}
+// std::vector<GameRoom *> Game::getGameRoomsList()
+// {
+//     return gameRooms;
+// }
 
-std::vector<std::string> Game::getGameRoomsIDList()
-{
-    std::vector<std::string> response;
-    std::for_each(this->gameRooms.begin(), this->gameRooms.end(), [&response](GameRoom *room) {
-        response.push_back(room->getRoomID());
-    });
-    return response;
-}
+// std::vector<std::string> Game::getGameRoomsIDList()
+// {
+//     std::vector<std::string> response;
+//     std::for_each(this->gameRooms.begin(), this->gameRooms.end(), [&response](GameRoom *room) {
+//         response.push_back(room->getRoomID());
+//     });
+//     return response;
+// }
 
-std::vector<std::string> Game::getGameRoomsNameList()
-{
-    std::vector<std::string> response;
-    std::for_each(this->gameRooms.begin(), this->gameRooms.end(), [&response](GameRoom *room) {
-        response.push_back(room->getRoomName());
-    });
-    return response;
-}
+// std::vector<std::string> Game::getGameRoomsNameList()
+// {
+//     std::vector<std::string> response;
+//     std::for_each(this->gameRooms.begin(), this->gameRooms.end(), [&response](GameRoom *room) {
+//         response.push_back(room->getRoomName());
+//     });
+//     return response;
+// }
 
-std::vector<unsigned int> Game::getGameRoomPlayersQuantityList()
-{
-    std::vector<unsigned int> response;
-    std::for_each(this->gameRooms.begin(), this->gameRooms.end(), [&response](GameRoom *room) {
-        response.push_back(room->getPlayersQuantity());
-    });
-    return response;
-}
+// std::vector<unsigned int> Game::getGameRoomPlayersQuantityList()
+// {
+//     std::vector<unsigned int> response;
+//     std::for_each(this->gameRooms.begin(), this->gameRooms.end(), [&response](GameRoom *room) {
+//         response.push_back(room->getPlayersQuantity());
+//     });
+//     return response;
+// }
 
-std::vector<std::vector<std::string>> Game::getGameRoomsPlayersNamesList()
-{
-    std::vector<std::vector<std::string>> response;
-    std::for_each(this->gameRooms.begin(), this->gameRooms.end(), [&response](GameRoom *room) {
-        response.push_back(room->getPlayersNames());
-    });
-    return response;
-}
+// std::vector<std::vector<std::string>> Game::getGameRoomsPlayersNamesList()
+// {
+//     std::vector<std::vector<std::string>> response;
+//     std::for_each(this->gameRooms.begin(), this->gameRooms.end(), [&response](GameRoom *room) {
+//         response.push_back(room->getPlayersNames());
+//     });
+//     return response;
+// }
 
-std::vector<std::vector<std::string>> Game::getGameRoomsPlayersIDList()
-{
-    std::vector<std::vector<std::string>> response;
-    std::for_each(this->gameRooms.begin(), this->gameRooms.end(), [&response](GameRoom *room) {
-        response.push_back(room->getPlayersID());
-    });
-    return response;
-}
+// std::vector<std::vector<std::string>> Game::getGameRoomsPlayersIDList()
+// {
+//     std::vector<std::vector<std::string>> response;
+//     std::for_each(this->gameRooms.begin(), this->gameRooms.end(), [&response](GameRoom *room) {
+//         response.push_back(room->getPlayersID());
+//     });
+//     return response;
+// }
 
-std::vector<unsigned int> Game::getFieldRowsQuantityList()
-{
-    std::vector<unsigned int> response;
-    std::for_each(this->gameRooms.begin(), this->gameRooms.end(), [&response](GameRoom *room) {
-        response.push_back(room->getFieldRowsQuantity());
-    });
-    return response;
-}
+// std::vector<unsigned int> Game::getFieldRowsQuantityList()
+// {
+//     std::vector<unsigned int> response;
+//     std::for_each(this->gameRooms.begin(), this->gameRooms.end(), [&response](GameRoom *room) {
+//         response.push_back(room->getFieldRowsQuantity());
+//     });
+//     return response;
+// }
 
-std::vector<unsigned int> Game::getFieldColumnsQuantityList()
-{
-    std::vector<unsigned int> response;
-    std::for_each(this->gameRooms.begin(), this->gameRooms.end(), [&response](GameRoom *room) {
-        response.push_back(room->getFieldColumnsQuantity());
-    });
-    return response;
-}
+// std::vector<unsigned int> Game::getFieldColumnsQuantityList()
+// {
+//     std::vector<unsigned int> response;
+//     std::for_each(this->gameRooms.begin(), this->gameRooms.end(), [&response](GameRoom *room) {
+//         response.push_back(room->getFieldColumnsQuantity());
+//     });
+//     return response;
+// }
 
-std::vector<std::string> Game::getGameRoomPlayersIDList(std::string roomID)
-{
-    std::vector<std::string> response;
-    GameRoom *room = getGameRoom(roomID);
-    if (room)
-    {
+// std::vector<std::string> Game::getGameRoomPlayersIDList(std::string roomID)
+// {
+//     std::vector<std::string> response;
+//     GameRoom *room = getGameRoom(roomID);
+//     if (room)
+//     {
 
-        std::cout << "Game::getGameRoomPlayersIDList true\n";
-        response = room->getPlayersID();
-    }
-    std::cout << "Game::getGameRoomPlayersIDList false\n";
-    return response;
-}
+//         std::cout << "Game::getGameRoomPlayersIDList true\n";
+//         response = room->getPlayersID();
+//     }
+//     std::cout << "Game::getGameRoomPlayersIDList false\n";
+//     return response;
+// }
 
 // std::vector<std::string> Game::getGameRoomFieldLandscapes(std::string roomID)
 // {
@@ -178,30 +176,30 @@ std::vector<std::string> Game::getGameRoomPlayersIDList(std::string roomID)
 //     return response;
 // }
 
-unsigned int Game::getFieldRowsQuantity(std::string roomID)
-{
-    GameRoom *room = getGameRoom(roomID);
-    if (room)
-    {
-        std::cout << "Game::getFieldRowsQuantity true\n";
-        return room->getFieldRowsQuantity();
-    }
-    else
-        std::cout << "Game::getFieldRowsQuantity true\n";
-    return 0;
-}
-unsigned int Game::getFieldColumnsQuantity(std::string roomID)
-{
-    GameRoom *room = getGameRoom(roomID);
-    if (room)
-    {
-        std::cout << "Game::getFieldColumnsQuantity true\n";
-        return room->getFieldColumnsQuantity();
-    }
-    else
-        std::cout << "Game::getFieldColumnsQuantity true\n";
-    return 0;
-}
+// unsigned int Game::getFieldRowsQuantity(std::string roomID)
+// {
+//     GameRoom *room = getGameRoom(roomID);
+//     if (room)
+//     {
+//         std::cout << "Game::getFieldRowsQuantity true\n";
+//         return room->getFieldRowsQuantity();
+//     }
+//     else
+//         std::cout << "Game::getFieldRowsQuantity true\n";
+//     return 0;
+// }
+// unsigned int Game::getFieldColumnsQuantity(std::string roomID)
+// {
+//     GameRoom *room = getGameRoom(roomID);
+//     if (room)
+//     {
+//         std::cout << "Game::getFieldColumnsQuantity true\n";
+//         return room->getFieldColumnsQuantity();
+//     }
+//     else
+//         std::cout << "Game::getFieldColumnsQuantity true\n";
+//     return 0;
+// }
 
 GameRoom *Game::getGameRoom(std::string roomID)
 {
