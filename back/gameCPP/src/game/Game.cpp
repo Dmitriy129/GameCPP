@@ -14,6 +14,14 @@ Game::~Game()
     delete this->combatObjectTypeFactory;
     // delete this->mediator;
 }
+
+Game *Game::getInstance()
+{
+    if (!p_game)
+        p_game = new Game;
+    return p_game;
+}
+
 void Game::addGameRoom(std::string editorID, std::string roomID, std::string roomName, unsigned int rowsQuantity, unsigned int columnsQuantity, unsigned int maximumObjectsQuantity)
 {
     Mediator *mediator = new FieldMediator;
