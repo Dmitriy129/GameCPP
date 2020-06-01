@@ -24,9 +24,14 @@ private:
     CombatObjectTypeFactory *combatObjectTypeFactory;
     // Mediator *mediator;
 
-public:
     Game();
+    Game(const Game &);
+    Game &operator=(Game &);
     ~Game();
+    static Game *p_game;
+
+public:
+    static Game *getInstance();
     void addGameRoom(std::string editorID, std::string roomID, std::string roomName, unsigned int rowsQuantity, unsigned int columnsQuantity, unsigned int maximumObjectsQuantity);
     std::string removeGameRoom(std::string roomID);
     GameRoom *getGameRoom(std::string roomID);
@@ -34,7 +39,7 @@ public:
     //game->rooms
     void addPlayerToGameRoom(std::string roomID, std::string playerID, std::string playerName); // add done
     void removePlayerFromGameRoom(std::string roomID, std::string playerID);                    // add done
-    void removePlayerEveryWhere(std::string playerID);              
+    void removePlayerEveryWhere(std::string playerID);
 
     // std::vector<std::vector<std::string>> getGameRoomsPlayersNamesList();
     // std::vector<std::vector<std::string>> getGameRoomsPlayersIDList();
@@ -47,9 +52,7 @@ public:
     // unsigned int getFieldRowsQuantity(std::string roomID);
     // unsigned int getFieldColumnsQuantity(std::string roomID);
 
-
-
-    std::vector<std::string> getGameRoomPlayersIDList(std::string roomID); 
+    std::vector<std::string> getGameRoomPlayersIDList(std::string roomID);
     std::string executeСommand(std::string playerID, std::string command);
     v8::Local<v8::Object> getGameRoomsInfo();
     void eventHandler(Event *event) override;
