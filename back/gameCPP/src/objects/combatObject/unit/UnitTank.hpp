@@ -13,7 +13,7 @@ protected:
 
 public:
     void underAttack(double damage, double armor);
-    v8::Local<v8::Object> getInfo();
+    v8::Local<v8::Object> getFullInfo();
 };
 
 #endif /* UnitTank_hpp */

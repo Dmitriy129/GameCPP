@@ -7,11 +7,8 @@
 
 class GoldMine : public ResourceGenerator
 {
-private:
-    std::string objectType = "GoldMine";
-    std::string resType = "Gold";
-
 public:
+    GoldMine(std::string ID);
     // void getResPerStepForUnit() override;
     // //  std::string getObjectType();
 };

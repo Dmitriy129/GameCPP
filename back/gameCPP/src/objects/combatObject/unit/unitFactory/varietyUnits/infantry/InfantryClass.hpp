@@ -7,7 +7,8 @@
 
 class InfantryClass : public virtual Unit
 {
-    std::string objectType = "Infantry";
+public:
+    InfantryClass();
 };
 
 #endif /* InfantryClass_hpp */

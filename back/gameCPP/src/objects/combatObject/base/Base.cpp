@@ -1,21 +1,24 @@
 
 #include "Base.hpp"
 
-Base::Base(std::string playerID, unsigned int maxQuantityOfUnits, double health, double armor, CombatObjectTypeFactory *combatObjectTypeFactory) : maxQuantityOfUnits(maxQuantityOfUnits), quantityOfUnits(0)
+Base::Base(std::string playerID, std::string ID, unsigned int maxQuantityOfUnits, double health, double armor, CombatObjectTypeFactory *combatObjectTypeFactory)
 {
     // // std::cout << "kek/n";
     // armyOfUnits.push_back(nullptr);
-    // this->maxQuantityOfUnits = maxQuantityOfUnits;
-    // this->quantityOfUnits = 0;
+    this->health = health;
+    this->maxQuantityOfUnits = maxQuantityOfUnits;
+    this->quantityOfUnits = 0;
     this->playerID = playerID;
+    this->ID = ID;
     // this->type = new CombatObjectType(health, 0, armor);
     type = combatObjectTypeFactory->getCombatObjectType(80, 40, 1);
+    objectType = BASE;
 }
 
 Base::~Base()
 {
-    for (int i = 0; i < quantityOfUnits; i++)
-        delete armyOfUnits[i];
+    // for (int i = 0; i < quantityOfUnits; i++)
+    // delete armyOfUnits[i];
     armyOfUnits.clear();
 }
 
@@ -80,6 +83,7 @@ Unit *Base::factoryUnit(UnitTankFactory *factory, unsigned int type, std::string
     if (type == CAV_TANK || type == CAV_DPS)
         return factory->createCavalry(playerID, unitID, combatObjectTypeFactory);
     std::cout << "error# unknown unit class\n *in file \"base\"\n";
+    return nullptr;
 }
 
 Unit *Base::factoryUnit(UnitDPSFactory *factory, unsigned int type, std::string unitID, CombatObjectTypeFactory *combatObjectTypeFactory)
@@ -92,6 +96,7 @@ Unit *Base::factoryUnit(UnitDPSFactory *factory, unsigned int type, std::string 
     if (type == CAV_TANK || type == CAV_DPS)
         return factory->createCavalry(playerID, unitID, combatObjectTypeFactory);
     std::cout << "error# unknown unit class\n *in file \"base\"\n";
+    return nullptr;
 }
 
 /*
@@ -123,7 +128,7 @@ double Base::getArmor() const
 void Base::operator+(Object *object) {}
 void Base::death() { fireEvent("object death"); };
 
-// std::string Base::getObjectType() { return "Base"; }
+// std::string Base::getObjectType() { return BASE; }
 
 void Base::eventHandler(Event *event)
 {
@@ -134,9 +139,9 @@ void Base::eventHandler(Event *event)
     }
 }
 
-v8::Local<v8::Object> Base::getInfo()
+v8::Local<v8::Object> Base::getFullInfo()
 {
-    v8::Local<v8::Object> info = CombatObject::getInfo();
-    SetObjField(info, "type", "Base");
+    v8::Local<v8::Object> info = CombatObject::getFullInfo();
+    SetObjProperty(info, "type", objectType);
     return info;
 }

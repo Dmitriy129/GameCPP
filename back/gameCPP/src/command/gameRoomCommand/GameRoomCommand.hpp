@@ -3,6 +3,7 @@
 
 #include "../Command.hpp"
 #include "../playerCommand/PlayerCommand.hpp"
+#include "../editorCommand/EditorCommand.hpp"
 #include "../../gameRoom/GameRoom.hpp"
 
 class GameRoomCommand : public Command

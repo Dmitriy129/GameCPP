@@ -7,16 +7,28 @@ enum eTask
     ADD_PLAYER, //in room
     ADD_OBJ,    //\/ \/ \/ eObjectType
     MOVE,       //in player
+    UPD_LAND,   //in editor
     GET_FIELD,  //in room
+    SAVE_ROOM,  //add
+    LOAD_ROOM,  //add
 };
 
-enum eObjectType
+enum eLandscapeType
+{
+    FOREST,
+    MOUNTAIN,
+    PLAIN,
+    SWAMP,
+
+};
+
+enum eCombNeutType
 {
     COMB_OBJ, //in player
     NEUT_OBJ, //in editor
 };
 
-enum eCombatObjectType //in player
+enum eObjectType //in player
 {
     BASE,
     ARCH_TANK,
@@ -25,13 +37,16 @@ enum eCombatObjectType //in player
     INF_DPS,
     CAV_TANK,
     CAV_DPS,
-};
-
-enum eNeutralObjectType //in room
-{
     GEN_GOLD,
     GEN_SAWMILL,
-    GEN_FARM
-
+    GEN_FARM,
 };
+
+enum eResourceType
+{
+    GOLD,
+    WOOD,
+    FOOD,
+};
+
 #endif /* TypeСonstants_hpp */

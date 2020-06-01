@@ -11,17 +11,14 @@ ArcherDPS::ArcherDPS(std::string playerID, std::string unitID, CombatObjectTypeF
 
     critChance = 0.2;
     critDamage = 2;
+    objectType = ARCH_DPS;
 }
 
 // std::string ArcherDPS::getObjectType() { return "ArcherDPS"; }
 
-// v8::Local<v8::Object> ArcherDPS::getInfo()
+// v8::Local<v8::Object> ArcherDPS::getFullInfo()
 // {
-//     v8::Local<v8::Object> info = Unit::getInfo();
-//     v8::Local<v8::Object> stats;
+//     v8::Local<v8::Object> info = UnitDPS::getFullInfo();
 
-//     //SetObjField(info, "objectType", getObjectType());
-//     GetObjField(info, "stats", stats);
-//     SetObjField(stats, "critInfo", UnitDPS::getCritInfo());
-//     SetObjField(info, "stats", stats);
+//     return info;
 // }

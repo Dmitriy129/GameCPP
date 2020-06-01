@@ -2,13 +2,36 @@
     "targets": [
         {
             "target_name": "my_game_cpp",
+            "cflags": [
+                "-std=c++17",
+            ],
+            "conditions": [
+                [
+                    "OS=='mac'",
+                    {
+                        "xcode_settings": {
+                            "OTHER_CPLUSPLUSFLAGS": [
+                                "-mmacosx-version-min=10.15"
+                            ],
+                            "OTHER_LDFLAGS": [
+                                "-stdlib=libc++"
+                            ],
+                        },
+                    }
+                ],
+            ],
+            'xcode_settings': {
+                'OTHER_CFLAGS': [
+                    "-std=c++17",
+                    "-stdlib=libc++",
+                    "-mmacosx-version-min=10.15"
+                ],
+            },
+            "include_dirs": [
+                "<!(node -e \"require('nan')\")"
+            ],
             "sources": [
                 "GameInit.cc",
-                # "gameProxy/GameProxy.cpp",
-                # "gameProxy/GameProxy.hpp",
-                # "simplifiedConverter/SimplifiedConverter.cpp",
-                # "simplifiedConverter/SimplifiedConverter.hpp",
-
                 "src/command/Command.cpp",
                 "src/command/Command.hpp",
                 "src/command/gameCommand/GameCommand.cpp",
@@ -17,7 +40,10 @@
                 "src/command/gameRoomCommand/GameRoomCommand.hpp",
                 "src/command/playerCommand/PlayerCommand.cpp",
                 "src/command/playerCommand/PlayerCommand.hpp",
-
+                "src/command/editorCommand/EditorCommand.cpp",
+                "src/command/editorCommand/EditorCommand.hpp",
+                "src/editor/Editor.cpp",
+                "src/editor/Editor.hpp",
                 "src/eventProvider/Event.cpp",
                 "src/eventProvider/Event.hpp",
                 "src/eventProvider/EventProvider.cpp",
@@ -42,7 +68,6 @@
                 "src/landscape/varietyLandscapes/plain/Plain.hpp",
                 "src/landscape/varietyLandscapes/swamp/Swamp.cpp",
                 "src/landscape/varietyLandscapes/swamp/Swamp.hpp",
-
                 "src/logger/loggerAdapter/LoggerAdapter.cpp",
                 "src/logger/loggerAdapter/LoggerAdapter.hpp",
                 "src/logger/loggerConsole/LoggerConsole.cpp",
@@ -53,14 +78,14 @@
                 "src/logger/loggerProxy/LoggerProxy.hpp",
                 "src/logger/Logger.cpp",
                 "src/logger/Logger.hpp",
-
-
                 "src/mediator/Mediator.cpp",
                 "src/mediator/Mediator.hpp",
                 "src/mediator/fieldMediator/FieldMediator.cpp",
                 "src/mediator/fieldMediator/FieldMediator.hpp",
                 "src/mediator/fieldMediator/FieldMediator.cpp",
                 "src/mediator/fieldMediator/FieldMediator.hpp",
+                "src/memento/GameRoomMemento.cpp",
+                "src/memento/GameRoomMemento.hpp",
                 "src/objects/Object.cpp",
                 "src/objects/Object.hpp",
                 "src/objects/combatObject/CombatObject.cpp",
@@ -105,8 +130,8 @@
                 "src/objects/neutralObject/NeutralObject.hpp",
                 "src/objects/neutralObject/resourceGenerator/ResourceGenerator.cpp",
                 "src/objects/neutralObject/resourceGenerator/ResourceGenerator.hpp",
-                "src/objects/neutralObject/resourceGenerator/ResourceGeneratorFactory.cpp",
-                "src/objects/neutralObject/resourceGenerator/ResourceGeneratorFactory.hpp",
+                "src/objects/neutralObject/NeutralObjectFactory.cpp",
+                "src/objects/neutralObject/NeutralObjectFactory.hpp",
                 "src/objects/neutralObject/resourceGenerator/varietyResourceGenerator/farm/Farm.cpp",
                 "src/objects/neutralObject/resourceGenerator/varietyResourceGenerator/farm/Farm.hpp",
                 "src/objects/neutralObject/resourceGenerator/varietyResourceGenerator/goldMine/GoldMine.cpp",
@@ -117,6 +142,8 @@
                 "src/simplifiedConverter/SimplifiedConverter.hpp",
                 "src/player/Player.cpp",
                 "src/player/Player.hpp",
+                "src/player/resourceBag/ResourceBag.cpp",
+                "src/player/resourceBag/ResourceBag.hpp",
                 "src/strategy/Context.cpp",
                 "src/strategy/Context.hpp",
                 "src/strategy/Strategy.cpp",
@@ -127,18 +154,11 @@
                 "src/strategy/varietyStrategy/strategyResCavalry/StrategyResCavalry.hpp",
                 "src/strategy/varietyStrategy/strategyResInfantry/StrategyResInfantry.cpp",
                 "src/strategy/varietyStrategy/strategyResInfantry/StrategyResInfantry.hpp",
-
                 "src/uiFacade/UIFacade.cpp",
                 "src/uiFacade/UIFacade.hpp",
-
                 "src/uuid/UUID.cpp",
-                "src/uuid/UUID.hpp",
+                "src/uuid/UUID.hpp"
             ],
-            "cflags": ["-std=c++11", "-stdlib=libc++", "-Wall"],
-            "include_dirs": [
-                "<!(node -e \"require('nan')\")"
-            ]
-
         }
     ]
 }

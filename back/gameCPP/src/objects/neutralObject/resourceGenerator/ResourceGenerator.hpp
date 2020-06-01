@@ -14,7 +14,7 @@
 class ResourceGenerator : public NeutralObject, public Context
 {
 protected:
-    std::string resType;
+    unsigned int resType;
     double resPerStep;
     double coefficient;
 
@@ -23,13 +23,16 @@ protected:
 
 public:
     ResourceGenerator();
+    ~ResourceGenerator();
     void operator+(Object *object) override;
-    std::string getResType();
+    void setCoefficient(double coefficient);
+    void setPlayerID(std::string playerID);
+    unsigned int getResType();
     double getResPerStep();
     double getCoefficient();
     double getResPerStepForUnit();
     bool isMoveable() override;
-    v8::Local<v8::Object> getInfo();
+    v8::Local<v8::Object> getFullInfo();
 };
 
 #endif /* ResourceGenerator_hpp */

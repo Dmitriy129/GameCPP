@@ -8,14 +8,14 @@ double UnitDPS::getDamageAttack()
     return this->getDamage();
 }
 
-v8::Local<v8::Object> UnitDPS::getInfo()
+v8::Local<v8::Object> UnitDPS::getFullInfo()
 {
-    v8::Local<v8::Object> info = Unit::getInfo();
+    v8::Local<v8::Object> info = Unit::getFullInfo();
     v8::Local<v8::Object> stats;
 
-    GetObjField(info, "stats", stats);
-    SetObjField(stats, "critChance", critChance);
-    SetObjField(stats, "critDamage", critDamage);
-    SetObjField(info, "stats", stats);
+    GetObjProperty(info, "stats", stats);
+    SetObjProperty(stats, "critChance", critChance);
+    SetObjProperty(stats, "critDamage", critDamage);
+    SetObjProperty(info, "stats", stats);
     return info;
 }

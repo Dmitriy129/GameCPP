@@ -10,17 +10,14 @@ InfantryTank::InfantryTank(std::string playerID, std::string unitID, CombatObjec
 
     critChance = 0.15;
     critAbsorption = 0.5;
+    objectType = INF_TANK;
 }
 
 // std::string InfantryTank::getObjectType() { return "InfantryTank"; }
 
-// v8::Local<v8::Object> InfantryTank::getInfo()
+// v8::Local<v8::Object> InfantryTank::getFullInfo()
 // {
-//     v8::Local<v8::Object> info = Unit::getInfo();
-//     v8::Local<v8::Object> stats;
+//     v8::Local<v8::Object> info = UnitTank::getFullInfo();
 
-//     //SetObjField(info, "objectType", getObjectType());
-//     GetObjField(info, "stats", stats);
-//     SetObjField(stats, "critInfo", UnitTank::getCritInfo());
-//     SetObjField(info, "stats", stats);
+//     return info;
 // }

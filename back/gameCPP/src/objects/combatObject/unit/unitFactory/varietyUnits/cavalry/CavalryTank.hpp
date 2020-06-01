@@ -8,12 +8,12 @@
 class CavalryTank : public UnitTank, public CavalryClass
 {
 private:
-    std::string objectType = "CavalryTank";
+        // std::string objectType = "CavalryTank";
 
 public:
     CavalryTank(std::string playerID, std::string unitID, CombatObjectTypeFactory *combatObjectTypeFactory);
     //  std::string getObjectType();
-    // v8::Local<v8::Object> getInfo();
+    // v8::Local<v8::Object> getFullInfo();
 };
 
 #endif /* CavalryTank_hpp */

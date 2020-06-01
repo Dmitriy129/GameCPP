@@ -7,14 +7,11 @@
 
 class Sawmill : public ResourceGenerator
 {
-private:
-    std::string objectType = "Sawmill";
-    std::string resType = "Wood";
-
 public:
+    Sawmill(std::string ID);
     // void getResPerStepForUnit() override;
     // std::string getObjectType();
-    // v8::Local<v8::Object> getInfo();
+    // v8::Local<v8::Object> getFullInfo();
 };
 
 #endif /* Sawmill_hpp */

@@ -38,9 +38,9 @@ void Unit::death() { fireEvent("object death"); }
 //     this->setHealth(this->getHealth() - damage);
 // }
 
-v8::Local<v8::Object> Unit::getInfo()
+v8::Local<v8::Object> Unit::getFullInfo()
 {
-    v8::Local<v8::Object> info = CombatObject::getInfo();
+    v8::Local<v8::Object> info = CombatObject::getFullInfo();
 
     return info;
 }

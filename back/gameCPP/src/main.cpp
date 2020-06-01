@@ -3,7 +3,7 @@
 #include "objects/combatObject/base/Base.hpp"
 #include "field/Field.hpp"
 #include "uuid/UUID.hpp"
-#include "objects/neutralObject/resourceGenerator/ResourceGeneratorFactory.hpp"
+#include "objects/neutralObject/NeutralObjectFactory.hpp"
 #include "mediator/fieldMediator/FieldMediator.hpp"
 
 int main()
@@ -55,7 +55,7 @@ void fun1()
 
 void fun2()
 {
-    ResourceGeneratorFactory *resourceGeneratorFactory = new ResourceGeneratorFactory();
+    NeutralObjectFactory *NeutralObjectFactory = new NeutralObjectFactory();
     CombatObjectTypeFactory *combatObjectTypeFactory = new CombatObjectTypeFactory();
     Field *beta = new Field(5000, 5000, 1000, new FieldMediator);
 
@@ -216,7 +216,7 @@ void fun2()
     std::cout << beta->getFieldCell(4002, 4002).getObject()->getObjectType() << "\n";
     beta->addObject(4003, 4003, base2->createUnit("archer", "TANK", uuidGen->generateUUID(), combatObjectTypeFactory));
     std::cout << beta->getFieldCell(4003, 4003).getObject()->getObjectType() << "\n";
-    beta->addObject(4000, 4000, resourceGeneratorFactory->createResourceGenerator("GoldMine"));
+    beta->addObject(4000, 4000, NeutralObjectFactory->createResourceGenerator("GoldMine"));
     std::cout << beta->getFieldCell(4000, 4000).getObject()->getObjectType() << "\n";
 
     std::cout << "\n\n";

@@ -31,7 +31,7 @@ private:
     void unitDie(Unit *unit);
 
 public:
-    Base(std::string playerID, unsigned int maxQuantityOfUnits, double health, double armor, CombatObjectTypeFactory *combatObjectTypeFactory);
+    Base(std::string playerID, std::string ID, unsigned int maxQuantityOfUnits, double health, double armor, CombatObjectTypeFactory *combatObjectTypeFactory);
     ~Base();
     bool isMoveable() override;
     Unit *createUnit(unsigned int type, std::string unitID, CombatObjectTypeFactory *combatObjectTypeFactory);
@@ -45,7 +45,7 @@ public:
     void operator+(Object *object) override;
     // double getDamageAttack() override;
     //  std::string getObjectType();
-    v8::Local<v8::Object> getInfo();
+    v8::Local<v8::Object> getFullInfo();
 
     /*  */
     void eventHandler(Event *event) override;

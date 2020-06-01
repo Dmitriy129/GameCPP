@@ -11,16 +11,17 @@ InfantryDPS::InfantryDPS(std::string playerID, std::string unitID, CombatObjectT
 
     critChance = 0.2;
     critDamage = 2.3;
+    objectType = INF_DPS;
 }
 // std::string InfantryDPS::getObjectType() { return "InfantryDPS"; }
 
-// v8::Local<v8::Object> InfantryDPS::getInfo()
+// v8::Local<v8::Object> InfantryDPS::getFullInfo()
 // {
-//     v8::Local<v8::Object> info = Unit::getInfo();
+//     v8::Local<v8::Object> info = Unit::getFullInfo();
 //     v8::Local<v8::Object> stats;
 
-//     //SetObjField(info, "objectType", getObjectType());
-//     GetObjField(info, "stats", stats);
-//     SetObjField(stats, "critInfo", UnitDPS::getCritInfo());
-//     SetObjField(info, "stats", stats);
+//     //SetObjProperty(info, "objectType", getObjectType());
+//     GetObjProperty(info, "stats", stats);
+//     SetObjProperty(stats, "critInfo", UnitDPS::getCritInfo());
+//     SetObjProperty(info, "stats", stats);
 // }

@@ -26,35 +26,55 @@ void GameCommand::execute(v8::Local<v8::Value> request)
     /*  */ std::string roomID;
     /* * * * * */
 
-    if (!GetObjField(objRequest, "task", task))
+    if (!GetObjProperty(objRequest, "task", task))
         return;
-    if (!GetObjField(objRequest, "params", params))
+    if (!GetObjProperty(objRequest, "params", params))
         return;
-    if (!GetObjField(params, "roomID", roomID))
+    if (!GetObjProperty(params, "roomID", roomID))
         return;
 
     if (task == ADD_ROOM)
     {
         /* * * * * */
         std::string roomName;
+        std::string editorID;
         v8::Local<v8::Object> fieldInfo;
         /*  */ unsigned int rowsQuantity;
         /*  */ unsigned int columnsQuantity;
         /*  */ unsigned int maximumObjectsQuantity;
         /* * * * * */
 
-        if (!GetObjField(params, "roomName", roomName))
+        if (!GetObjProperty(params, "editorID", editorID))
             return;
-        if (!GetObjField(params, "fieldInfo", fieldInfo))
+        if (!GetObjProperty(params, "roomName", roomName))
             return;
-        if (!GetObjField(fieldInfo, "rowsQuantity", rowsQuantity))
+        if (!GetObjProperty(params, "fieldInfo", fieldInfo))
             return;
-        if (!GetObjField(fieldInfo, "columnsQuantity", columnsQuantity))
+        if (!GetObjProperty(fieldInfo, "rowsQuantity", rowsQuantity))
             return;
-        if (!GetObjField(fieldInfo, "maximumObjectsQuantity", maximumObjectsQuantity))
+        if (!GetObjProperty(fieldInfo, "columnsQuantity", columnsQuantity))
+            return;
+        if (!GetObjProperty(fieldInfo, "maximumObjectsQuantity", maximumObjectsQuantity))
             return;
 
-        this->game->addGameRoom(roomID, roomName, rowsQuantity, columnsQuantity, maximumObjectsQuantity /* , isolate */);
+        this->game->addGameRoom(editorID, roomID, roomName, rowsQuantity, columnsQuantity, maximumObjectsQuantity /* , isolate */);
+    }
+    else if (task == SAVE_ROOM || task == LOAD_ROOM)
+    {
+        std::string editorID;
+        if (!GetObjProperty(params, "editorID", editorID))
+            return;
+        if (task == SAVE_ROOM)
+        {
+            game->saveRoom(editorID, roomID);
+        }
+        else if (task == LOAD_ROOM)
+        {
+            unsigned int saveID;
+            if (!GetObjProperty(params, "saveID", saveID))
+                return;
+            game->loadRoom(editorID, roomID, saveID);
+        }
     }
     else if (task == GET_FIELD || task == ADD_OBJ || task == ADD_PLAYER || task == MOVE)
     {

@@ -17,12 +17,12 @@ LoggerAdapter::adaptFormat(v8::Local<v8::Object> objLog)
 
     //strLogType
     std::string strLogType;
-    GetObjField(objLog, "logType", strLogType);
+    GetObjProperty(objLog, "logType", strLogType);
 
     //strLogData
     std::string strLogData;
     v8::Local<v8::Object> objLogData = Nan::New<v8::Object>();
-    GetObjField(objLog, "data", objLogData);
+    GetObjProperty(objLog, "data", objLogData);
     strLogData = JSONStringified(objLogData);
 
     //strLogTime
