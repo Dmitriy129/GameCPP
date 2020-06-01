@@ -15,10 +15,11 @@ Game::~Game()
     // delete this->mediator;
 }
 
+Game *Game::p_game = 0;
 Game *Game::getInstance()
 {
     if (!p_game)
-        p_game = new Game;
+        p_game = new Game();
     return p_game;
 }
 
