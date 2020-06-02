@@ -26,8 +26,11 @@ ResourceBag *Player::getResourceBag() { return resourceBag; }
 void Player::createBase(unsigned int rowNumber, unsigned int columnNumber)
 {
 
+    std::cout << "base started";
     this->base = new Base(playerID, uuidGen->generateUUID(), 100, 1000, 4, combatObjectTypeFactory);
+    std::cout << "base instance";
     this->field->addObject(rowNumber, columnNumber, base);
+    std::cout << "base added";
 }
 
 void Player::createUnit(unsigned int rowNumber, unsigned int columnNumber, unsigned int type)
@@ -119,13 +122,13 @@ v8::Local<v8::Object> Player::getFullInfo()
 {
     v8::Local<v8::Object> info = Nan::New<v8::Object>();
     v8::Local<v8::Object> ResourceBag = Nan::New<v8::Object>();
-    //     std::cout << "strrt############Player::getFullInfo\n";
+    std::cout << "strrt############Player::getFullInfo\n";
     SetObjProperty(info, "resourceBag", resourceBag->getFullInfo());
     SetObjProperty(info, "playerName", playerName);
     SetObjProperty(info, "playerID", playerID);
-    //     std::cout << "1############Player::getFullInfo\n";
+    std::cout << "1############Player::getFullInfo\n";
     SetObjProperty(info, "base", field->getObjectData(base));
-    //     std::cout << "end############Player::getFullInfo\n";
+    std::cout << "end############Player::getFullInfo\n";
 
     return info;
 }

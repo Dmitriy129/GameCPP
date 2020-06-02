@@ -4,12 +4,14 @@
 
 #include <map>
 #include "../../player/Player.hpp"
-#include "../../timer/Timer.hpp"
+// #include "../../timer/Timer.hpp"
+// #include <thread>
 
 class GameRoomState
 {
 protected:
-    Timer *timer;
+    // bool clear = false;
+    // utils::Timer *timer;
     Player *nowPlayer;
 
 public:

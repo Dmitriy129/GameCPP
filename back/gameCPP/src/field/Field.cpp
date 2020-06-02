@@ -168,12 +168,12 @@ void Field::addObject(unsigned int rowNumber, unsigned int columnNumber, Object 
     if (rowNumber >= rowsQuantity || columnNumber >= columnsQuantity)
     {
 
-        // // std::cout << "error# It is impossible to access the cell of the field\n * in file \"Field\"\n";
+        std::cout << "error# It is impossible to access the cell of the field\n * in file \"Field\"\n";
         return;
     }
     if (currentObjectsQuantity >= maximumObjectsQuantity)
     {
-        // // std::cout << "error# You cannot create a new object. Maximum number of Objects created: " << currentObjectsQuantity << '/' << maximumObjectsQuantity
+        std::cout << "error# You cannot create a new object. Maximum number of Objects created: " << currentObjectsQuantity << '/' << maximumObjectsQuantity;
         //    <<std::endl
         //    <<"*in file \"Field\"\n";
         ;
@@ -181,7 +181,7 @@ void Field::addObject(unsigned int rowNumber, unsigned int columnNumber, Object 
     }
     if (fieldGrid[rowNumber][columnNumber].getObject() != nullptr)
     {
-        // // std::cout << "error# The field cell is occupied by another object, and you cannot create a new object"
+        std::cout << "error# The field cell is occupied by another object, and you cannot create a new object" << JSONStringified(fieldGrid[rowNumber][columnNumber].getObject()->getFullInfo())<<"\n";
         //    <<std::endl
         //    <<"*in file \"Field\"\n";
         return;
@@ -376,12 +376,13 @@ v8::Local<v8::Array> Field::getObjectsData()
         }
         SetArrProperty(rows, rowNumber, columns);
     }
+
     return rows;
 }
 
 v8::Local<v8::Object> Field::getObjectData(unsigned int rowNumber, unsigned int columnNumber)
 {
-    // // std::cout << "##########Field::getObjectData1111\n";
+    std::cout << "##########Field::getObjectData1111\n";
 
     // return getObjectData(fieldGrid[rowNumber][columnNumber].getObject());
     v8::Local<v8::Object> data = Nan::New<v8::Object>();
@@ -400,15 +401,22 @@ v8::Local<v8::Object> Field::getObjectData(unsigned int rowNumber, unsigned int 
 
 v8::Local<v8::Object> Field::getObjectData(Object *object)
 {
-    // // std::cout << "##########Field::getObjectData\n";
+    std::cout << "##########Field::getObjectData\n";
+    std::cout << JSONStringified(object->getFullInfo()) << "\n";
 
     for (unsigned int rowNumber = 0; rowNumber < rowsQuantity; rowNumber++)
         for (unsigned int columnNumber = 0; columnNumber < columnsQuantity; columnNumber++)
+        {
+            std::cout << rowNumber << "_" << columnNumber << "##########Field::getObjectData\n";
+            if (fieldGrid[rowNumber][columnNumber].getObject() != nullptr)
+            {
+                std::cout << JSONStringified(fieldGrid[rowNumber][columnNumber].getObject()->getFullInfo()) << "\n";
+            }
             if (object == fieldGrid[rowNumber][columnNumber].getObject())
             {
-                // // std::cout << rowNumber << "_" << columnNumber << "##########Field::getObjectData\n";
                 return getObjectData(rowNumber, columnNumber);
             }
+        }
 }
 
 v8::Local<v8::Object> Field::getLandscapeData(unsigned int rowNumber, unsigned int columnNumber)

@@ -162,8 +162,12 @@ bool SimplifiedConverter::SetObjProperty(v8::Local<v8::Object> &obj, std::string
 {
     v8::Isolate *isolate = obj->GetIsolate();
 
+    // std::cout << "222RuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule\n";
+    // std::cout << "223RuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule\n";
     if (obj->IsObject())
     {
+
+        // Nan::Set(obj, Nan::New(propertyName).ToLocalChecked(), Nan::New(value).ToLocalChecked());
         obj->Set(v8::String::NewFromUtf8(isolate, propertyName.c_str(), v8::NewStringType::kNormal).ToLocalChecked(), v8::String::NewFromUtf8(isolate, value.c_str(), v8::NewStringType::kNormal).ToLocalChecked());
         return true;
     }
