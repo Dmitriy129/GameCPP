@@ -1,6 +1,7 @@
 
 #include "GameRoomCommand.hpp"
-GameRoomCommand::GameRoomCommand(GameRoom *gameRoom) /* , v8::Isolate *isolate) : Command(isolate) */
+
+GameRoomCommand::GameRoomCommand(GameRoom<Rule> *gameRoom) /* , v8::Isolate *isolate) : Command(isolate) */
 {
     // std::cout << "#grcc#\n";
 

@@ -35,9 +35,12 @@ void GameCommand::execute(v8::Local<v8::Value> request)
 
     if (task == ADD_ROOM)
     {
+        std::cout << "#1#\n";
+
         /* * * * * */
         std::string roomName;
         std::string editorID;
+        unsigned int rule;
         v8::Local<v8::Object> fieldInfo;
         /*  */ unsigned int rowsQuantity;
         /*  */ unsigned int columnsQuantity;
@@ -48,16 +51,18 @@ void GameCommand::execute(v8::Local<v8::Value> request)
             return;
         if (!GetObjProperty(params, "roomName", roomName))
             return;
+        if (!GetObjProperty(params, "rule", rule))
+            return;
         if (!GetObjProperty(params, "fieldInfo", fieldInfo))
             return;
         if (!GetObjProperty(fieldInfo, "rowsQuantity", rowsQuantity))
             return;
         if (!GetObjProperty(fieldInfo, "columnsQuantity", columnsQuantity))
             return;
-        if (!GetObjProperty(fieldInfo, "maximumObjectsQuantity", maximumObjectsQuantity))
-            return;
+        std::cout << "#2#\n";
 
-        this->game->addGameRoom(editorID, roomID, roomName, rowsQuantity, columnsQuantity, maximumObjectsQuantity /* , isolate */);
+        this->game->addGameRoom(editorID, roomID, roomName, rowsQuantity, columnsQuantity, rule);
+        std::cout << "#end#\n";
     }
     else if (task == SAVE_ROOM || task == LOAD_ROOM)
     {

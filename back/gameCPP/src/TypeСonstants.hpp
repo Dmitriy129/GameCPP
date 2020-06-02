@@ -49,4 +49,10 @@ enum eResourceType
     FOOD,
 };
 
+enum eRule
+{
+    RULE1,
+    RULE2,
+};
+
 #endif /* TypeСonstants_hpp */

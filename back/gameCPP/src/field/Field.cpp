@@ -12,6 +12,19 @@ Field::Field(unsigned int rowsQuantity, unsigned int columnsQuantity, unsigned i
         fieldGrid[i] = new FieldCell[columnsQuantity];
 }
 
+Field::Field(unsigned int rowsQuantity, unsigned int columnsQuantity, Mediator *mediator)
+{
+    this->rowsQuantity = rowsQuantity;
+    this->columnsQuantity = columnsQuantity;
+    this->currentObjectsQuantity = 0;
+    this->maximumObjectsQuantity = rowsQuantity * columnsQuantity * 0.8;
+    this->mediator = mediator;
+
+    fieldGrid = new FieldCell *[rowsQuantity];
+    for (unsigned int i = 0; i < rowsQuantity; i++)
+        fieldGrid[i] = new FieldCell[columnsQuantity];
+}
+
 Field::Field(const Field &lastField)
 {
     this->rowsQuantity = lastField.rowsQuantity;

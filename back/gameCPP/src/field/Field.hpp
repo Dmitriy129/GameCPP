@@ -29,6 +29,7 @@ private:
 
 public:
     Field(unsigned int rowsQuantity, unsigned int columnsQuantity, unsigned int maximumObjectsQuantity, Mediator *mediator);
+    Field(unsigned int rowsQuantity, unsigned int columnsQuantity, Mediator *mediator);
     Field(const Field &lastField);
     Field(Field &&lastField);
     ~Field();

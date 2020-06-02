@@ -13,7 +13,7 @@ void ResourceBag::addResource(unsigned int type, double quantity) { resourceBag.
 
 void ResourceBag::subtractResource(unsigned int type, double quantity) { resourceBag.find(type) != resourceBag.end() ? resourceBag[type] -= quantity : resourceBag[type] = 0; }
 
-bool ResourceBag::checkSolvency(std::map<unsigned int, double> price)
+bool ResourceBag::checkQuantity(std::map<unsigned int, double> price)
 {
 
     for (std::map<unsigned int, double>::iterator it = price.begin(); it != price.end(); ++it)
