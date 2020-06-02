@@ -11,9 +11,10 @@
 #include "../mediator/fieldMediator/FieldMediator.hpp"
 #include "../eventProvider/EventProvider.hpp"
 #include "../editor/Editor.hpp"
+#include "gameRoomState/GameRoomState.hpp"
 
 template <class T>
-class GameRoom : public EventProvider
+class GameRoom : public EventProvider, public GameRoomState
 {
 private:
     Field *field;
@@ -30,12 +31,11 @@ private:
 
 public:
     GameRoom(std::string editorID, std::string roomID, std::string roomName, unsigned int rowsQuantity, unsigned int columnsQuantity, UUID *uuidGen, NeutralObjectFactory *NeutralObjectFactory, CombatObjectTypeFactory *combatObjectTypeFactory, unsigned int rule);
-    // GameRoom(std::string editorID, std::string roomID, std::string roomName, PlayersQuantity playersQuantity, unsigned int rowsQuantity, unsigned int columnsQuantity, UUID *uuidGen, NeutralObjectFactory *NeutralObjectFactory, CombatObjectTypeFactory *combatObjectTypeFactory);
-
-    // GameRoom(std::string roomID, std::string roomName, Field *field);
     ~GameRoom();
+
     friend class GameRoomMemento;
     friend class Rule;
+
     //about room
     std::string getRoomID();
     std::string getRoomName();
@@ -58,6 +58,8 @@ public:
     // void moveObject(std::string playerID, unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber);
     // void interactionObject(std::string playerID, unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber);
     /*  */
+
+    void nextPlayer() override;
 
     UUID *getUuidGen();
     NeutralObjectFactory *getNeutralObjectFactory();

@@ -28,10 +28,8 @@ GameRoom<T>::GameRoom(std::string editorID, std::string roomID, std::string room
     this->combatObjectTypeFactory = combatObjectTypeFactory;
     this->field->attachEvent("object updated", this);
     editor = new Editor(editorID, field, uuidGen, neutralObjectFactory);
-    // // std::cout << "#6#\n";
-
     this->rule = new T();
-    // // std::cout << "#7#\n";
+    this->nowPlayer = nullptr;
 }
 
 template <>
@@ -53,6 +51,7 @@ GameRoom<Rule>::GameRoom(std::string editorID, std::string roomID, std::string r
         this->rule = new Rule1();
     if (rule == 1)
         this->rule = new Rule2();
+    this->nowPlayer = nullptr;
     // // std::cout << "#7#\n";
 }
 // GameRoom<Rule>::GameRoom(std::string roomID, std::string roomName, Field *field)
@@ -110,6 +109,21 @@ unsigned int GameRoom<Rule>::getFieldColumnsQuantity()
 // {
 //     return this->field->getObjects();
 // }
+
+template </* class T */>
+void GameRoom<Rule>::nextPlayer()
+{
+    std::vector<Player *>::iterator it = std::find(players.begin(), players.end(), nowPlayer);
+    if (it != players.end())
+        if (std::distance(players.begin(), it) == players.size() - 1)
+            nowPlayer = players[0];
+        else
+            nowPlayer = *(it++);
+    v8::Local<v8::Object> res = Nan::New<v8::Object>();
+    SetObjProperty(res, "roomID", roomID);
+    SetObjProperty(res, "playerName", nowPlayer->getPlayerName());
+    fireEvent("active player has changed", res);
+}
 
 template </* class T */>
 UUID *GameRoom<Rule>::getUuidGen() { return uuidGen; }
@@ -181,6 +195,8 @@ template </* class T */>
 void GameRoom<Rule>::addPlayer(std::string playerID, std::string PlayerName)
 {
     Player *player = new Player(playerID, PlayerName, field, uuidGen, combatObjectTypeFactory);
+    if (nowPlayer == nullptr)
+        nowPlayer = player;
     player->attachEvent("log", this);
 
     this->players.push_back(player);
@@ -287,22 +303,22 @@ v8::Local<v8::Object> GameRoom<Rule>::getFullInfo()
 {
     v8::Local<v8::Object> info = Nan::New<v8::Object>();
     v8::Local<v8::Array> playersInfo = Nan::New<v8::Array>();
-    // // std::cout << "strt##########GameRoom<Rule>::getFullInfo\n";
+    //     std::cout << "strt##########GameRoom<Rule>::getFullInfo\n";
 
     SetObjProperty(info, "rule", rule->getType());
-    // // std::cout << "1##########GameRoom<Rule>::getFullInfo\n";
+    //     std::cout << "1##########GameRoom<Rule>::getFullInfo\n";
 
     SetObjProperty(info, "field", field->getFullInfo());
-    // // std::cout << "2##########GameRoom<Rule>::getFullInfo\n";
+    //     std::cout << "2##########GameRoom<Rule>::getFullInfo\n";
 
     // for (unsigned int index = 0; index < players.size(); index++)
     // SetArrProperty(playersInfo, index, players);
 
     std::for_each(players.begin(), players.end(), [this, &playersInfo](Player *player) { SetArrProperty(playersInfo, playersInfo->Length(), player->getFullInfo()); });
-    // // std::cout << "3##########GameRoom<Rule>::getFullInfo\n";
+    //     std::cout << "3##########GameRoom<Rule>::getFullInfo\n";
 
     SetObjProperty(info, "playersInfo", playersInfo);
-    // // std::cout << "eend##########GameRoom<Rule>::getFullInfo\n";
+    //     std::cout << "eend##########GameRoom<Rule>::getFullInfo\n";
 
     return info;
 }

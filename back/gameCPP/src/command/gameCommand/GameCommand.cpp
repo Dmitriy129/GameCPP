@@ -69,6 +69,7 @@ void GameCommand::execute(v8::Local<v8::Value> request)
         std::string editorID;
         if (!GetObjProperty(params, "editorID", editorID))
             return;
+        //     std::cout << "#111#\n";
         if (task == SAVE_ROOM)
         {
             game->saveRoom(editorID, roomID);
@@ -80,6 +81,7 @@ void GameCommand::execute(v8::Local<v8::Value> request)
                 return;
             game->loadRoom(editorID, roomID, saveID);
         }
+        //     std::cout << "#112#\n";
     }
     else if (task == GET_FIELD || task == ADD_OBJ || task == ADD_PLAYER || task == MOVE)
     {

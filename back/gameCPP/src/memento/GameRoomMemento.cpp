@@ -17,9 +17,9 @@ GameRoomMemento::GameRoomMemento(std::string filename, GameRoom<Rule> *gameRoom)
     {
         std::ofstream ofile;
         ofile.open(dir + "/" + filename + ".json");
-        // std::cout << "strt############GameRoomMemento::GameRoomMemento\n";
+        //     std::cout << "strt############GameRoomMemento::GameRoomMemento\n";
         ofile << JSONStringified(gameRoom->getFullInfo());
-        // std::cout << "end############GameRoomMemento::GameRoomMemento\n";
+        //     std::cout << "end############GameRoomMemento::GameRoomMemento\n";
 
         ofile.close();
     }

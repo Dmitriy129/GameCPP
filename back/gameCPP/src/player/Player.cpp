@@ -119,13 +119,13 @@ v8::Local<v8::Object> Player::getFullInfo()
 {
     v8::Local<v8::Object> info = Nan::New<v8::Object>();
     v8::Local<v8::Object> ResourceBag = Nan::New<v8::Object>();
-    // // std::cout << "strrt############Player::getFullInfo\n";
+    //     std::cout << "strrt############Player::getFullInfo\n";
     SetObjProperty(info, "resourceBag", resourceBag->getFullInfo());
     SetObjProperty(info, "playerName", playerName);
     SetObjProperty(info, "playerID", playerID);
-    // // std::cout << "1############Player::getFullInfo\n";
+    //     std::cout << "1############Player::getFullInfo\n";
     SetObjProperty(info, "base", field->getObjectData(base));
-    // // std::cout << "end############Player::getFullInfo\n";
+    //     std::cout << "end############Player::getFullInfo\n";
 
     return info;
 }
