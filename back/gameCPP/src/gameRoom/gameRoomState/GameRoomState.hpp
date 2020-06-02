@@ -9,7 +9,7 @@
 class GameRoomState
 {
 protected:
-    utils::Timer *timer;
+    Timer *timer;
     Player *nowPlayer;
 
 public:

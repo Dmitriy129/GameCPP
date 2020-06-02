@@ -2,7 +2,7 @@
 
 Rule2::Rule2()
 {
-    stepTime = 60;
+    stepTime = 12000;
 }
 
 unsigned int Rule2::getType()
