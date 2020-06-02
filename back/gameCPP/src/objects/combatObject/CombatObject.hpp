@@ -25,7 +25,7 @@ public:
 
     void underAttack(double damage, double armor);
     double getDamageAttack();
-    v8::Local<v8::Object> getFullInfo();
+    virtual v8::Local<v8::Object> getFullInfo();
 };
 
 #endif /* CombatObject_hpp */

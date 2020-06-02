@@ -76,13 +76,15 @@ void LoggerProxy::printLog(v8::Local<v8::Object> data)
 
 void operator<<(LoggerProxy *logger, v8::Local<v8::Object> data)
 {
+    
+        
     logger->printLog(logger->adapter->getStatus() ? logger->adapter->adaptFormat(data) : logger->adapter->JSONStringified(data));
 }
 
 void LoggerProxy::eventHandler(Event *event)
 {
 
-    // std::cout << "#**evh lp s\n";
+    // // // std::cout << "#**evh lp s\n";
     v8::Local<v8::Object> objResponse = Nan::New<v8::Object>();
 
     SetObjProperty(objResponse, "logType", event->getSEventId());
@@ -90,5 +92,5 @@ void LoggerProxy::eventHandler(Event *event)
 
     this << objResponse;
     // printLog(objResponse);
-    // std::cout << "#**evh lp end\n";
+    // // // std::cout << "#**evh lp end\n";
 }

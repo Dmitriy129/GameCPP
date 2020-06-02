@@ -34,11 +34,11 @@ public:
     GameRoom<Rule> *getGameRoom(std::string roomID);
 
     //game->rooms
-    void addPlayerToGameRoom(std::string roomID, std::string playerID, std::string playerName); // add done
-    void removePlayerFromGameRoom(std::string roomID, std::string playerID);                    // add done
-    void removePlayerEveryWhere(std::string playerID);                                          // add
-    std::vector<std::vector<std::string>> getGameRoomsPlayersNamesList();
-    std::vector<std::vector<std::string>> getGameRoomsPlayersIDList();
+    // void addPlayerToGameRoom(std::string roomID, std::string playerID, std::string playerName); // add done
+    // void removePlayerFromGameRoom(std::string roomID, std::string playerID); // add done
+    // void removePlayerEveryWhere(std::string playerID);                                          // add
+    // std::vector<std::vector<std::string>> getGameRoomsPlayersNamesList();
+    // std::vector<std::vector<std::string>> getGameRoomsPlayersIDList();
 
     // std::vector<GameRoom *> getGameRoomsList();      // add
     // std::vector<std::string> getGameRoomsIDList();   // add

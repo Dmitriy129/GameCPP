@@ -14,12 +14,15 @@ class Rule
 protected:
     // unsigned int playersQuantity;
     double stepTime;
+
     // unsigned int rowsQuantity;
     // unsigned int columnsQuantity;
 
 public:
+    // virtual bool checkWin(GameRoom<Rule> *gameRoom) = 0;
+    std::function<bool(Player *, Player *)> sequenceOfMoves;
+    virtual unsigned int getType() = 0;
     double getStepTime();
-    // template <>
     template <class T>
     bool checkWin(GameRoom<T> *gameRoom);
 };
