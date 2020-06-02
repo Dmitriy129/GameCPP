@@ -1,6 +1,6 @@
 #include <node.h>
 // #include "gameProxy/GameProxy.hpp"
-#include "src/uiFacade/UIFacade.hpp"
+#include "uiFacade/UIFacade.hpp"
 
 namespace demo
 {
