@@ -5,7 +5,7 @@ template <typename Function>
 void Timer::setTimeout(Function function, int delay)
 {
     this->clear = false;
-    std::thread t([=]() { // Idk how it works but it works TODO
+    std::thread t([=]() {
         if (this->clear)
             return;
         std::this_thread::sleep_for(std::chrono::milliseconds(delay));

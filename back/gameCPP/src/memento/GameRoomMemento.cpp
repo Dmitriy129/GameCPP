@@ -170,6 +170,12 @@ void GameRoomMemento::restoreMemento()
         }
     }
 
+    { //add nowPlayer
+        unsigned int nowPlayerIndex = 0;
+        if (GetObjProperty(info, "nowPlayer", nowPlayerIndex))
+            gameRoom->nowPlayer = gameRoom->players[nowPlayerIndex];
+    }
+
     // std::cout << "##########Game::loadRoom\n";
     //units
 
