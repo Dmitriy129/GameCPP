@@ -11,6 +11,7 @@ console.log(gameTest.sendRequest({
         roomID: roomID,
         roomName: "KoKoKo33",
         editorID: "EDITOR1234567890",
+        rule: 1,
         fieldInfo: {
             rowsQuantity: 8,
             columnsQuantity: 8,

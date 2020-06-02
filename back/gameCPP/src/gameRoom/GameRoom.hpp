@@ -2,14 +2,17 @@
 #define GameRoom_hpp
 
 #include "../field/Field.hpp"
+#include "../rule/rule1/Rule1.hpp"
+#include "../rule/rule2/Rule2.hpp"
 #include "../objects/combatObject/base/Base.hpp"
 #include "../uuid/UUID.hpp"
 #include "../objects/neutralObject/NeutralObjectFactory.hpp"
 #include "../player/Player.hpp"
+#include "../mediator/fieldMediator/FieldMediator.hpp"
 #include "../eventProvider/EventProvider.hpp"
-// #include "../memento/GameRoomMemento.hpp"
 #include "../editor/Editor.hpp"
 
+template <class T>
 class GameRoom : public EventProvider
 {
 private:
@@ -23,13 +26,17 @@ private:
     std::vector<Player *> players;
     std::string roomID;
     std::string roomName;
+    T *rule;
 
 public:
-    GameRoom(std::string editorID, std::string roomID, std::string roomName, Field *field, UUID *uuidGen, NeutralObjectFactory *NeutralObjectFactory, CombatObjectTypeFactory *combatObjectTypeFactory, Mediator *mediator);
+    GameRoom(std::string editorID, std::string roomID, std::string roomName, unsigned int rowsQuantity, unsigned int columnsQuantity, UUID *uuidGen, NeutralObjectFactory *NeutralObjectFactory, CombatObjectTypeFactory *combatObjectTypeFactory, unsigned int rule);
+    // GameRoom(std::string editorID, std::string roomID, std::string roomName, PlayersQuantity playersQuantity, unsigned int rowsQuantity, unsigned int columnsQuantity, UUID *uuidGen, NeutralObjectFactory *NeutralObjectFactory, CombatObjectTypeFactory *combatObjectTypeFactory);
+
     // GameRoom(std::string roomID, std::string roomName, Field *field);
     ~GameRoom();
 
     friend class GameRoomMemento;
+    friend class Rule;
 
     //about room
     std::string getRoomID();
@@ -39,7 +46,7 @@ public:
     FieldCell *getFieldCell(unsigned int x, unsigned int y);
     unsigned int getFieldRowsQuantity();
     unsigned int getFieldColumnsQuantity();
-    // std::vector<std::string> getLandscapes();
+    std::vector<std::string> getLandscapes();
     // std::vector<std::string> getObjects();
 
     //about players

@@ -55,6 +55,8 @@ Unit *Base::createUnit(unsigned int type, std::string unitID, CombatObjectTypeFa
     return newUnit;
 }
 
+unsigned int Base::getArmyQuantity() { return armyOfUnits.size(); }
+
 void Base::removeUnit(Unit *unit)
 {
     std::__1::__wrap_iter<Unit **> index = std::find(armyOfUnits.begin(), armyOfUnits.end(), unit);
@@ -67,11 +69,6 @@ void Base::unitDie(Unit *unit)
     removeUnit(unit);
     delete unit;
 }
-
-// std::string Base::getPlayerID()
-// {
-//     return playerID;
-// }
 
 Unit *Base::factoryUnit(UnitTankFactory *factory, unsigned int type, std::string unitID, CombatObjectTypeFactory *combatObjectTypeFactory)
 {

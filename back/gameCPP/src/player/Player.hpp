@@ -7,7 +7,7 @@
 #include "../uuid/UUID.hpp"
 #include "../TypeСonstants.hpp"
 #include "../eventProvider/EventProvider.hpp"
-#include "resourceBag/ResourceBag.hpp"
+#include "../resourceBag/ResourceBag.hpp"
 
 class Player : public EventProvider
 {

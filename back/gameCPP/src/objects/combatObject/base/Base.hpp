@@ -35,6 +35,7 @@ public:
     ~Base();
     bool isMoveable() override;
     Unit *createUnit(unsigned int type, std::string unitID, CombatObjectTypeFactory *combatObjectTypeFactory);
+    unsigned int getArmyQuantity();
 
     // void setHealth(double health) override;
     // double getHealth() const override;
