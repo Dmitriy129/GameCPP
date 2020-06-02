@@ -69,17 +69,32 @@ void GameRoomCommand::execute(v8::Local<v8::Value> request)
 
         if (GetObjProperty(params, "playerID", userID))
         {
-            Player *player = gameRoom->getPlayer(userID);
-            if (player == nullptr)
+            //     std::cout << "######1####\n";
+            if (gameRoom->checkPermission(userID))
+            {
+                Player *player = gameRoom->getPlayer(userID);
+                if (player == nullptr)
+                    return;
+                //     std::cout << "######2####\n";
+
+                command = new PlayerCommand(player);
+            }
+            else
+            {
+                v8::Local<v8::Object> res = Nan::New<v8::Object>();
+                gameRoom->SetObjProperty(res, "playerID", userID);
+                gameRoom->fireEvent("player does not have permission", res);
+                //     std::cout << "#player does not have permission#\n";
                 return;
-            command = new PlayerCommand(player /* , isolate */);
+            }
+            //     std::cout << "######3####\n";
         }
         else if (GetObjProperty(params, "editorID", userID))
         {
             Editor *editor = gameRoom->getEditor();
             if (editor == nullptr)
                 return;
-            command = new EditorCommand(editor /* , isolate */);
+            command = new EditorCommand(editor);
         }
 
         if (task == MOVE)
@@ -109,6 +124,7 @@ void GameRoomCommand::execute(v8::Local<v8::Value> request)
                 // command *command = new command(gameRoom->getPlayer(userID) /* , isolate */);
             }
         }
+
         delete command;
     }
     // // // std::cout << "#grcee#\n";

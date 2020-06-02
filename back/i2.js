@@ -19,7 +19,7 @@ console.log(gameTest.sendRequest({
         }
     }
 }))
-console.log("----------------------------");
+console.log("-------------addU---------------");
 
 
 console.log(gameTest.sendRequest({
