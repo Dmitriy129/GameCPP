@@ -21,9 +21,9 @@ void FieldMediator::interactionObjObj(Object *object1, Object *object2)
     }
     else if (object1->getPlayerID() == object2->getPlayerID())
     {
-        std::cout << "You can not attack allies."
-                  << std::endl
-                  << "*in file \"Field\"\n";
+        // // std::cout << "You can not attack allies."
+        //    <<std::endl
+        //    <<"*in file \"Field\"\n";
         return;
     }
     else
@@ -33,13 +33,13 @@ void FieldMediator::interactionObjObj(Field *field, unsigned int fromRowNumber, 
 {
     if (!field->getFieldCell(toRowNumber, toColumnNumber).getLandscape()->checkAccessInteraction(field->getFieldCell(fromRowNumber, fromColumnNumber).getObject()->getObjectType()))
     {
-        std::cout << "The Object cannot interact with object in this cell .([" << fromRowNumber << "][" << fromColumnNumber << "]->[" << toRowNumber << "][" << toColumnNumber << "]) "
-                  << std::endl
-                  << "*in file \"Field\"\n";
+        // // std::cout << "The Object cannot interact with object in this cell .([" << fromRowNumber << "][" << fromColumnNumber << "]->[" << toRowNumber << "][" << toColumnNumber << "]) "
+        //    <<std::endl
+        //    <<"*in file \"Field\"\n";
         return;
     }
-    std::cout << "Object Interaction .([" << fromRowNumber << "][" << fromColumnNumber << "] & [" << toRowNumber << "][" << toColumnNumber << "]) "
-              << std::endl
-              << "*in file \"Field\"\n";
+    // // std::cout << "Object Interaction .([" << fromRowNumber << "][" << fromColumnNumber << "] & [" << toRowNumber << "][" << toColumnNumber << "]) "
+    //    <<std::endl
+    //    <<"*in file \"Field\"\n";
     interactionObjObj(field->getFieldCell(fromRowNumber, fromColumnNumber).getObject(), field->getFieldCell(toRowNumber, toColumnNumber).getObject());
 }

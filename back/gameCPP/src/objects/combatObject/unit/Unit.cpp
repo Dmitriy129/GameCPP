@@ -3,7 +3,7 @@
 
 Unit::~Unit()
 {
-    delete type;
+    // delete type;
 }
 void Unit::operator+(Object *object) {}
 
@@ -18,7 +18,7 @@ void Unit::setHealth(double health)
         death();
     else
     {
-        // std::cout << "#unit ev updd#\n";
+        // // // std::cout << "#unit ev updd#\n";
         fireEvent("object updated");
     }
 

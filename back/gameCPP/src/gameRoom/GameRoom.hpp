@@ -2,15 +2,19 @@
 #define GameRoom_hpp
 
 #include "../field/Field.hpp"
+#include "../rule/rule1/Rule1.hpp"
+#include "../rule/rule2/Rule2.hpp"
 #include "../objects/combatObject/base/Base.hpp"
 #include "../uuid/UUID.hpp"
 #include "../objects/neutralObject/NeutralObjectFactory.hpp"
 #include "../player/Player.hpp"
+#include "../mediator/fieldMediator/FieldMediator.hpp"
 #include "../eventProvider/EventProvider.hpp"
-// #include "../memento/GameRoomMemento.hpp"
 #include "../editor/Editor.hpp"
+#include "gameRoomState/GameRoomState.hpp"
 
-class GameRoom : public EventProvider
+template <typename T>
+class GameRoom : public EventProvider, public GameRoomState
 {
 private:
     Field *field;
@@ -23,13 +27,14 @@ private:
     std::vector<Player *> players;
     std::string roomID;
     std::string roomName;
+    T *rule;
 
 public:
-    GameRoom(std::string editorID, std::string roomID, std::string roomName, Field *field, UUID *uuidGen, NeutralObjectFactory *NeutralObjectFactory, CombatObjectTypeFactory *combatObjectTypeFactory, Mediator *mediator);
-    // GameRoom(std::string roomID, std::string roomName, Field *field);
+    GameRoom(std::string editorID, std::string roomID, std::string roomName, unsigned int rowsQuantity, unsigned int columnsQuantity, UUID *uuidGen, NeutralObjectFactory *NeutralObjectFactory, CombatObjectTypeFactory *combatObjectTypeFactory, unsigned int rule);
     ~GameRoom();
 
     friend class GameRoomMemento;
+    friend class Rule;
 
     //about room
     std::string getRoomID();
@@ -53,6 +58,8 @@ public:
     // void moveObject(std::string playerID, unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber);
     // void interactionObject(std::string playerID, unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber);
     /*  */
+
+    void nextPlayer() override;
 
     UUID *getUuidGen();
     NeutralObjectFactory *getNeutralObjectFactory();

@@ -35,6 +35,7 @@ public:
     ~Base();
     bool isMoveable() override;
     Unit *createUnit(unsigned int type, std::string unitID, CombatObjectTypeFactory *combatObjectTypeFactory);
+    unsigned int getArmyQuantity();
 
     // void setHealth(double health) override;
     // double getHealth() const override;
@@ -45,7 +46,7 @@ public:
     void operator+(Object *object) override;
     // double getDamageAttack() override;
     //  std::string getObjectType();
-    v8::Local<v8::Object> getFullInfo();
+    v8::Local<v8::Object> getFullInfo() override;
 
     /*  */
     void eventHandler(Event *event) override;

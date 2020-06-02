@@ -12,7 +12,7 @@ class NeutralObject : public Object
 public:
     // virtual void operator+(CombatObject *unit);
     void eventHandler(Event *event) override;
-    v8::Local<v8::Object> getFullInfo();
+    virtual v8::Local<v8::Object> getFullInfo();
 };
 
 #endif /* NeutralObject_hpp */

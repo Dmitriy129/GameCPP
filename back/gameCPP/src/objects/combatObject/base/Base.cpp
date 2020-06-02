@@ -3,7 +3,7 @@
 
 Base::Base(std::string playerID, std::string ID, unsigned int maxQuantityOfUnits, double health, double armor, CombatObjectTypeFactory *combatObjectTypeFactory)
 {
-    // // std::cout << "kek/n";
+    // // // // std::cout << "kek/n";
     // armyOfUnits.push_back(nullptr);
     this->health = health;
     this->maxQuantityOfUnits = maxQuantityOfUnits;
@@ -29,9 +29,9 @@ Unit *Base::createUnit(unsigned int type, std::string unitID, CombatObjectTypeFa
 {
     if (quantityOfUnits == maxQuantityOfUnits)
     {
-        std::cout << "error# The maximum number of units in the Base(\"" << this->getPlayerID() << "\") has already been created"
-                  << std::endl
-                  << "*in file Base*\n";
+        // // std::cout << "error# The maximum number of units in the Base(\"" << this->getPlayerID() << "\") has already been created"
+        //    <<std::endl
+        //    <<"*in file Base*\n";
         return nullptr;
     }
     Unit *newUnit = nullptr;
@@ -44,9 +44,9 @@ Unit *Base::createUnit(unsigned int type, std::string unitID, CombatObjectTypeFa
     else
     {
 
-        std::cout << "error# Unknown unit type"
-                  << std::endl
-                  << "*in file Base*\n";
+        // // std::cout << "error# Unknown unit type"
+        //    <<std::endl
+        //    <<"*in file Base*\n";
         return nullptr;
     }
 
@@ -54,6 +54,8 @@ Unit *Base::createUnit(unsigned int type, std::string unitID, CombatObjectTypeFa
     newUnit->attachEvent("object death", this);
     return newUnit;
 }
+
+unsigned int Base::getArmyQuantity() { return armyOfUnits.size(); }
 
 void Base::removeUnit(Unit *unit)
 {
@@ -68,11 +70,6 @@ void Base::unitDie(Unit *unit)
     delete unit;
 }
 
-// std::string Base::getPlayerID()
-// {
-//     return playerID;
-// }
-
 Unit *Base::factoryUnit(UnitTankFactory *factory, unsigned int type, std::string unitID, CombatObjectTypeFactory *combatObjectTypeFactory)
 {
 
@@ -82,7 +79,7 @@ Unit *Base::factoryUnit(UnitTankFactory *factory, unsigned int type, std::string
         return factory->createInfantry(playerID, unitID, combatObjectTypeFactory);
     if (type == CAV_TANK || type == CAV_DPS)
         return factory->createCavalry(playerID, unitID, combatObjectTypeFactory);
-    std::cout << "error# unknown unit class\n *in file \"base\"\n";
+    // // std::cout << "error# unknown unit class\n *in file \"base\"\n";
     return nullptr;
 }
 
@@ -95,7 +92,7 @@ Unit *Base::factoryUnit(UnitDPSFactory *factory, unsigned int type, std::string 
         return factory->createInfantry(playerID, unitID, combatObjectTypeFactory);
     if (type == CAV_TANK || type == CAV_DPS)
         return factory->createCavalry(playerID, unitID, combatObjectTypeFactory);
-    std::cout << "error# unknown unit class\n *in file \"base\"\n";
+    // // std::cout << "error# unknown unit class\n *in file \"base\"\n";
     return nullptr;
 }
 
@@ -134,7 +131,7 @@ void Base::eventHandler(Event *event)
 {
     if (event->getSEventId() == "object death")
     {
-        std::cout << "*Base* Event: \"" << event->getSEventId() << "\" started \n";
+        // // std::cout << "*Base* Event: \"" << event->getSEventId() << "\" started \n";
         removeUnit((Unit *)event->getSource());
     }
 }

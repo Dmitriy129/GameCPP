@@ -12,11 +12,12 @@ class GameRoomMemento : SimplifiedConverter
 {
 private:
     std::ifstream ifile;
-    GameRoom *&gameRoom;
+
+    GameRoom<Rule> *gameRoom;
 
 public:
     // GameRoomMemento(std::string filename, v8::Local<v8::Object> data);
-    GameRoomMemento(std::string filename, GameRoom *&gameRoom);
+    GameRoomMemento(std::string filename, GameRoom<Rule> *gameRoom);
     ~GameRoomMemento();
 
     // v8::Local<v8::Object> getMemento();

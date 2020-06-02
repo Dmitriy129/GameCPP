@@ -2,8 +2,8 @@
 #define ResourceBag_hpp
 
 #include <map>
-#include "../../TypeСonstants.hpp"
-#include "../../simplifiedConverter/SimplifiedConverter.hpp"
+#include "../TypeСonstants.hpp"
+#include "../simplifiedConverter/SimplifiedConverter.hpp"
 
 class ResourceBag : SimplifiedConverter
 {
@@ -16,7 +16,7 @@ public:
     std::map<unsigned int, double> getResourceBag();
     void addResource(unsigned int type, double quantity);
     void subtractResource(unsigned int type, double quantity);
-    bool checkSolvency(std::map<unsigned int, double> price);
+    bool checkQuantity(std::map<unsigned int, double> price);
 
     v8::Local<v8::Object> getFullInfo();
 };
