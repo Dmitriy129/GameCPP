@@ -3,7 +3,7 @@
 
 Unit::~Unit()
 {
-    delete type;
+    // delete type;
 }
 void Unit::operator+(Object *object) {}
 

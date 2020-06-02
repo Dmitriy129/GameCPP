@@ -2,13 +2,13 @@
 
 Rule1::Rule1()
 {
-    stepTime = 8000;
+    stepTime = 1000;
+    sequenceOfMoves = [](Player *&p1, Player *&p2) { return p1->getPlayerName() > p2->getPlayerName(); };
 }
 
 unsigned int Rule1::getType()
 {
     return RULE1;
-    sequenceOfMoves = [](Player *p1, Player *p2) { return p1->getPlayerName() > p2->getPlayerName(); };
 }
 
 // std::function<bool(Player *, Player *)> Rule1::sequenceOfMoves = [](Player *p1, Player *p2) { return p1->getPlayerName() > p2->getPlayerName(); }

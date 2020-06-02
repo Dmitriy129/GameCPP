@@ -7,13 +7,13 @@ CombatObject::~CombatObject()
 // void CombatObject::setHealth(double health) { this->health = health; }
 void CombatObject::setHealth(double health)
 {
-    if (health < 0)
+    this->health = health;
+    if (this->health <= 0)
         death();
     else
     {
         fireEvent("object updated");
     }
-    this->health = health;
 }
 double CombatObject::getHealth() const { return health; }
 double CombatObject::getMaxHealth() const { return type->getMaxHealth(); }

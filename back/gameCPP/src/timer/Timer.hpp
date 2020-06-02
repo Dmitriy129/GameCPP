@@ -3,7 +3,8 @@
 #define LOGIC_Timer_HPP
 
 #include <thread>
-
+namespace utils
+{
 class Timer
 {
     bool clear = false;
@@ -17,5 +18,5 @@ public:
 
     void stop();
 };
-
+} // namespace utils
 #endif //LOGIC_Timer_HPP

@@ -6,7 +6,7 @@
 #include "../player/Player.hpp"
 #include "../TypeСonstants.hpp"
 
-template <class T>
+template <typename T>
 class GameRoom;
 
 class Rule
@@ -20,7 +20,7 @@ protected:
 
 public:
     // virtual bool checkWin(GameRoom<Rule> *gameRoom) = 0;
-    std::function<bool(Player *, Player *)> sequenceOfMoves;
+    std::function<bool(Player *&, Player *&)> sequenceOfMoves;
     virtual unsigned int getType() = 0;
     double getStepTime();
     template <class T>

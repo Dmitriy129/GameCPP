@@ -286,6 +286,7 @@ void Game::eventHandler(Event *event)
 
 void Game::saveRoom(std::string editorID, std::string roomID)
 {
+
     GameRoom<Rule> *gameRoom = getGameRoom(roomID);
     if (gameRoom->getEditor())
         historyGameRooms[roomID].push_back(new GameRoomMemento(std::string(roomID + "#" + std::to_string(historyGameRooms[roomID].size())), gameRoom));

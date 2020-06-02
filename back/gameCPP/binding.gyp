@@ -11,6 +11,7 @@
                     "OS=='mac'",
                     {
                         "xcode_settings": {
+                            'GCC_ENABLE_CPP_EXCEPTIONS': 'YES',
                             "OTHER_CPLUSPLUSFLAGS": [
                                 "-mmacosx-version-min=10.15",
                                 "-w"

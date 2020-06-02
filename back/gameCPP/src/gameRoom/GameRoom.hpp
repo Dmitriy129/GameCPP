@@ -13,7 +13,7 @@
 #include "../editor/Editor.hpp"
 #include "gameRoomState/GameRoomState.hpp"
 
-template <class T>
+template <typename T>
 class GameRoom : public EventProvider, public GameRoomState
 {
 private:

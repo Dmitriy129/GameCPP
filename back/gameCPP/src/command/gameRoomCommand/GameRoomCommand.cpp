@@ -54,7 +54,7 @@ void GameRoomCommand::execute(v8::Local<v8::Value> request)
         if (!GetObjProperty(playerInfo, "playerName", playerName))
             return;
 
-        // // // std::cout << "#grce addpl#\n";
+        // std::cout << "#grce addpl#\n";
 
         gameRoom->addPlayer(playerID, playerName);
     }
@@ -78,13 +78,16 @@ void GameRoomCommand::execute(v8::Local<v8::Value> request)
                 //     std::cout << "######2####\n";
 
                 command = new PlayerCommand(player);
+
+                gameRoom->nextPlayer();
             }
             else
             {
+
                 v8::Local<v8::Object> res = Nan::New<v8::Object>();
                 gameRoom->SetObjProperty(res, "playerID", userID);
                 gameRoom->fireEvent("player does not have permission", res);
-                //     std::cout << "#player does not have permission#\n";
+                std::cout << "#player does not have permission#\n";
                 return;
             }
             //     std::cout << "######3####\n";
