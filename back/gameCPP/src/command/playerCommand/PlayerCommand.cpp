@@ -7,7 +7,7 @@ PlayerCommand::PlayerCommand(Player *player) /* , v8::Isolate *isolate) : Comman
 
 void PlayerCommand::execute(v8::Local<v8::Value> request)
 {
-    // std::cout << "#pces#\n";
+    // // // std::cout << "#pces#\n";
 
     v8::Local<v8::Object> objRequest;
 
@@ -28,7 +28,7 @@ void PlayerCommand::execute(v8::Local<v8::Value> request)
 
     if (task == MOVE)
     {
-        // std::cout << "#pce move#\n";
+        // // // std::cout << "#pce move#\n";
 
         /* * * * * */
         v8::Local<v8::Object> moveInfo;
@@ -54,14 +54,14 @@ void PlayerCommand::execute(v8::Local<v8::Value> request)
             return;
         if (!GetObjProperty(moveTo, "toY", toY))
             return;
-        // std::cout << "#pcem#\n";
+        // // // std::cout << "#pcem#\n";
 
         player->moveObject(fromY, fromX, toY, toX);
     }
     else if (task == ADD_OBJ)
     {
 
-        // std::cout << "#pce add obj#\n";
+        // // // std::cout << "#pce add obj#\n";
 
         /* * * * * */
         v8::Local<v8::Object> combatObjectInfo;
@@ -79,7 +79,7 @@ void PlayerCommand::execute(v8::Local<v8::Value> request)
         if (!GetObjProperty(combatObjectInfo, "combatObjectType", combatObjectType))
             return;
 
-        // std::cout << "#grce add obj comb check#\n";
+        // // // std::cout << "#grce add obj comb check#\n";
 
         if (combatObjectType == BASE)
         {

@@ -5,8 +5,9 @@
 //     this->file.open(filename);
 //     file << JSONStringified(data);
 // }
-GameRoomMemento::GameRoomMemento(std::string filename, GameRoom<Rule> *&gameRoom) : gameRoom(gameRoom)
+GameRoomMemento::GameRoomMemento(std::string filename, GameRoom<Rule> *gameRoom)
 {
+    this->gameRoom = gameRoom;
     std::string dir = "saves/" + gameRoom->getRoomName() + "#" + gameRoom->getRoomID();
     // mkdir(dir);
     if (!std::__fs::filesystem::exists(dir))
@@ -16,7 +17,10 @@ GameRoomMemento::GameRoomMemento(std::string filename, GameRoom<Rule> *&gameRoom
     {
         std::ofstream ofile;
         ofile.open(dir + "/" + filename + ".json");
+        // std::cout << "strt############GameRoomMemento::GameRoomMemento\n";
         ofile << JSONStringified(gameRoom->getFullInfo());
+        // std::cout << "end############GameRoomMemento::GameRoomMemento\n";
+
         ofile.close();
     }
     this->ifile.open(dir + "/" + filename + ".json");
@@ -41,9 +45,19 @@ void GameRoomMemento::restoreMemento()
     // std::cout << "##########Game::loadRoom\n";
     std::string jsonStr;
     ifile >> jsonStr;
-    std::cout << jsonStr << std::endl;
+    // std::cout << jsonStr << std::endl;
 
     v8::Local<v8::Object> info = JSONParse(jsonStr);
+    // { //rule
+    //     unsigned int rule;
+    //     if (!GetObjProperty(info, "rule", rule))
+    //         return;
+    //     if (rule == 0)
+    //         gameRoom->rule = new Rule1();
+    //     if (rule == 1)
+    //         gameRoom->rule = new Rule2();
+    // }
+
     v8::Local<v8::Object> fieldInfo;
 
     if (!GetObjProperty(info, "field", fieldInfo))
@@ -70,15 +84,21 @@ void GameRoomMemento::restoreMemento()
     for (unsigned int row = 0; row < rowsQuantity; row++)
         for (unsigned int column = 0; column < columnsQuantity; column++)
         {
-            FieldCell &cell = gameRoom->field->getFieldCell(row, column);
+            // std::cout << row << column << "##########Game::loadRoom\n";
+            // std::cout << gameRoom->field->getRowsQuantity() << gameRoom->field->getColumnsQuantity() << "##########Game::loadRoom\n";
+
+            FieldCell *cell = gameRoom->getFieldCell(row, column);
             unsigned int landscapeType = 0;
             // GetArrProperty(landscapes, row * columnsQuantity + column, landscapeType);
-            cell.setLandscape(new LandscapeProxy(landscapeType));
-            if (cell.getObject() != nullptr)
+            // std::cout << row << column << "##########Game::loadRoom\n";
+            cell->setLandscape(new LandscapeProxy(landscapeType));
+
+            if (cell->getObject() != nullptr)
             {
-                // delete cell.getObject();
-                cell.setObject(nullptr);
+                // delete cell->getObject();
+                cell->setObject(nullptr);
             }
+            // std::cout << row << column << "##########Game::loadRoom\n";
         }
     // std::cout << "##########Game::loadRoom\n";
     //players
@@ -135,7 +155,7 @@ void GameRoomMemento::restoreMemento()
             std::map<unsigned int, double> restoredResourceBag;
             // unsigned int type;
             // double quantity;
-            // std::cout << "##########Game::loadRoom\n";s
+            // std::cout << "##########Game::loadRoom\n";
 
             if (!GetObjProperty(player, "resourceBag", resourceBag))
                 return;

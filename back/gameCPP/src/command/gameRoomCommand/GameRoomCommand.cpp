@@ -3,7 +3,7 @@
 
 GameRoomCommand::GameRoomCommand(GameRoom<Rule> *gameRoom) /* , v8::Isolate *isolate) : Command(isolate) */
 {
-    // std::cout << "#grcc#\n";
+    // // // std::cout << "#grcc#\n";
 
     this->gameRoom = gameRoom;
     // gameRoom->SetIsolate(isolate);
@@ -11,7 +11,7 @@ GameRoomCommand::GameRoomCommand(GameRoom<Rule> *gameRoom) /* , v8::Isolate *iso
 
 void GameRoomCommand::execute(v8::Local<v8::Value> request)
 {
-    // std::cout << "#grces#\n";
+    // // // std::cout << "#grces#\n";
 
     v8::Local<v8::Object> objRequest;
 
@@ -31,7 +31,7 @@ void GameRoomCommand::execute(v8::Local<v8::Value> request)
     if (!GetObjProperty(objRequest, "params", params))
         return;
 
-    // std::cout << "#grce 1#\n";
+    // // // std::cout << "#grce 1#\n";
 
     if (task == GET_FIELD)
     {
@@ -54,7 +54,7 @@ void GameRoomCommand::execute(v8::Local<v8::Value> request)
         if (!GetObjProperty(playerInfo, "playerName", playerName))
             return;
 
-        // std::cout << "#grce addpl#\n";
+        // // // std::cout << "#grce addpl#\n";
 
         gameRoom->addPlayer(playerID, playerName);
     }
@@ -90,7 +90,7 @@ void GameRoomCommand::execute(v8::Local<v8::Value> request)
         {
             command->execute(request);
 
-            // std::cout << "#grce add obj#\n";
+            // // // std::cout << "#grce add obj#\n";
 
             /* * * * * */
             unsigned int objectType;
@@ -104,12 +104,12 @@ void GameRoomCommand::execute(v8::Local<v8::Value> request)
             }
             else if (objectType == COMB_OBJ)
             {
-                // std::cout << "#grce add obj comb#\n";
+                // // // std::cout << "#grce add obj comb#\n";
 
                 // command *command = new command(gameRoom->getPlayer(userID) /* , isolate */);
             }
         }
         delete command;
     }
-    // std::cout << "#grcee#\n";
+    // // // std::cout << "#grcee#\n";
 }

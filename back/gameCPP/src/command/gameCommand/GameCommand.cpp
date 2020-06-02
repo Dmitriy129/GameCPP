@@ -2,7 +2,7 @@
 #include "GameCommand.hpp"
 GameCommand::GameCommand(Game *game) /* , v8::Isolate *isolate) : Command(isolate) */
 {
-    // std::cout << "#2#\n";
+    // // // std::cout << "#2#\n";
     this->game = game;
 
     // game->SetIsolate(isolate);
@@ -11,7 +11,7 @@ GameCommand::GameCommand(Game *game) /* , v8::Isolate *isolate) : Command(isolat
 void GameCommand::execute(v8::Local<v8::Value> request)
 {
 
-    // std::cout << "#3#\n";
+    // // // std::cout << "#3#\n";
 
     v8::Local<v8::Object> objRequest;
 
@@ -35,7 +35,7 @@ void GameCommand::execute(v8::Local<v8::Value> request)
 
     if (task == ADD_ROOM)
     {
-        std::cout << "#1#\n";
+        // // std::cout << "#1#\n";
 
         /* * * * * */
         std::string roomName;
@@ -59,10 +59,10 @@ void GameCommand::execute(v8::Local<v8::Value> request)
             return;
         if (!GetObjProperty(fieldInfo, "columnsQuantity", columnsQuantity))
             return;
-        std::cout << "#2#\n";
+        // // std::cout << "#2#\n";
 
         this->game->addGameRoom(editorID, roomID, roomName, rowsQuantity, columnsQuantity, rule);
-        std::cout << "#end#\n";
+        // // std::cout << "#end#\n";
     }
     else if (task == SAVE_ROOM || task == LOAD_ROOM)
     {
@@ -85,10 +85,10 @@ void GameCommand::execute(v8::Local<v8::Value> request)
     {
         GameRoomCommand *gameRoomCommand = new GameRoomCommand(game->getGameRoom(roomID) /* , isolate */);
         gameRoomCommand->execute(request);
-        // std::cout << "#4#\n";
+        // // // std::cout << "#4#\n";
 
         delete gameRoomCommand;
-        // std::cout << "#5#\n";
+        // // // std::cout << "#5#\n";
     }
-    // std::cout << "#gcee#\n";
+    // // // std::cout << "#gcee#\n";
 }

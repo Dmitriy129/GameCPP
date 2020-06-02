@@ -5,16 +5,16 @@ namespace demo
 
 UIFacade::UIFacade()
 {
-    // std::cout << "#**UIFacade con start\n";
+    // // // std::cout << "#**UIFacade con start\n";
 
     this->game = new Game();
 
-    // std::cout << "#**UIFacade con 1\n";
+    // // // std::cout << "#**UIFacade con 1\n";
 
     logger = new LoggerProxy("file", "GameLogs");
     // logger = new LoggerProxy("console");
 
-    // std::cout << "#**UIFacade con 2\n";
+    // // // std::cout << "#**UIFacade con 2\n";
 
     game->attachEvent("object updated", this);
     game->attachEvent("tabel of GameRooms update", this);
@@ -23,7 +23,7 @@ UIFacade::UIFacade()
     // game->attachEvent("all events", logger);
     game->attachEvent("log", logger);
     this->attachEvent("command", logger);
-    // std::cout << "#**UIFacade con eend\n";
+    // // // std::cout << "#**UIFacade con eend\n";
 }
 UIFacade::~UIFacade()
 {
@@ -90,7 +90,7 @@ void UIFacade::sendRequest(const v8::FunctionCallbackInfo<v8::Value> &args)
 
     uiFacade->response = v8::Array::New(isolate);
     uiFacade->fireEvent("command", request);
-    // std::cout << "#1#\n";
+    // // // std::cout << "#1#\n";
 
     GameCommand *gameCommand = new GameCommand(uiFacade->game /* , isolate */);
     gameCommand->execute(request);
@@ -103,17 +103,17 @@ void UIFacade::sendRequest(const v8::FunctionCallbackInfo<v8::Value> &args)
 
 void UIFacade::eventHandler(Event *event)
 {
-    // std::cout << "#UI ev1#\n";
+    // // // std::cout << "#UI ev1#\n";
 
     v8::Local<v8::Object> objResponse = Nan::New<v8::Object>();
-    // std::cout << "#UI ev2#\n";
+    // // // std::cout << "#UI ev2#\n";
 
     SetObjProperty(objResponse, "eventType", event->getSEventId());
     SetObjProperty(objResponse, "data", event->getData());
-    // std::cout << "#UI ev3#\n";
+    // // // std::cout << "#UI ev3#\n";
 
     SetArrProperty(this->response, this->response->Length(), objResponse);
-    // std::cout << "#UI ev4#\n";
+    // // // std::cout << "#UI ev4#\n";
 };
 
 } // namespace demo

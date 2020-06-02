@@ -18,7 +18,7 @@ void Unit::setHealth(double health)
         death();
     else
     {
-        // std::cout << "#unit ev updd#\n";
+        // // // std::cout << "#unit ev updd#\n";
         fireEvent("object updated");
     }
 

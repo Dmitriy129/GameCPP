@@ -7,7 +7,10 @@
 class Rule1 : public Rule
 {
 public:
+    // bool checkWin(GameRoom<Rule> *gameRoom) override;
     Rule1();
+    // std::function<bool(Player *, Player *)> sequenceOfMoves ;
+    unsigned int getType() override;
     template <class T>
     bool checkWin(GameRoom<T> *gameRoom);
 };

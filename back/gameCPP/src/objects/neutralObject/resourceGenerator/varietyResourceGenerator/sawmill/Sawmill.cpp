@@ -9,7 +9,7 @@ Sawmill::Sawmill(std::string ID)
 
 // void Sawmill::getResPerStepForUnit()
 // {
-//     std::cout << "You have earned " << resPerStep * useStrategy() << " wood";
+//     // // std::cout << "You have earned " << resPerStep * useStrategy() << " wood";
 // }
 
 // std::string Sawmill::getObjectType() { return "Sawmill"; }

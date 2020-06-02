@@ -33,7 +33,7 @@ void ResourceGenerator::operator+(Object *object)
     {
         this->playerID = object->getPlayerID();
         unsigned int objectType = object->getObjectType();
-        // std::cout << "Now " << this->getObjectType() << " is owned by playerID: " << this->getPlayerID() << "\n";
+        // // // std::cout << "Now " << this->getObjectType() << " is owned by playerID: " << this->getPlayerID() << "\n";
         if (objectType == ARCH_DPS || objectType == ARCH_TANK)
             setStrategy(new StrategyResArcher);
         if (objectType == CAV_DPS || objectType == CAV_TANK)

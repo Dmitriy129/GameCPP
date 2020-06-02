@@ -34,10 +34,8 @@ public:
 
     // GameRoom(std::string roomID, std::string roomName, Field *field);
     ~GameRoom();
-
     friend class GameRoomMemento;
     friend class Rule;
-
     //about room
     std::string getRoomID();
     std::string getRoomName();
@@ -46,7 +44,7 @@ public:
     FieldCell *getFieldCell(unsigned int x, unsigned int y);
     unsigned int getFieldRowsQuantity();
     unsigned int getFieldColumnsQuantity();
-    std::vector<std::string> getLandscapes();
+    // std::vector<std::string> getLandscapes();
     // std::vector<std::string> getObjects();
 
     //about players

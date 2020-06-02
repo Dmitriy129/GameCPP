@@ -34,7 +34,7 @@ void Player::createUnit(unsigned int rowNumber, unsigned int columnNumber, unsig
 {
     if (base == nullptr)
     {
-        std::cout << "error# in file *Player*\n\tCerate the base first.\n";
+        // // std::cout << "error# in file *Player*\n\tCerate the base first.\n";
         return;
     }
 
@@ -49,7 +49,7 @@ void Player::createUnit(unsigned int rowNumber, unsigned int columnNumber, unsig
     //     classUnit = "infantry";
     // else
     // {
-    //     std::cout << "error1# in file *Player*\n";
+    //     // // std::cout << "error1# in file *Player*\n";
     //     return;
     // }
 
@@ -59,7 +59,7 @@ void Player::createUnit(unsigned int rowNumber, unsigned int columnNumber, unsig
     //     typeUnit = "TANK";
     // else
     // {
-    //     std::cout << "error2# in file *Player*\n";
+    //     // // std::cout << "error2# in file *Player*\n";
     //     return;
     // }
     // if (type.find("archer") != std::string::npos)
@@ -70,7 +70,7 @@ void Player::createUnit(unsigned int rowNumber, unsigned int columnNumber, unsig
     //     classUnit = "infantry";
     // else
     // {
-    //     std::cout << "error# in file *Player*\n";
+    //     // // std::cout << "error# in file *Player*\n";
     //     return;
     // }
 
@@ -80,7 +80,7 @@ void Player::createUnit(unsigned int rowNumber, unsigned int columnNumber, unsig
     //     typeUnit = "TANK";
     // else
     // {
-    //     std::cout << "error# in file *Player*\n";
+    //     // // std::cout << "error# in file *Player*\n";
     //     return;
     // }
     // Unit *unit = base->createUnit(classUnit, typeUnit, uuidGen->generateUUID(), combatObjectTypeFactory);
@@ -119,11 +119,13 @@ v8::Local<v8::Object> Player::getFullInfo()
 {
     v8::Local<v8::Object> info = Nan::New<v8::Object>();
     v8::Local<v8::Object> ResourceBag = Nan::New<v8::Object>();
-
+    // // std::cout << "strrt############Player::getFullInfo\n";
     SetObjProperty(info, "resourceBag", resourceBag->getFullInfo());
     SetObjProperty(info, "playerName", playerName);
     SetObjProperty(info, "playerID", playerID);
+    // // std::cout << "1############Player::getFullInfo\n";
     SetObjProperty(info, "base", field->getObjectData(base));
+    // // std::cout << "end############Player::getFullInfo\n";
 
     return info;
 }
