@@ -1,23 +1,23 @@
 #include "SimplifiedConverter.hpp"
-// SimplifiedConverter::SimplifiedConverter(v8::Isolate *isolate)
-// {
-//     this->isolate = isolate;
-// }
-// SimplifiedConverter::SimplifiedConverter()
-// {
-// }
-// SimplifiedConverter::~SimplifiedConverter()
-// {
-// }
 
-// v8::Isolate *SimplifiedConverter::GetIsolate()
-// {
-//     return this->isolate;
-// }
-// void SimplifiedConverter::SetIsolate(v8::Isolate *isolate)
-// {
-//     this->isolate = isolate;
-// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 bool SimplifiedConverter::GetObjProperty(v8::Local<v8::Object> obj, std::string propertyName, unsigned int &value)
 {
@@ -129,9 +129,9 @@ bool SimplifiedConverter::GetObjProperty(v8::Local<v8::Object> obj, unsigned int
 
     if (obj->IsObject())
     {
-        // v8::Local<v8::Value> propertyValue;
-        // Nan::HasRealIndexedProperty(obj, index).ToLocal(&propertyValue);
-        // value = propertyValue->ToNumber(isolate)->Value();
+        
+        
+        
         GetObjProperty(obj, std::to_string(index), value);
         return true;
     }
@@ -162,12 +162,12 @@ bool SimplifiedConverter::SetObjProperty(v8::Local<v8::Object> &obj, std::string
 {
     v8::Isolate *isolate = obj->GetIsolate();
 
-    // // std::cout << "222RuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule\n";
-    // // std::cout << "223RuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule\n";
+    
+    
     if (obj->IsObject())
     {
 
-        // Nan::Set(obj, Nan::New(propertyName).ToLocalChecked(), Nan::New(value).ToLocalChecked());
+        
         obj->Set(v8::String::NewFromUtf8(isolate, propertyName.c_str(), v8::NewStringType::kNormal).ToLocalChecked(), v8::String::NewFromUtf8(isolate, value.c_str(), v8::NewStringType::kNormal).ToLocalChecked());
         return true;
     }
@@ -189,13 +189,13 @@ bool SimplifiedConverter::SetObjProperty(v8::Local<v8::Object> &obj, std::string
 bool SimplifiedConverter::SetObjProperty(v8::Local<v8::Object> &obj, std::string propertyName, v8::Local<v8::Object> value)
 {
     v8::Isolate *isolate = obj->GetIsolate();
-    // // // // std::cout << "##########SimplifiedConverter::SetObjProperty\n";
+    
 
     if (obj->IsObject())
     {
-        // // // // std::cout << JSONStringified(obj) << "##########SimplifiedConverter::SetObjProperty\n";
-        // // // // std::cout << propertyName << "##########SimplifiedConverter::SetObjProperty\n";
-        // // // // std::cout << JSONStringified(value) << "##########SimplifiedConverter::SetObjProperty\n";
+        
+        
+        
 
         obj->Set(v8::String::NewFromUtf8(isolate, propertyName.c_str(), v8::NewStringType::kNormal).ToLocalChecked(), value);
         return true;

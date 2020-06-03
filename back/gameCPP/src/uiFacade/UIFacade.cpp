@@ -77,7 +77,6 @@ void UIFacade::sendRequest(const v8::FunctionCallbackInfo<v8::Value> &args)
 
     uiFacade->response = v8::Array::New(isolate);
     uiFacade->fireEvent("command", request);
-    // // // // std::cout << "#1#\n";
 
     GameCommand *gameCommand = new GameCommand(uiFacade->game /* , isolate */);
     gameCommand->attachEvent("except", uiFacade);
@@ -85,23 +84,18 @@ void UIFacade::sendRequest(const v8::FunctionCallbackInfo<v8::Value> &args)
 
     delete gameCommand;
 
-    // args.GetReturnValue().Set(v8::String::NewFromUtf8(isolate, "COMMAND EXEC"));
     args.GetReturnValue().Set(uiFacade->response);
 }
 
 void UIFacade::eventHandler(Event *event)
 {
-    // // // // std::cout << "#UI ev1#\n";
 
     v8::Local<v8::Object> objResponse = Nan::New<v8::Object>();
-    // // // // std::cout << "#UI ev2#\n";
 
     SetObjProperty(objResponse, "eventType", event->getSEventId());
     SetObjProperty(objResponse, "data", event->getData());
-    // // // // std::cout << "#UI ev3#\n";
 
     SetArrProperty(this->response, this->response->Length(), objResponse);
-    // // // // std::cout << "#UI ev4#\n";
 };
 
 } // namespace demo

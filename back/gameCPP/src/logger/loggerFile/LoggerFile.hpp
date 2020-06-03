@@ -16,7 +16,7 @@ public:
     ~LoggerFile();
 
     void printLog(std::string strLog) override;
-    // void eventHandler(Event *event);
+    
 };
 
 #endif /* LoggerFile_hpp */

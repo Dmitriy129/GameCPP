@@ -24,7 +24,7 @@ LandscapeProxy ::~LandscapeProxy()
 unsigned int LandscapeProxy::getLandscapeType()
 {
     return landscape->getLandscapeType();
-    // return "LandscapeProxy";
+    
 }
 bool LandscapeProxy::checkAccessMove(unsigned int objectType)
 {

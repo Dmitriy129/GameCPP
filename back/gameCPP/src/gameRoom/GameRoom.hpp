@@ -36,27 +36,27 @@ public:
     friend class GameRoomMemento;
     friend class Rule;
 
-    //about room
+    
     std::string getRoomID();
     std::string getRoomName();
-    //*
-    //about Field
+    
+    
     FieldCell *getFieldCell(unsigned int x, unsigned int y);
     unsigned int getFieldRowsQuantity();
     unsigned int getFieldColumnsQuantity();
-    // std::vector<std::string> getLandscapes();
-    // std::vector<std::string> getObjects();
+    
+    
 
-    //about players
+    
     void addPlayer(std::string playerID, std::string PlayerName);
     void removePlayer(std::string playerID);
-    // */
+    
 
     /* for player  */
-    // void createBase(std::string playerID, unsigned int rowNumber, unsigned int columnNumber);
-    // void createUnit(std::string playerID, unsigned int rowNumber, unsigned int columnNumber, std::string type);
-    // void moveObject(std::string playerID, unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber);
-    // void interactionObject(std::string playerID, unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber);
+    
+    
+    
+    
     /*  */
 
     void nextPlayer() override;
@@ -71,7 +71,7 @@ public:
     unsigned int getPlayersQuantity();
     std::vector<std::string> getPlayersID();
     std::vector<std::string> getPlayersNames();
-    //
+    
     v8::Local<v8::Object> getGameRoomFieldData();
     v8::Local<v8::Object> getGameRoomData();
 

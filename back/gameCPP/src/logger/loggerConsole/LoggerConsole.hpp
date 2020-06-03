@@ -10,7 +10,7 @@ class LoggerConsole : public Logger
 {
 public:
     void printLog(std::string strLog) override;
-    // void eventHandler(Event *event);
+    
 };
 
 #endif /* LoggerConsole_hpp */

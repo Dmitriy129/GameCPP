@@ -3,13 +3,13 @@
 
 Unit::~Unit()
 {
-    // delete type;
+    
 }
 void Unit::operator+(Object *object) {}
 
 bool Unit::isMoveable() { return true; }
-// std::string Unit::getPlayerID() { return playerID; }
-// std::string Unit::getObjectType() { return "Unit"; }
+
+
 
 /*
 void Unit::setHealth(double health)
@@ -18,7 +18,7 @@ void Unit::setHealth(double health)
         death();
     else
     {
-        // // // // std::cout << "#unit ev updd#\n";
+        
         fireEvent("object updated");
     }
 
@@ -32,11 +32,11 @@ double Unit::getArmor() const { return type->getArmor(); } */
 
 void Unit::death() { fireEvent("object death"); }
 
-// void UnitDPS::underAttack(double damage, double armor)
-// {
-//     damage = damage * (1 + (armor - this->type->getArmor()) / 10);
-//     this->setHealth(this->getHealth() - damage);
-// }
+
+
+
+
+
 
 v8::Local<v8::Object> Unit::getFullInfo()
 {

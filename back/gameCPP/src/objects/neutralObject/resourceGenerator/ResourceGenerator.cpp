@@ -1,16 +1,16 @@
 #include "ResourceGenerator.hpp"
 
-// void ResourceGenerator::operator+(CombatObject *unit)
-// {
-//     this->playerID = unit->getPlayerID();
-//     if (unit->getObjectType().find("Archer") != std::string::npos)
-//         setStrategy(new StrategyResArcher);
-//     if (unit->getObjectType().find("Cavalry") != std::string::npos)
-//         setStrategy(new StrategyResCavalry);
-//     if (unit->getObjectType().find("Infantry") != std::string::npos)
-//         setStrategy(new StrategyResInfantry);
-//     getResPerStepForUnit();
-// }
+
+
+
+
+
+
+
+
+
+
+
 ResourceGenerator::ResourceGenerator()
 {
     resPerStep = 10;
@@ -33,7 +33,7 @@ void ResourceGenerator::operator+(Object *object)
     {
         this->playerID = object->getPlayerID();
         unsigned int objectType = object->getObjectType();
-        // // // // std::cout << "Now " << this->getObjectType() << " is owned by playerID: " << this->getPlayerID() << "\n";
+        
         if (objectType == ARCH_DPS || objectType == ARCH_TANK)
             setStrategy(new StrategyResArcher);
         if (objectType == CAV_DPS || objectType == CAV_TANK)

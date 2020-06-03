@@ -24,9 +24,9 @@ Unit *Base::createUnit(unsigned int type, std::string unitID, CombatObjectTypeFa
 {
     if (quantityOfUnits == maxQuantityOfUnits)
     {
-        // // // std::cout << "error# The maximum number of units in the Base(\"" << this->getPlayerID() << "\") has already been created"
-        //    <<std::endl
-        //    <<"*in file Base*\n";
+        
+        
+        
         throw(Except("The maximum number of units in the Base has already been created", "Base::createUnit(unsigned int type, std::string unitID, CombatObjectTypeFactory *combatObjectTypeFactory)", 0));
 
         return nullptr;
@@ -41,9 +41,9 @@ Unit *Base::createUnit(unsigned int type, std::string unitID, CombatObjectTypeFa
     else
     {
 
-        // // // std::cout << "error# Unknown unit type"
-        //    <<std::endl
-        //    <<"*in file Base*\n";
+        
+        
+        
         throw(Except("Unknown unit type", "Base::createUnit(unsigned int type, std::string unitID, CombatObjectTypeFactory *combatObjectTypeFactory)", 0));
 
         return nullptr;
@@ -78,7 +78,7 @@ Unit *Base::factoryUnit(UnitTankFactory *factory, unsigned int type, std::string
         return factory->createInfantry(playerID, unitID, combatObjectTypeFactory);
     if (type == CAV_TANK || type == CAV_DPS)
         return factory->createCavalry(playerID, unitID, combatObjectTypeFactory);
-    // // // std::cout << "error# unknown unit class\n *in file \"base\"\n";
+    
     throw(Except("Unknown unit class", "Base::factoryUnit(UnitTankFactory *factory, unsigned int type, std::string unitID, CombatObjectTypeFactory *combatObjectTypeFactory)", 0));
 
     return nullptr;
@@ -93,7 +93,7 @@ Unit *Base::factoryUnit(UnitDPSFactory *factory, unsigned int type, std::string 
         return factory->createInfantry(playerID, unitID, combatObjectTypeFactory);
     if (type == CAV_TANK || type == CAV_DPS)
         return factory->createCavalry(playerID, unitID, combatObjectTypeFactory);
-    // // // std::cout << "error# unknown unit class\n *in file \"base\"\n";
+    
     throw(Except("Unknown unit class", "Base::factoryUnit(UnitDPSFactory *factory, unsigned int type, std::string unitID, CombatObjectTypeFactory *combatObjectTypeFactory)", 0));
 
     return nullptr;

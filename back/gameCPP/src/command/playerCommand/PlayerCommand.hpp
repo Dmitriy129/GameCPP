@@ -9,11 +9,11 @@ class PlayerCommand : public Command
 {
 private:
     Player *player;
-    // PlayerCommand *playerCommand;
+    
 
 public:
     PlayerCommand(Player *player);
-    // ~PlayerCommand();
+    
     void execute(v8::Local<v8::Value> request) override;
 };
 

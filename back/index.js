@@ -59,7 +59,7 @@ io.on('connection', (socket) => {
 
 
 
-    socket.on('disconnect', () => {                             //add delete frome rooms
+    socket.on('disconnect', () => {                             
         console.log("*User disconnected*")
         let userID = getPlayerIDBySocket(socket)
         console.log("*User removed: " + userID + "*")

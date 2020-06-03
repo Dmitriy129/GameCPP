@@ -10,9 +10,9 @@ class Logger : public EventProvider
 
     void eventHandler(Event *event);
 public:
-    // friend std::ostream &operator<<(std::ostream &out, std::string str);
+    
 
-    // virtual void operator<<(std::string strLog) = 0;
+    
     virtual void printLog(std::string strLog) = 0;
 };
 

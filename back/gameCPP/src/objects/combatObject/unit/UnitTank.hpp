@@ -2,7 +2,7 @@
 #define UnitTank_hpp
 
 #include <stdio.h>
-// #include "../CombatObject.hpp"
+
 #include "Unit.hpp"
 
 class UnitTank : public virtual Unit /*, CombatObject */

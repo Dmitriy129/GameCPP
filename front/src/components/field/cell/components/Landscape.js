@@ -19,13 +19,13 @@ class Landscape extends Component {
 
     render() {
         return (
-            // <div >
-            // <img key={this.state.id} src={"/components/field/cell/components/landscapes/" + this.state.type + ".png"} onClick={this.handleClick} alt={"landscape *" + this.state.type + "*"} className="landscape"></img>
+            
+            
             <div key={this.state.id} style={{ background: "url(/components/field/cell/components/landscapes/land" + this.state.type + ".png)" }} onClick={this.handleClick} alt={"landscape *" + this.state.type + "*"} className="landscape" >
                 {this.props.children}
             </div>
 
-            // </div>
+            
         )
     }
 }

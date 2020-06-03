@@ -2,7 +2,7 @@
 #define Editor_hpp
 
 #include "../field/Field.hpp"
-// #include "../TypeСonstants.hpp"
+
 #include "../uuid/UUID.hpp"
 #include "../objects/neutralObject/NeutralObjectFactory.hpp"
 

@@ -10,7 +10,7 @@
 class Landscape
 {
 public:
-    // Landscape() = default;
+    
     virtual unsigned int getLandscapeType() = 0;
     virtual bool checkAccessMove(unsigned int objectType) = 0;
     virtual bool checkAccessInteraction(unsigned int objectType) = 0;

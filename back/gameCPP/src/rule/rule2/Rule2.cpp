@@ -11,7 +11,7 @@ unsigned int Rule2::getType()
     return RULE2;
 }
 
-// std::function<bool(Player *, Player *)> Rule2::
+
 
 template <class T>
 bool Rule2::checkWin(GameRoom<T> *gameRoom)
@@ -28,7 +28,6 @@ bool Rule2::checkWin(GameRoom<T> *gameRoom)
     }
     return false;
 }
-// bool Rule2::checkWin(GameRoom<Rule> *gameRoom)
-// {
-//     std::find_if(gameRoom->players.begin(), gameRoom->players.end(), [](Player *player) { return player->getBase()->getArmyQuantity() >= NEED_UNITS; });
-// }
+
+
+

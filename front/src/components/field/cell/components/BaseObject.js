@@ -16,7 +16,7 @@ class BaseObject extends Component {
     handleClick() {
     }
     componentDidMount() {
-        // this.setState({ type: this.props.type })
+        
     }
 
     componentDidUpdate() {
@@ -26,14 +26,14 @@ class BaseObject extends Component {
 
 
     render() {
-        // debugger
+        
         return (
-            // <div >
+            
             <div key={this.state.id}
                 style={{ background: "url(/components/field/cell/components/units/" + this.state.type + ".png)", transform: `matrix(1, 0, 0, 1, ${this.state.size * 0.25}, ${this.state.size * 0.25})` }}
                 onClick={this.handleClick} alt={"BaseObject *" + this.state.type + "*"}
                 className="object" ></div>
-            // </div>
+            
         )
     }
 }

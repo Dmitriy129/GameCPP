@@ -2,23 +2,23 @@ import React, { Component } from 'react';
 import BaseObject from './components/BaseObject'
 import Landscape from './components/Landscape'
 import CellMenu from './components/CellMenu'
-// import Menu from '@material-ui/core/Menu';
-// import MenuItem from '@material-ui/core/MenuItem';
+
+
 
 import "../field.css"
-// import socket from '../../../WebSocket';
 
 
-// const BASE_WIDTH = window.innerWidth / 20
+
+
 
 class CellContainer extends Component {
     constructor(props) {
         super(props);
         this.handleOpen = this.handleOpen.bind(this)
         this.handleClose = this.handleClose.bind(this)
-        // this.CreateBase = this.CreateBase.bind(this)
-        // this.CreateUnit = this.CreateUnit.bind(this)
-        // this.MoveUnit = this.MoveUnit.bind(this)
+        
+        
+        
 
         this.state = {
             id: props.id,

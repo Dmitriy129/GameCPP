@@ -2,7 +2,7 @@
 #define UnitTankFactory_hpp
 
 #include <stdio.h>
-// #include "../../base/Base.hpp"
+
 #include "UnitAbstractFactory.hpp"
 #include "varietyUnits/infantry/InfantryTank.hpp"
 #include "varietyUnits/cavalry/CavalryTank.hpp"

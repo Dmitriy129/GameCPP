@@ -10,7 +10,7 @@
 #include "../eventProvider/EventProvider.hpp"
 #include "../mediator/Mediator.hpp"
 
-// class FieldMediator;
+
 class Unit;
 class Base;
 class Field : public EventProvider
@@ -24,8 +24,8 @@ private:
     unsigned int maximumObjectsQuantity;
     Mediator *mediator;
 
-    // void battle(CombatObject *obj1, CombatObject *obj2);
-    // void interactionObjObj(Object *object1, Object *object2);
+    
+    
 
 public:
     Field(unsigned int rowsQuantity, unsigned int columnsQuantity, unsigned int maximumObjectsQuantity, Mediator *mediator);
@@ -44,8 +44,8 @@ public:
     unsigned int getColumnsQuantity() const;
     unsigned int getMaximumObject() const;
     unsigned int getCurrentObject() const;
-    // std::vector<std::string> getLandscapes();
-    // std::vector<std::string> getObjects();
+    
+    
 
     Mediator *getMediator() const;
     FieldCell &getFieldCell(unsigned int rowNumber, unsigned int columnNumber);
@@ -63,7 +63,7 @@ public:
     v8::Local<v8::Object> getObjectData(unsigned int rowNumber, unsigned int columnNumber);
     void eventHandler(Event *event) override;
 
-    //memento
+    
     v8::Local<v8::Object> getFullInfo();
 };
 

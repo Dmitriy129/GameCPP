@@ -4,7 +4,7 @@ CombatObject::~CombatObject()
 {
     type = nullptr;
 }
-// void CombatObject::setHealth(double health) { this->health = health; }
+
 void CombatObject::setHealth(double health)
 {
     this->health = health;

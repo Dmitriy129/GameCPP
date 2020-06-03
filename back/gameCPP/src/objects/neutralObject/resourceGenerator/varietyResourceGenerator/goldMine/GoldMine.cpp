@@ -7,9 +7,9 @@ GoldMine::GoldMine(std::string ID)
     resType = GOLD;
 };
 
-// void GoldMine::getResPerStepForUnit()
-// {
-//     // // // std::cout << "Team: " << this->playerID << " have earned " << resPerStep * useStrategy() << " gold\n\n";
-// }
 
-// std::string GoldMine::getObjectType() { return "GoldMine"; }
+
+
+
+
+

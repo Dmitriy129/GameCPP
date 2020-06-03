@@ -84,13 +84,13 @@ void operator<<(LoggerProxy *logger, v8::Local<v8::Object> data)
 void LoggerProxy::eventHandler(Event *event)
 {
 
-    // // // // std::cout << "#**evh lp s\n";
+    
     v8::Local<v8::Object> objResponse = Nan::New<v8::Object>();
 
     SetObjProperty(objResponse, "logType", event->getSEventId());
     SetObjProperty(objResponse, "data", event->getData());
 
     this << objResponse;
-    // printLog(objResponse);
-    // // // // std::cout << "#**evh lp end\n";
+    
+    
 }

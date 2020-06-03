@@ -7,7 +7,7 @@ PlayerCommand::PlayerCommand(Player *player) /* , v8::Isolate *isolate) : Comman
 
 void PlayerCommand::execute(v8::Local<v8::Value> request)
 {
-    // // // // std::cout << "#pces#\n";
+    
 
     v8::Local<v8::Object> objRequest;
 
@@ -28,7 +28,7 @@ void PlayerCommand::execute(v8::Local<v8::Value> request)
 
     if (task == MOVE)
     {
-        // // // // std::cout << "#pce move#\n";
+        
 
         /* * * * * */
         v8::Local<v8::Object> moveInfo;
@@ -54,22 +54,22 @@ void PlayerCommand::execute(v8::Local<v8::Value> request)
             return;
         if (!GetObjProperty(moveTo, "toY", toY))
             return;
-        // // // // std::cout << "#pcem#\n";
+        
 
         try
         {
-            player->moveObject(fromY, fromX, toY, toX); //add except done
+            player->moveObject(fromY, fromX, toY, toX); 
         }
         catch (Except &except)
         {
             fireEvent("except", except.getLog());
-            // throw(Except("The object cannot be moved to this cell.(landscape)", "void Field::moveObject(unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber)", 0));
+            
         }
     }
     else if (task == ADD_OBJ)
     {
 
-        // // // // std::cout << "#pce add obj#\n";
+        
 
         /* * * * * */
         v8::Local<v8::Object> combatObjectInfo;
@@ -87,22 +87,22 @@ void PlayerCommand::execute(v8::Local<v8::Value> request)
         if (!GetObjProperty(combatObjectInfo, "combatObjectType", combatObjectType))
             return;
 
-        // // // // std::cout << "#grce add obj comb check#\n";
+        
         try
         {
             if (combatObjectType == BASE)
             {
-                player->createBase(y, x); //add except
+                player->createBase(y, x); 
             }
             else
             {
-                player->createUnit(y, x, combatObjectType); //add except
+                player->createUnit(y, x, combatObjectType); 
             }
         }
         catch (Except &except)
         {
             fireEvent("except", except.getLog());
-            // throw(Except("The object cannot be moved to this cell.(landscape)", "void Field::moveObject(unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber)", 0));
+            
         }
     }
 }

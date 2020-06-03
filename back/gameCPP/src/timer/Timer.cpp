@@ -38,4 +38,4 @@ void Timer::stop()
 {
     this->clear = true;
 }
-} // namespace utils
+} 

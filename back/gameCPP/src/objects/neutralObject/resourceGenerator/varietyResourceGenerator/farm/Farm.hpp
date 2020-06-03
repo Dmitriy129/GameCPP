@@ -9,7 +9,7 @@ class Farm : public ResourceGenerator
 {
 public:
     Farm(std::string ID);
-    // void getResPerStepForUnit() override;
-    // //  std::string getObjectType();
+    
+    
 };
 #endif /* Farm_hpp */

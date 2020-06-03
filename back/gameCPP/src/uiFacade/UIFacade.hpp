@@ -15,7 +15,7 @@ namespace demo
 class UIFacade : public node::ObjectWrap, public EventProvider
 {
 private:
-    // GameCommand *gameCommand;
+    
     Game *game;
     Logger *logger;
     v8::Local<v8::Array> response;
@@ -31,5 +31,5 @@ private:
 public:
     static void Init(v8::Local<v8::Object> exports);
 };
-} // namespace demo
+} 
 #endif /* UIFacade_hpp */

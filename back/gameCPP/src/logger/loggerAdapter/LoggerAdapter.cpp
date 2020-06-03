@@ -15,21 +15,21 @@ std::string
 LoggerAdapter::adaptFormat(v8::Local<v8::Object> objLog)
 {
 
-    //strLogType
+    
     std::string strLogType;
     GetObjProperty(objLog, "logType", strLogType);
 
-    //strLogData
+    
     std::string strLogData;
     v8::Local<v8::Object> objLogData = Nan::New<v8::Object>();
     GetObjProperty(objLog, "data", objLogData);
     strLogData = JSONStringified(objLogData);
 
-    //strLogTime
+    
     std::time_t logTime = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
     std::string strLogTime(std::ctime(&logTime));
 
-    //strLog;
+    
     std::string strLog = strLogType + ";" + strLogData + ";" + strLogTime;
 
     return strLog;

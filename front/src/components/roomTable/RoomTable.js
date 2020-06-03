@@ -13,7 +13,7 @@ import socket from "../../WebSocket.js"
 
 
 
-// var ws = await WSPromise;
+
 
 
 class RoomTable extends Component {
@@ -32,9 +32,9 @@ class RoomTable extends Component {
             console.log(data)
             if (this._isMounted)
                 this.setState({ rows: data })
-            //     console.log("on", "tableRoomToC")
-            //     if (this._isMounted)
-            //         this.setState({ rows: data.rows }, () => console.log("rows:", data.rows))
+            
+            
+            
         })
     }
 
@@ -54,11 +54,11 @@ class RoomTable extends Component {
 
     handleClick(id, name) {
 
-        // socket.emit("joinTheRoom", {
-        //     userName: localStorage.getItem("userName"),
-        //     roomName: name,
-        //     roomID: id,
-        // })
+        
+        
+        
+        
+        
 
         socket.emit("command", {
             task: 1,

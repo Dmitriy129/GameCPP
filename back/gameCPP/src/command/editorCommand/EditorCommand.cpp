@@ -6,7 +6,7 @@ EditorCommand::EditorCommand(Editor *editor) /* , v8::Isolate *isolate) : Comman
 
 void EditorCommand::execute(v8::Local<v8::Value> request)
 {
-    // // // // std::cout << "#pces#\n";
+    
 
     v8::Local<v8::Object> objRequest;
 
@@ -27,7 +27,7 @@ void EditorCommand::execute(v8::Local<v8::Value> request)
 
     if (task == MOVE)
     {
-        // // // // std::cout << "#pce move#\n";
+        
 
         /* * * * * */
         v8::Local<v8::Object> moveInfo;
@@ -53,22 +53,22 @@ void EditorCommand::execute(v8::Local<v8::Value> request)
             return;
         if (!GetObjProperty(moveTo, "toY", toY))
             return;
-        // // // // std::cout << "#pcem#\n";
+        
 
         try
         {
-            editor->moveObject(fromY, fromX, toY, toX); //add except
+            editor->moveObject(fromY, fromX, toY, toX); 
         }
         catch (Except &except)
         {
             fireEvent("except", except.getLog());
-            // throw(Except("The object cannot be moved to this cell.(landscape)", "void Field::moveObject(unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber)", 0));
+            
         }
     }
     else if (task == ADD_OBJ)
     {
 
-        // // // // std::cout << "#pce add obj#\n";
+        
 
         /* * * * * */
         v8::Local<v8::Object> neutralObjectInfo;
@@ -86,8 +86,8 @@ void EditorCommand::execute(v8::Local<v8::Value> request)
         if (!GetObjProperty(neutralObjectInfo, "neutralObjectType", neutralObjectType))
             return;
 
-        // // // // std::cout << "#grce add obj comb check#\n";
+        
 
-        editor->createResourceGenerator(y, x, neutralObjectType); //add except
+        editor->createResourceGenerator(y, x, neutralObjectType); 
     }
 }

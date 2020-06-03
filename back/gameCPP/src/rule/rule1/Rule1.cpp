@@ -11,7 +11,7 @@ unsigned int Rule1::getType()
     return RULE1;
 }
 
-// std::function<bool(Player *, Player *)> Rule1::sequenceOfMoves = [](Player *p1, Player *p2) { return p1->getPlayerName() > p2->getPlayerName(); }
+
 
 template <class T>
 bool Rule1::checkWin(GameRoom<T> *gameRoom)

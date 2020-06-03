@@ -14,7 +14,6 @@ void EventProvider::detachEvent(std::string sEventId, EventProvider *object)
 
 void EventProvider::fireEvent(std::string sEventId, v8::Local<v8::Value> data)
 {
-    // // // // std::cout << "#ep fire ev2s# " << sEventId << "\n";
 
     Event *eventObject = new Event(sEventId, data, this);
     std::for_each(observers.begin(), observers.end(), [eventObject, &sEventId](Event &event) {
@@ -22,12 +21,11 @@ void EventProvider::fireEvent(std::string sEventId, v8::Local<v8::Value> data)
             (event.getSource()->eventHandler)(eventObject);
     });
     delete eventObject;
-    // // // // std::cout << "#ep fire ev2e#\n";
 }
 
 void EventProvider::fireEvent(std::string sEventId)
 {
-    // // // // std::cout << "#ep fire ev1#\n";
+
     v8::Local<v8::Value> undef;
     fireEvent(sEventId, undef);
 }

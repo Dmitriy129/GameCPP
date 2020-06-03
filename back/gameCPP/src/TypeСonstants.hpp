@@ -3,14 +3,14 @@
 #define TypeСonstants_hpp
 enum eTask
 {
-    ADD_ROOM,   //in game
-    ADD_PLAYER, //in room
-    ADD_OBJ,    //\/ \/ \/ eObjectType
-    MOVE,       //in player
-    UPD_LAND,   //in editor
-    GET_FULL,  //in room
-    SAVE_ROOM,  //add
-    LOAD_ROOM,  //add
+    ADD_ROOM,
+    ADD_PLAYER,
+    ADD_OBJ,
+    MOVE,
+    UPD_LAND,
+    GET_FULL,
+    SAVE_ROOM,
+    LOAD_ROOM,
     ROOMS_LIST,
 };
 
@@ -25,11 +25,11 @@ enum eLandscapeType
 
 enum eCombNeutType
 {
-    COMB_OBJ, //in player
-    NEUT_OBJ, //in editor
+    COMB_OBJ,
+    NEUT_OBJ,
 };
 
-enum eObjectType //in player
+enum eObjectType
 {
     BASE,
     ARCH_TANK,

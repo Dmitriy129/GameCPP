@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import "./user.css"
-// import socket from '../../WebSocket';
+
 
 
 class UserData extends Component {

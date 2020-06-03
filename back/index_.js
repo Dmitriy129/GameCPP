@@ -23,7 +23,7 @@ http.listen(PORT, function () {
 });
 
 var clients = {}
-// var rooms = {}
+
 
 
 io.on('connection', (socket) => {
@@ -40,13 +40,13 @@ io.on('connection', (socket) => {
 
     socket.on('newRoom', (data) => {
         let roomID = `ROOM${(+new Date).toString(16)}`
-        // rooms[`ROOM${(+new Date).toString(16)}`] = {
-        //     name: data.room,
-        //     rows: data.row,
-        //     columns: data.column,
-        //     acceess: true,
-        //     players: []
-        // }
+        
+        
+        
+        
+        
+        
+        
         console.log(gameTest.addGameRoom({
             roomID: roomID,
             roomName: data.room,
@@ -65,16 +65,16 @@ io.on('connection', (socket) => {
     /* * * * * * * IN ROOM * * * * * * * */
     socket.on('joinTheRoom', (data) => {
         socket.join(data.roomID)
-        // rooms[data.roomID].players.push({
-        //     name: data.userName,
-        //     clientID: (() => {
-        //         for (const [key, value] of Object.entries(clients)) {
-        //             // console.log(value.id, socket.id)
-        //             if (value.id == socket.id)
-        //                 return key
-        //         }
-        //     })()
-        // })
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         console.log(gameTest.addPlayerToGameRoom(
             {
                 roomID: data.roomID,
@@ -105,18 +105,18 @@ io.on('connection', (socket) => {
 
 
     socket.on('leaveTheRoom', (data) => {
-        // checkRoom(socket, data.roomID, (room) => {
-        //     socket.leave(data.roomID);
-        //     console.log(gameTest.getGameRoomsInfoList());
-        //     // rooms[data.roomID].players = rooms[data.roomID].players.filter(player => clients[player.clientID] != socket)
-        //     console.log(gameTest.removePlayerFromGameRoom({
-        //         roomID: data.roomID,
-        //         player: {
-        //             playerID: Object.keys(clients).filter(id => clients[id] == socket)[0]
-        //         }
-        //     }))
-        //     // console.log(rooms[data.roomID].players)
-        // })
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
         updateRoomsTable();
         updateRoomDataPlayers(socket.to(data.roomID), data)
@@ -150,14 +150,14 @@ io.on('connection', (socket) => {
         }))
 
         /*  */
-        // checkRoom(socket, data.roomID, (room) =>        //must edit
-        //     socket.emit("firstFieldBuildToC", {
-        //         rows: room.rows,
-        //         columns: room.columns,
-        //         landscapes: gameTest.getGameRoomFieldLandscapes({ roomID: data.roomID }),
-        //         objects: gameTest.getGameRoomFieldObjects({ roomID: data.roomID }),
-        //     }))
-        checkRoom(socket, data.roomID, (room) =>        //must edit
+        
+        
+        
+        
+        
+        
+        
+        checkRoom(socket, data.roomID, (room) =>        
             socket.emit("cellUpdate", {
                 x: data.x,
                 y: data.y,
@@ -181,7 +181,7 @@ io.on('connection', (socket) => {
             }
         }))
         /*  */
-        checkRoom(socket, data.roomID, (room) =>        //must edit
+        checkRoom(socket, data.roomID, (room) =>        
             socket.emit("cellUpdate", {
                 x: data.x,
                 y: data.y,
@@ -202,13 +202,13 @@ io.on('connection', (socket) => {
 
 
 
-    socket.on('disconnect', () => {                             //add delete frome rooms
+    socket.on('disconnect', () => {                             
         console.log("*User disconnected*")
         let userID = getPlayerIDBySocket(socket)
         console.log("*User removed: " + userID + "*")
-        // console.log(gameTest.removePlayerEveryWhere({
-        //     playerID: userID,
-        // }))
+        
+        
+        
         delete clients[userID]
     })
 })
@@ -244,23 +244,23 @@ function updateRoomsTable() {
     io.emit("tableRoomToC", { rows: gameTest.getGameRoomsInfoList() });
 }
 function updateRoomData(socket, data) {
-    // checkRoom(socket, data.roomID, () =>
-    //     socket.emit("gameRoomToCFull", {
-    //         roomName: rooms[data.roomID].name,
-    //         roomID: data.roomID,
-    //     }))
+    
+    
+    
+    
+    
 
     checkRoom(socket, data.roomID, (room) =>
         socket.emit("gameRoomToCFull", {
             roomName: room.roomName,
             roomID: data.roomID,
         }))
-    // updateRoomDataPlayers(socket)
+    
 }
 
 function updateRoomDataPlayers(socket, data) {
 
-    // var roomsList = gameTest.getGameRoomsInfoList();
+    
     checkRoom(socket, data.roomID, (room) =>
         socket.emit("gameRoomToCPlayers", {
             players: Object.values(room.players)
@@ -268,7 +268,7 @@ function updateRoomDataPlayers(socket, data) {
 }
 
 
-function updateCell(x, y) //[]
+function updateCell(x, y) 
 {
 
 }
@@ -276,7 +276,7 @@ function updateCell(x, y) //[]
 
 
 
-///////////
+
 const my_game = require('./back/gameCPP/build/Release/my_game_cpp.node');
 
 const gameTest = new my_game.GameProxy();

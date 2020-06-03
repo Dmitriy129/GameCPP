@@ -13,7 +13,7 @@ private:
 
 public:
     GameRoomCommand(GameRoom<Rule> *gameRoom);
-    void execute(v8::Local<v8::Value> request) override; //TODO
+    void execute(v8::Local<v8::Value> request) override; 
 };
 
 #endif /* GameRoomCommand_hpp */

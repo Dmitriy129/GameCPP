@@ -79,35 +79,35 @@ console.log(JSON.stringify(gameTest.sendRequest({
     }
 })))
 
-// console.log(gameTest.sendRequest({
-//     task: 1,
-//     params: {
-//         roomID: roomID,
-//         playerInfo: {
-//             playerID: "USER12345678901",
-//             playerName: "Banana121"
-//         }
-//     }
-// }))
-
-// console.log("----------------------------");
 
 
-// console.log("----------------------------");
-// console.log((gameTest.sendRequest({
-//     task: 2,
-//     params: {
-//         roomID: roomID,
-//         playerID: "USER12345678901",
-//         objectType: 0,
-//         combatObjectInfo: {
-//             x: 5,
-//             y: 6,
-//             combatObjectType: 0,
-//         }
-//     }
-// })))
-// console.log("----------------------------");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 console.log(gameTest.sendRequest({
@@ -124,7 +124,7 @@ console.log(gameTest.sendRequest({
     }
 }))
 
-//create resGen
+
 
 console.log(gameTest.sendRequest({
     task: 2,
@@ -141,92 +141,92 @@ console.log(gameTest.sendRequest({
 }))
 
 
-//move
-// console.log(gameTest.sendRequest({
-//     task: 3,
-//     params: {
-//         roomID: roomID,
-//         playerID: "USER1234567890",
-//         moveInfo: {
-//             moveFrom: {
-//                 fromX: 2,
-//                 fromY: 1,
-//             },
-//             moveTo: {
-//                 toX: 1,
-//                 toY: 2,
-//             }
-//         }
-//     }
-// }))
-
-// console.log("----------------------------");
 
 
 
-// console.log("---------------SAVE-------------");
-
-// console.log(gameTest.sendRequest({
-//     task: 6,
-//     params: {
-//         roomID: roomID,
-//         editorID: "EDITOR1234567890",
-//     }
-// }))
 
 
-// console.log("---------------ADDOBJ----------");
 
-// console.log(gameTest.sendRequest({
-//     task: 2,
-//     params: {
-//         roomID: roomID,
-//         playerID: "USER1234567890",
-//         objectType: 0,
-//         combatObjectInfo: {
-//             x: 2,
-//             y: 3,
-//             combatObjectType: 4,
-//         }
-//     }
-// }))
-// console.log("---------------ADDOBJ----------");
 
-// //create resGen
-// console.log(gameTest.sendRequest({
-//     task: 2,
-//     params: {
-//         roomID: roomID,
-//         editorID: "EDITOR1234567890",
-//         objectType: 1,
-//         neutralObjectInfo: {
-//             x: 4,
-//             y: 3,
-//             neutralObjectType: 8,
-//         }
-//     }
-// }))
 
-// console.log("---------------MOVEOBJ---------");
 
-// //move
-// console.log(gameTest.sendRequest({
-//     task: 3,
-//     params: {
-//         roomID: roomID,
-//         playerID: "USER1234567890",
-//         moveInfo: {
-//             moveFrom: {
-//                 fromX: 2,
-//                 fromY: 3,
-//             },
-//             moveTo: {
-//                 toX: 4,
-//                 toY: 3,
-//             }
-//         }
-//     }
-// }))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 console.log("---------------SAVE-------------");
 
@@ -268,17 +268,16 @@ console.log(JSON.stringify(gameTest.sendRequest({
 
 
 
-// console.log("---------------SAVE-------------");
 
-// setTimeout(() => {
 
-//     console.log(gameTest.sendRequest({
-//         task: 6,
-//         params: {
-//             roomID: roomID,
-//             editorID: "EDITOR1234567890",
-//         }
-//     }))
-// }, 1000);
 
-// setInterval(() => { }, 100000);
+
+
+
+
+
+
+
+
+
+

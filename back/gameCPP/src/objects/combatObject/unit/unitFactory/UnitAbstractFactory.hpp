@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <string>
-// #include "../../base/Base.hpp"
+
 #include "varietyUnits/infantry/InfantryClass.hpp"
 #include "varietyUnits/cavalry/CavalryClass.hpp"
 #include "varietyUnits/archer/ArcherClass.hpp"

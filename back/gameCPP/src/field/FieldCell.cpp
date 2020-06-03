@@ -4,8 +4,7 @@ FieldCell::FieldCell()
 {
     this->object = nullptr;
     int val = rand() % 4;
-    // this->landscape = val == 1 ? new LandscapeProxy("Plain") : val == 2 ? new LandscapeProxy("Mountain") : val == 3 ? new LandscapeProxy("Swamp") : new LandscapeProxy("Forest");
-    // this->landscape = new LandscapeProxy("Plain");
+
     this->landscape = new LandscapeProxy(val);
 }
 

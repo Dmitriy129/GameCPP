@@ -3,7 +3,7 @@
 UUID::UUID()
 {
     time_t timeSeed = time(nullptr);
-    // // // std::cout << "*UUID* Time seed: " << timeSeed << std::endl;
+
     std::srand(timeSeed);
 
     x = std::rand() % 899999999 + 100000000;
@@ -47,8 +47,3 @@ std::string UUID::generateUUID()
     }
     return uuid;
 }
-
-//std::string UUID::getUUID()
-//{
-//    return this->uuid;
-//}

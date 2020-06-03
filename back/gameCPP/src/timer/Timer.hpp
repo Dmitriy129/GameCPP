@@ -18,5 +18,5 @@ public:
 
     void stop();
 };
-} // namespace utils
-#endif //LOGIC_Timer_HPP
+} 
+#endif 

@@ -59,7 +59,7 @@ io.on('connection', (socket) => {
             name: data.userName,
             clientID: (() => {
                 for (const [key, value] of Object.entries(clients)) {
-                    // console.log(value.id, socket.id)
+                    
                     if (value.id == socket.id)
                         return key
                 }
@@ -122,7 +122,7 @@ io.on('connection', (socket) => {
 
 
 
-    socket.on('disconnect', () => {                             //add delete frome rooms
+    socket.on('disconnect', () => {                             
         console.log("*User disconnected*")
         for (const [key, value] of Object.entries(clients)) {
             if (value.id !== socket.id) continue;
@@ -161,7 +161,7 @@ function updateRoomData(socket, data) {
             roomName: rooms[data.roomID].name,
             roomID: data.roomID,
         }))
-    // updateRoomDataPlayers(socket)
+    
 }
 
 function updateRoomDataPlayers(socket, data) {

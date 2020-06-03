@@ -9,8 +9,8 @@ class GoldMine : public ResourceGenerator
 {
 public:
     GoldMine(std::string ID);
-    // void getResPerStepForUnit() override;
-    // //  std::string getObjectType();
+    
+    
 };
 
 #endif /* GoldMine_hpp */

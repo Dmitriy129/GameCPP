@@ -3,7 +3,7 @@
 InfantryTank::InfantryTank(std::string playerID, std::string unitID, CombatObjectTypeFactory *combatObjectTypeFactory)
 {
     health = 175;
-    // type = new CombatObjectType(175, 30, 3);
+    
     type = combatObjectTypeFactory->getCombatObjectType(80, 40, 1);
     this->playerID = playerID;
     this->ID = unitID;
@@ -13,11 +13,10 @@ InfantryTank::InfantryTank(std::string playerID, std::string unitID, CombatObjec
     objectType = INF_TANK;
 }
 
-// std::string InfantryTank::getObjectType() { return "InfantryTank"; }
 
-// v8::Local<v8::Object> InfantryTank::getFullInfo()
-// {
-//     v8::Local<v8::Object> info = UnitTank::getFullInfo();
 
-//     return info;
-// }
+
+
+
+
+

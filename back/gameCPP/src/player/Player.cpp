@@ -13,9 +13,9 @@ Player::Player(std::string playerID, std::string playerName, Field *field, UUID 
 
 Player ::~Player()
 {
-    // delete this->field;
-    // delete this->base;
-    // delete this->uuidGen;
+    
+    
+    
 }
 
 std::string Player::getPlayerID() { return this->playerID; }
@@ -34,7 +34,7 @@ void Player::createUnit(unsigned int rowNumber, unsigned int columnNumber, unsig
 {
     if (base == nullptr)
     {
-        // // // std::cout << "error# in file *Player*\n\tCerate the base first.\n";
+        
         throw(Except("Create the base first", "Player::createUnit(unsigned int rowNumber, unsigned int columnNumber, unsigned int type)", 0));
 
         return;
@@ -75,13 +75,13 @@ v8::Local<v8::Object> Player::getFullInfo()
 {
     v8::Local<v8::Object> info = Nan::New<v8::Object>();
     v8::Local<v8::Object> ResourceBag = Nan::New<v8::Object>();
-    // std::cout << "strrt############Player::getFullInfo\n";
+    
     SetObjProperty(info, "resourceBag", resourceBag->getFullInfo());
     SetObjProperty(info, "playerName", playerName);
     SetObjProperty(info, "playerID", playerID);
-    // std::cout << "1############Player::getFullInfo\n";
+    
     SetObjProperty(info, "base", field->getObjectData(base));
-    // std::cout << "end############Player::getFullInfo\n";
+    
 
     return info;
 }

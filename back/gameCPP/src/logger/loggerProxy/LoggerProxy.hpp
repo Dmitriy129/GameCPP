@@ -33,7 +33,7 @@ public:
     friend void operator<<(LoggerProxy *logger, v8::Local<v8::Object> data);
     void printLog(std::string strLog) override;
     void printLog(v8::Local<v8::Object> data);
-    // friend LoggerProxy *&operator<<(LoggerProxy *&logger, v8::Local<v8::Value> data);
+    
 };
 
 #endif /* LoggerProxy_hpp */

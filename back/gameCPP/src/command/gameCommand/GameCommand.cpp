@@ -2,16 +2,16 @@
 #include "GameCommand.hpp"
 GameCommand::GameCommand(Game *game) /* , v8::Isolate *isolate) : Command(isolate) */
 {
-    // // // // std::cout << "#2#\n";
+    
     this->game = game;
 
-    // game->SetIsolate(isolate);
+    
 }
 
 void GameCommand::execute(v8::Local<v8::Value> request)
 {
 
-    // // // // std::cout << "#3#\n";
+    
 
     v8::Local<v8::Object> objRequest;
 
@@ -41,7 +41,7 @@ void GameCommand::execute(v8::Local<v8::Value> request)
 
     if (task == ADD_ROOM)
     {
-        // // // std::cout << "#1#\n";
+        
 
         /* * * * * */
         std::string roomName;
@@ -65,41 +65,41 @@ void GameCommand::execute(v8::Local<v8::Value> request)
             return;
         if (!GetObjProperty(fieldInfo, "columnsQuantity", columnsQuantity))
             return;
-        // // // std::cout << "#2#\n";
+        
 
-        this->game->addGameRoom(editorID, roomID, roomName, rowsQuantity, columnsQuantity, rule); //add except
-        // // // std::cout << "#end#\n";
+        this->game->addGameRoom(editorID, roomID, roomName, rowsQuantity, columnsQuantity, rule); 
+        
     }
     else if (task == SAVE_ROOM || task == LOAD_ROOM)
     {
         std::string editorID;
         if (!GetObjProperty(params, "editorID", editorID))
             return;
-        //     // std::cout << "#111#\n";
+        
         if (task == SAVE_ROOM)
         {
-            game->saveRoom(editorID, roomID); //add except
+            game->saveRoom(editorID, roomID); 
         }
         else if (task == LOAD_ROOM)
         {
             unsigned int saveID;
             if (!GetObjProperty(params, "saveID", saveID))
                 return;
-            game->loadRoom(editorID, roomID, saveID); //add except
+            game->loadRoom(editorID, roomID, saveID); 
         }
-        //     // std::cout << "#112#\n";
+        
     }
     else if (task == GET_FULL || task == ADD_OBJ || task == ADD_PLAYER || task == MOVE)
     {
         GameRoomCommand *gameRoomCommand = new GameRoomCommand(game->getGameRoom(roomID) /* , isolate */);
         gameRoomCommand->attachEvent("except", this);
 
-        // std::cout << "#1#\n";
+        
         gameRoomCommand->execute(request);
 
         delete gameRoomCommand;
-        // // // // std::cout << "#5#\n";
+        
     }
 
-    // // // // std::cout << "#gcee#\n";
+    
 }

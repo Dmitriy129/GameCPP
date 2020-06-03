@@ -12,7 +12,7 @@ class FieldCell
 private:
     Object *object;
     Landscape *landscape;
-    //loot array
+    
 
 public:
     FieldCell();

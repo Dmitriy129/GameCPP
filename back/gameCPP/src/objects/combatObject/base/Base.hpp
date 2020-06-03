@@ -8,14 +8,14 @@
 #include <vector>
 #include <string>
 #include "../CombatObject.hpp"
-// #include "../unit/Unit.hpp"
+
 #include "../unit/unitFactory/UnitTankFactory.hpp"
 #include "../unit/unitFactory/UnitDPSFactory.hpp"
 #include "../CombatObjectTypeFactory.hpp"
 #include "../../../TypeСonstants.hpp"
 
 class Unit;
-// typedef void (Base::*BaseCB)(Event *);
+
 class Base : public CombatObject
 {
 private:
@@ -27,7 +27,7 @@ private:
     Unit *factoryUnit(UnitDPSFactory *factory, unsigned int type, std::string unitID, CombatObjectTypeFactory *combatObjectTypeFactory);
 
     void removeUnit(Unit *unit);
-    void death() override; //написать
+    void death() override; 
     void unitDie(Unit *unit);
 
 public:
@@ -37,15 +37,15 @@ public:
     Unit *createUnit(unsigned int type, std::string unitID, CombatObjectTypeFactory *combatObjectTypeFactory);
     unsigned int getArmyQuantity();
 
-    // void setHealth(double health) override;
-    // double getHealth() const override;
-    // double getMaxHealth() const override;
-    // double getDamage() const override;
-    // double getArmor() const override;
-    // std::string getPlayerID() override;
+    
+    
+    
+    
+    
+    
     void operator+(Object *object) override;
-    // double getDamageAttack() override;
-    //  std::string getObjectType();
+    
+    
     v8::Local<v8::Object> getFullInfo() override;
 
     /*  */

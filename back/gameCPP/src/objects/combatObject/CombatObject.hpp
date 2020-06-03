@@ -12,7 +12,7 @@ protected:
     double health;
     CombatObjectType *type;
 
-    //func if die
+    
     virtual void death() = 0;
 
 public:
