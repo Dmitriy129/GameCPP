@@ -56,7 +56,15 @@ void PlayerCommand::execute(v8::Local<v8::Value> request)
             return;
         // // // std::cout << "#pcem#\n";
 
-        player->moveObject(fromY, fromX, toY, toX);
+        try
+        {
+            player->moveObject(fromY, fromX, toY, toX); //add except done
+        }
+        catch (Except &except)
+        {
+            fireEvent("except", except.getLog());
+            // throw(Except("The object cannot be moved to this cell.(landscape)", "void Field::moveObject(unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber)", 0));
+        }
     }
     else if (task == ADD_OBJ)
     {
@@ -80,14 +88,21 @@ void PlayerCommand::execute(v8::Local<v8::Value> request)
             return;
 
         // // // std::cout << "#grce add obj comb check#\n";
-
-        if (combatObjectType == BASE)
+        try
         {
-            player->createBase(y, x);
+            if (combatObjectType == BASE)
+            {
+                player->createBase(y, x); //add except
+            }
+            else
+            {
+                player->createUnit(y, x, combatObjectType); //add except
+            }
         }
-        else
+        catch (Except &except)
         {
-            player->createUnit(y, x, combatObjectType);
+            fireEvent("except", except.getLog());
+            // throw(Except("The object cannot be moved to this cell.(landscape)", "void Field::moveObject(unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber)", 0));
         }
     }
 }

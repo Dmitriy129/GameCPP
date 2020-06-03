@@ -10,11 +10,9 @@ class GameRoomCommand : public Command
 {
 private:
     GameRoom<Rule> *gameRoom;
-    // PlayerCommand *playerCommand;
 
 public:
     GameRoomCommand(GameRoom<Rule> *gameRoom);
-    // ~GameRoomCommand();
     void execute(v8::Local<v8::Value> request) override; //TODO
 };
 

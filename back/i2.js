@@ -164,15 +164,15 @@ console.log(JSON.stringify(gameTest.sendRequest({
 
 
 
-console.log("---------------SAVE-------------");
+// console.log("---------------SAVE-------------");
 
-console.log(gameTest.sendRequest({
-    task: 6,
-    params: {
-        roomID: roomID,
-        editorID: "EDITOR1234567890",
-    }
-}))
+// console.log(gameTest.sendRequest({
+//     task: 6,
+//     params: {
+//         roomID: roomID,
+//         editorID: "EDITOR1234567890",
+//     }
+// }))
 
 
 // console.log("---------------ADDOBJ----------");
@@ -227,6 +227,16 @@ console.log(gameTest.sendRequest({
 //         }
 //     }
 // }))
+
+console.log("---------------SAVE-------------");
+
+console.log(gameTest.sendRequest({
+    task: 6,
+    params: {
+        roomID: roomID,
+        editorID: "EDITOR1234567890",
+    }
+}))
 
 
 console.log("---------------LOAD------------");

@@ -5,29 +5,16 @@ namespace demo
 
 UIFacade::UIFacade()
 {
-    // // // std::cout << "#**UIFacade con start\n";
-
-    this->game = new Game();
-
-    // // // std::cout << "#**UIFacade con 1\n";
-
+    this->game = Game::getInstance();
     logger = new LoggerProxy("file", "GameLogs");
-    // logger = new LoggerProxy("console");
-
-    // // // std::cout << "#**UIFacade con 2\n";
-
     game->attachEvent("object updated", this);
     game->attachEvent("tabel of GameRooms update", this);
     game->attachEvent("get full field", this);
-
-    // game->attachEvent("all events", logger);
     game->attachEvent("log", logger);
     this->attachEvent("command", logger);
-    // // // std::cout << "#**UIFacade con eend\n";
 }
 UIFacade::~UIFacade()
 {
-    delete this->game;
     delete this->logger;
 }
 
@@ -93,6 +80,7 @@ void UIFacade::sendRequest(const v8::FunctionCallbackInfo<v8::Value> &args)
     // // // std::cout << "#1#\n";
 
     GameCommand *gameCommand = new GameCommand(uiFacade->game /* , isolate */);
+    gameCommand->attachEvent("except", uiFacade);
     gameCommand->execute(request);
 
     delete gameCommand;

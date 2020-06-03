@@ -27,6 +27,15 @@ Game::~Game()
 //     fireEvent("tabel of GameRooms update", getGameRoomsInfo());
 // }
 
+Game *Game::p_game;
+
+Game *Game::getInstance()
+{
+    if (p_game == nullptr)
+        p_game = new Game();
+    return p_game;
+}
+
 void Game::addGameRoom(std::string editorID, std::string roomID, std::string roomName, unsigned int rowsQuantity, unsigned int columnsQuantity, unsigned int rule)
 {
     // // std::cout << "#3#\n";

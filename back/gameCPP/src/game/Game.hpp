@@ -25,9 +25,15 @@ private:
     CombatObjectTypeFactory *combatObjectTypeFactory;
     // Mediator *mediator;
 
-public:
     Game();
+    Game(const Game &);
+    Game &operator=(Game &);
     ~Game();
+    static Game *p_game;
+
+public:
+    static Game *getInstance();
+
     void addGameRoom(std::string editorID, std::string roomID, std::string roomName, unsigned int rowsQuantity, unsigned int columnsQuantity, unsigned int rule);
     std::string removeGameRoom(std::string roomID);
 

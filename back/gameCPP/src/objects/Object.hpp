@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <string>
 // #include "combatObject"
+#include "../except/Except.hpp"
 #include "../eventProvider/EventProvider.hpp"
 #include "../TypeСonstants.hpp"
 

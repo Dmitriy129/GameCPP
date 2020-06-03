@@ -181,7 +181,7 @@ void Field::addObject(unsigned int rowNumber, unsigned int columnNumber, Object 
     }
     if (fieldGrid[rowNumber][columnNumber].getObject() != nullptr)
     {
-        std::cout << "error# The field cell is occupied by another object, and you cannot create a new object" << JSONStringified(fieldGrid[rowNumber][columnNumber].getObject()->getFullInfo())<<"\n";
+        std::cout << "error# The field cell is occupied by another object, and you cannot create a new object" << JSONStringified(fieldGrid[rowNumber][columnNumber].getObject()->getFullInfo()) << "\n";
         //    <<std::endl
         //    <<"*in file \"Field\"\n";
         return;
@@ -252,6 +252,7 @@ void Field::moveObject(unsigned int fromRowNumber, unsigned int fromColumnNumber
         // // std::cout << "The field cell contains no objects. You cannot move a void."
         //    <<std::endl
         //    <<"*in file \"Field\"\n";
+        throw(Except("The field cell contains no objects. You cannot move a void", "void Field::moveObject(unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber)", 0));
         return;
     }
 
@@ -260,6 +261,8 @@ void Field::moveObject(unsigned int fromRowNumber, unsigned int fromColumnNumber
         // // std::cout << "The Object cannot be moved. You cannot move this Object."
         //    <<std::endl
         //    <<"*in file \"Field\"\n";
+        throw(Except("The Object cannot be moved. You cannot move this Object.", "void Field::moveObject(unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber)", 0));
+
         return;
     }
 
@@ -272,6 +275,7 @@ void Field::moveObject(unsigned int fromRowNumber, unsigned int fromColumnNumber
             //    <<"The object cannot be moved to this cell .([" << fromRowNumber << "][" << fromColumnNumber << "]->[" << toRowNumber << "][" << toColumnNumber << "]) "
             //    <<std::endl
             //    <<"*in file \"Field\"\n";
+            throw(Except("The object cannot be moved to this cell.(landscape)", "void Field::moveObject(unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber)", 0));
 
             return;
         }
