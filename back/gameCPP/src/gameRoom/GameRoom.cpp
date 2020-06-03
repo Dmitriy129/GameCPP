@@ -17,7 +17,7 @@
 template <class T>
 GameRoom<T>::GameRoom(std::string editorID, std::string roomID, std::string roomName, unsigned int rowsQuantity, unsigned int columnsQuantity, UUID *uuidGen, NeutralObjectFactory *NeutralObjectFactory, CombatObjectTypeFactory *combatObjectTypeFactory, unsigned int rule)
 {
-    // // std::cout << "#5#\n";
+    // // // std::cout << "#5#\n";
 
     this->roomID = roomID;
     this->roomName = roomName;
@@ -36,7 +36,7 @@ GameRoom<T>::GameRoom(std::string editorID, std::string roomID, std::string room
 template <>
 GameRoom<Rule>::GameRoom(std::string editorID, std::string roomID, std::string roomName, unsigned int rowsQuantity, unsigned int columnsQuantity, UUID *uuidGen, NeutralObjectFactory *NeutralObjectFactory, CombatObjectTypeFactory *combatObjectTypeFactory, unsigned int rule)
 {
-    // // std::cout << "#5#\n";
+    // // // std::cout << "#5#\n";
 
     this->roomID = roomID;
     this->roomName = roomName;
@@ -47,14 +47,14 @@ GameRoom<Rule>::GameRoom(std::string editorID, std::string roomID, std::string r
     this->combatObjectTypeFactory = combatObjectTypeFactory;
     this->field->attachEvent("object updated", this);
     editor = new Editor(editorID, field, uuidGen, neutralObjectFactory);
-    // // std::cout << "#6#\n";
+    // // // std::cout << "#6#\n";
     if (rule == 0)
         this->rule = new Rule1();
     if (rule == 1)
         this->rule = new Rule2();
     this->nowPlayer = nullptr;
     // timer = new utils::Timer;
-    // // std::cout << "#7#\n";
+    // // // std::cout << "#7#\n";
 }
 // GameRoom<Rule>::GameRoom(std::string roomID, std::string roomName, Field *field)
 // {
@@ -83,7 +83,7 @@ GameRoom<Rule>::~GameRoom()
 template </* class T */>
 FieldCell *GameRoom<Rule>::getFieldCell(unsigned int x, unsigned int y)
 {
-    // std::cout << x << y << "##########GameRoom<Rule>::getFieldCell\n";
+    // // std::cout << x << y << "##########GameRoom<Rule>::getFieldCell\n";
 
     return &(this->field->getFieldCell(x, y));
 }
@@ -127,12 +127,12 @@ unsigned int GameRoom<Rule>::getFieldColumnsQuantity()
 //     SetObjProperty(res, "roomID", roomID);
 //     SetObjProperty(res, "playerName", nowPlayer->getPlayerName());
 //     fireEvent("active player has changed", res);
-//     auto f = [&]() { std::cout << "ff"; };
+//     auto f = [&]() { // std::cout << "ff"; };
 //     // timer->setInterval(f, /* rule->getStepTime() */ 2000);
 //     // timer->setTimeout([]() { this->nextPlayer; }, rule->getStepTime());
 //     // timer->setTimeout([]() { nextPlayer(); }, rule->getStepTime());
 //     timer->setInterval([&]() {
-//         std::cout << "Hey.. After each 1s..." << std::endl;
+//         // std::cout << "Hey.. After each 1s..." << std::endl;
 //     },
 //                        1000);
 // }
@@ -140,7 +140,7 @@ unsigned int GameRoom<Rule>::getFieldColumnsQuantity()
 // template </* class T */>
 // void GameRoom<Rule>::nextPlayer()
 // {
-//     std::cout << "RuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule\n";
+//     // std::cout << "RuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule\n";
 
 //     // timer->setTimeout([]() { int i = 2; }, 1000);
 //     // timer->stop();)
@@ -154,13 +154,13 @@ unsigned int GameRoom<Rule>::getFieldColumnsQuantity()
 //     SetObjProperty(res, "roomID", roomID);
 //     SetObjProperty(res, "playerName", nowPlayer->getPlayerName());
 //     fireEvent("active player has changed", res);
-//     auto f = [&]() { std::cout << "ff"; };
+//     auto f = [&]() { // std::cout << "ff"; };
 // }
 
 template <typename T>
 void GameRoom<T>::nextPlayer()
 {
-    std::cout << "смена хода\n";
+    // std::cout << "смена хода\n";
 
     // timer->setTimeout([]() { int i = 2; }, 1000);
     // timer->stop();)
@@ -175,7 +175,7 @@ void GameRoom<T>::nextPlayer()
             nowPlayer = players[index + 1];
     }
     {
-        // std::cout << "1RuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule\n";
+        // // std::cout << "1RuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule\n";
         // v8::Local<v8::Object> data = v8::Local<v8::Object>();
         v8::Local<v8::Object> data = Nan::New<v8::Object>();
 
@@ -183,12 +183,12 @@ void GameRoom<T>::nextPlayer()
         // if (info!=)
         // data = Nan::New<v8::Object>();
 
-        // std::cout << "2RuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule\n";
+        // // std::cout << "2RuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule\n";
         SetObjProperty(data, "roomID", roomID);
         Nan::Set(data, Nan::New("roomID").ToLocalChecked(), Nan::New(roomID.c_str()).ToLocalChecked());
 
         SetObjProperty(data, "playerName", nowPlayer->getPlayerName());
-        std::cout << nowPlayer->getPlayerName() << "3RuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule\n";
+        // std::cout << nowPlayer->getPlayerName() << "3RuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule\n";
 
         fireEvent("active player has changed", data);
     }
@@ -219,15 +219,15 @@ Player *GameRoom<Rule>::getPlayer(std::string playerID)
 {
     if (players.size() > 0)
     {
-        std::cout << "playeer id: " << playerID << "-----\n";
+        // std::cout << "playeer id: " << playerID << "-----\n";
         auto player = (std::find_if(players.begin(), players.end(), [playerID](Player *player) {
             return (player->getPlayerID() == playerID);
         }));
-        // std::cout << "---------" << players[0]->getPlayerID() << "-------\n";
+        // // std::cout << "---------" << players[0]->getPlayerID() << "-------\n";
         if (player != players.end())
             return *player;
-        // std::cout << "---:(-----" << (*player)->getPlayerID() << "-------\n";
-        // std::cout << "---:(-----" << (player == nullptr) << "-------\n";}
+        // // std::cout << "---:(-----" << (*player)->getPlayerID() << "-------\n";
+        // // std::cout << "---:(-----" << (player == nullptr) << "-------\n";}
     }
     return nullptr;
 }
@@ -270,30 +270,30 @@ std::vector<std::string> GameRoom<Rule>::getPlayersNames()
 template </* class T */>
 void GameRoom<Rule>::addPlayer(std::string playerID, std::string PlayerName)
 {
-    std::cout << "GameRoom::addPlayer\n";
+    // std::cout << "GameRoom::addPlayer\n";
     if (getPlayer(playerID) != nullptr)
         return;
     Player *player = new Player(playerID, PlayerName, field, uuidGen, combatObjectTypeFactory);
 
     if (nowPlayer == nullptr)
     {
-        // std::cout << "1GameRoom::addPlayer\n";
+        // // std::cout << "1GameRoom::addPlayer\n";
 
         nowPlayer = player;
         nextPlayer();
-        // std::cout << "2GameRoom::addPlayer\n";
+        // // std::cout << "2GameRoom::addPlayer\n";
     }
-    // std::cout << "3GameRoom::addPlayer\n";
+    // // std::cout << "3GameRoom::addPlayer\n";
 
     player->attachEvent("log", this);
 
     this->players.push_back(player);
-    std::cout << players.size() << "-_-_-_-_-_-_-_-_4GameRoom::addPlayer\n";
-    // std::cout << "5GameRoom::addPlayer\n";
+    // std::cout << players.size() << "-_-_-_-_-_-_-_-_4GameRoom::addPlayer\n";
+    // // std::cout << "5GameRoom::addPlayer\n";
     std::sort(players.begin(), players.end(), rule->sequenceOfMoves);
-    // std::cout << "6GameRoom::addPlayer\n";
+    // // std::cout << "6GameRoom::addPlayer\n";
 
-    // // std::cout << "GameRoom::addPlayer true\n";
+    // // // std::cout << "GameRoom::addPlayer true\n";
     fireEvent("tabel of GameRooms update");
 
     // v8::Local<v8::Object> data = Nan::New<v8::Object>();
@@ -313,7 +313,7 @@ void GameRoom<Rule>::removePlayer(std::string playerID)
     //     if (elem->getPlayerID() == playerID)
 
     this->players.erase((std::remove_if(this->players.begin(), this->players.end(), [playerID](Player *player) {
-                            // // std::cout << (player->getPlayerID() == playerID) << "\n";
+                            // // // std::cout << (player->getPlayerID() == playerID) << "\n";
                             return (player->getPlayerID() == playerID ? true : false);
                         })),
                         this->players.end());
@@ -344,7 +344,7 @@ v8::Local<v8::Object> GameRoom<Rule>::getGameRoomFieldData()
 template <>
 v8::Local<v8::Object> GameRoom<Rule>::getGameRoomData()
 {
-    // // std::cout << "#13#\n";
+    // // // std::cout << "#13#\n";
     v8::Local<v8::Object> data = Nan::New<v8::Object>();
     SetObjProperty(data, "roomID", roomID);
     SetObjProperty(data, "roomName", roomName);
@@ -371,23 +371,23 @@ v8::Local<v8::Object> GameRoom<Rule>::getFullInfo()
 {
     v8::Local<v8::Object> info = Nan::New<v8::Object>();
     v8::Local<v8::Array> playersInfo = Nan::New<v8::Array>();
-    std::cout << "strt##########GameRoom<Rule>::getFullInfo\n";
+    // std::cout << "strt##########GameRoom<Rule>::getFullInfo\n";
 
     SetObjProperty(info, "nowPlayer", static_cast<unsigned int>(std::distance(players.begin(), std::find(players.begin(), players.end(), nowPlayer))));
     SetObjProperty(info, "rule", rule->getType());
-    std::cout << "1##########GameRoom<Rule>::getFullInfo\n";
+    // std::cout << "1##########GameRoom<Rule>::getFullInfo\n";
 
     SetObjProperty(info, "field", field->getFullInfo());
-    std::cout << "2##########GameRoom<Rule>::getFullInfo\n";
+    // std::cout << "2##########GameRoom<Rule>::getFullInfo\n";
 
     // for (unsigned int index = 0; index < players.size(); index++)
     // SetArrProperty(playersInfo, index, players[index]->getFullInfo());
 
     std::for_each(players.begin(), players.end(), [this, &playersInfo](Player *player) { SetArrProperty(playersInfo, playersInfo->Length(), player->getFullInfo()); });
-    std::cout << "3##########GameRoom<Rule>::getFullInfo\n";
+    // std::cout << "3##########GameRoom<Rule>::getFullInfo\n";
 
     SetObjProperty(info, "playersInfo", playersInfo);
-    //     std::cout << "eend##########GameRoom<Rule>::getFullInfo\n";
+    //     // std::cout << "eend##########GameRoom<Rule>::getFullInfo\n";
 
     return info;
 }

@@ -8,7 +8,7 @@ Farm::Farm(std::string ID)
 };
 // void Farm::getResPerStepForUnit()
 // {
-//     // // std::cout << "You have earned " << resPerStep * useStrategy() << " food";
+//     // // // std::cout << "You have earned " << resPerStep * useStrategy() << " food";
 // }
 
 // std::string Farm::getObjectType() { return "Farm"; }

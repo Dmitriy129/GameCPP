@@ -6,7 +6,7 @@ EditorCommand::EditorCommand(Editor *editor) /* , v8::Isolate *isolate) : Comman
 
 void EditorCommand::execute(v8::Local<v8::Value> request)
 {
-    // // // std::cout << "#pces#\n";
+    // // // // std::cout << "#pces#\n";
 
     v8::Local<v8::Object> objRequest;
 
@@ -27,7 +27,7 @@ void EditorCommand::execute(v8::Local<v8::Value> request)
 
     if (task == MOVE)
     {
-        // // // std::cout << "#pce move#\n";
+        // // // // std::cout << "#pce move#\n";
 
         /* * * * * */
         v8::Local<v8::Object> moveInfo;
@@ -53,7 +53,7 @@ void EditorCommand::execute(v8::Local<v8::Value> request)
             return;
         if (!GetObjProperty(moveTo, "toY", toY))
             return;
-        // // // std::cout << "#pcem#\n";
+        // // // // std::cout << "#pcem#\n";
 
         try
         {
@@ -68,7 +68,7 @@ void EditorCommand::execute(v8::Local<v8::Value> request)
     else if (task == ADD_OBJ)
     {
 
-        // // // std::cout << "#pce add obj#\n";
+        // // // // std::cout << "#pce add obj#\n";
 
         /* * * * * */
         v8::Local<v8::Object> neutralObjectInfo;
@@ -86,7 +86,7 @@ void EditorCommand::execute(v8::Local<v8::Value> request)
         if (!GetObjProperty(neutralObjectInfo, "neutralObjectType", neutralObjectType))
             return;
 
-        // // // std::cout << "#grce add obj comb check#\n";
+        // // // // std::cout << "#grce add obj comb check#\n";
 
         editor->createResourceGenerator(y, x, neutralObjectType); //add except
     }

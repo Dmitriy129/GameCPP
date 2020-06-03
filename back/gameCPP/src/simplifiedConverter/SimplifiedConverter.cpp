@@ -162,8 +162,8 @@ bool SimplifiedConverter::SetObjProperty(v8::Local<v8::Object> &obj, std::string
 {
     v8::Isolate *isolate = obj->GetIsolate();
 
-    // std::cout << "222RuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule\n";
-    // std::cout << "223RuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule\n";
+    // // std::cout << "222RuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule\n";
+    // // std::cout << "223RuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule\n";
     if (obj->IsObject())
     {
 
@@ -189,13 +189,13 @@ bool SimplifiedConverter::SetObjProperty(v8::Local<v8::Object> &obj, std::string
 bool SimplifiedConverter::SetObjProperty(v8::Local<v8::Object> &obj, std::string propertyName, v8::Local<v8::Object> value)
 {
     v8::Isolate *isolate = obj->GetIsolate();
-    // // // std::cout << "##########SimplifiedConverter::SetObjProperty\n";
+    // // // // std::cout << "##########SimplifiedConverter::SetObjProperty\n";
 
     if (obj->IsObject())
     {
-        // // // std::cout << JSONStringified(obj) << "##########SimplifiedConverter::SetObjProperty\n";
-        // // // std::cout << propertyName << "##########SimplifiedConverter::SetObjProperty\n";
-        // // // std::cout << JSONStringified(value) << "##########SimplifiedConverter::SetObjProperty\n";
+        // // // // std::cout << JSONStringified(obj) << "##########SimplifiedConverter::SetObjProperty\n";
+        // // // // std::cout << propertyName << "##########SimplifiedConverter::SetObjProperty\n";
+        // // // // std::cout << JSONStringified(value) << "##########SimplifiedConverter::SetObjProperty\n";
 
         obj->Set(v8::String::NewFromUtf8(isolate, propertyName.c_str(), v8::NewStringType::kNormal).ToLocalChecked(), value);
         return true;

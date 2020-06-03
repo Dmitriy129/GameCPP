@@ -38,14 +38,14 @@ Game *Game::getInstance()
 
 void Game::addGameRoom(std::string editorID, std::string roomID, std::string roomName, unsigned int rowsQuantity, unsigned int columnsQuantity, unsigned int rule)
 {
-    // // std::cout << "#3#\n";
-    std::cout << "fireEvent( tabel of GameRooms update , getGameRoomsInfo());\n";
+    // // // std::cout << "#3#\n";
+    // std::cout << "fireEvent( tabel of GameRooms update , getGameRoomsInfo());\n";
 
     GameRoom<Rule> *room = new GameRoom<Rule>(editorID, roomID, roomName, rowsQuantity, columnsQuantity, uuidGen, neutralObjectFactory, combatObjectTypeFactory, rule);
-    // // std::cout << "#4#\n";
+    // // // std::cout << "#4#\n";
 
     gameRooms.push_back(room);
-    // // std::cout << "#8#\n";
+    // // // std::cout << "#8#\n";
 
     // gameRooms.push_back(new GameRoom(roomID, roomName, new Field(rowsQuantity, columnsQuantity, maximumObjectsQuantity, mediator), uuidGen, NeutralObjectFactory, combatObjectTypeFactory));
     room->attachEvent("object updated", this);
@@ -70,10 +70,10 @@ std::string Game::removeGameRoom(std::string roomID)
 //     if (room)
 //     {
 //         room->addPlayer(playerID, playerName);
-//         // // std::cout << "Game::addPlayerToGameRoom true\n";
+//         // // // std::cout << "Game::addPlayerToGameRoom true\n";
 //         return;
 //     }
-//     // // std::cout << "Game::addPlayerToGameRoom false\n";
+//     // // // std::cout << "Game::addPlayerToGameRoom false\n";
 // }
 
 // void Game::removePlayerFromGameRoom(std::string roomID, std::string playerID)
@@ -82,17 +82,17 @@ std::string Game::removeGameRoom(std::string roomID)
 //     if (room)
 //     {
 //         room->removePlayer(playerID);
-//         // // std::cout << "Game::removePlayerFromGameRoom true\n";
+//         // // // std::cout << "Game::removePlayerFromGameRoom true\n";
 //         return;
 //     }
-//     // // std::cout << "Game::removePlayerFromGameRoom false\n";
+//     // // // std::cout << "Game::removePlayerFromGameRoom false\n";
 // }
 
 // void Game::removePlayerEveryWhere(std::string playerID)
 // {
 
 //     std::for_each(gameRooms.begin(), gameRooms.end(), [playerID](GameRoom<Rule> *&gameRoom) { gameRoom->removePlayer(playerID); });
-//     // // std::cout << "Game::removePlayerEveryWhere true\n";
+//     // // // std::cout << "Game::removePlayerEveryWhere true\n";
 // }
 
 // std::vector<GameRoom *> Game::getGameRoomsList()
@@ -170,10 +170,10 @@ std::string Game::removeGameRoom(std::string roomID)
 //     if (room)
 //     {
 
-//         // // std::cout << "Game::getGameRoomPlayersIDList true\n";
+//         // // // std::cout << "Game::getGameRoomPlayersIDList true\n";
 //         response = room->getPlayersID();
 //     }
-//     // // std::cout << "Game::getGameRoomPlayersIDList false\n";
+//     // // // std::cout << "Game::getGameRoomPlayersIDList false\n";
 //     return response;
 // }
 
@@ -184,11 +184,11 @@ std::string Game::removeGameRoom(std::string roomID)
 //     if (room)
 //     {
 
-//         // // std::cout << "Game::getGameRoomFieldLandscapes true\n";
+//         // // // std::cout << "Game::getGameRoomFieldLandscapes true\n";
 //         response = room->getLandscapes();
 //     }
 //     else
-//         // // std::cout << "Game::getGameRoomFieldLandscapes false\n";
+//         // // // std::cout << "Game::getGameRoomFieldLandscapes false\n";
 //     return response;
 // }
 
@@ -199,11 +199,11 @@ std::string Game::removeGameRoom(std::string roomID)
 //     if (room)
 //     {
 
-//         // // std::cout << "Game::getGameRoomFieldObjects true\n";
+//         // // // std::cout << "Game::getGameRoomFieldObjects true\n";
 //         response = room->getObjects();
 //     }
 //     else
-//         // // std::cout << "Game::getGameRoomFieldObjects false\n";
+//         // // // std::cout << "Game::getGameRoomFieldObjects false\n";
 //     return response;
 // }
 
@@ -212,11 +212,11 @@ std::string Game::removeGameRoom(std::string roomID)
 //     GameRoom<Rule> *room = getGameRoom(roomID);
 //     if (room)
 //     {
-//         // // std::cout << "Game::getFieldRowsQuantity true\n";
+//         // // // std::cout << "Game::getFieldRowsQuantity true\n";
 //         return room->getFieldRowsQuantity();
 //     }
 //     else
-//         // // std::cout << "Game::getFieldRowsQuantity true\n";
+//         // // // std::cout << "Game::getFieldRowsQuantity true\n";
 //     return 0;
 // }
 // unsigned int Game::getFieldColumnsQuantity(std::string roomID)
@@ -224,11 +224,11 @@ std::string Game::removeGameRoom(std::string roomID)
 //     GameRoom<Rule> *room = getGameRoom(roomID);
 //     if (room)
 //     {
-//         // // std::cout << "Game::getFieldColumnsQuantity true\n";
+//         // // // std::cout << "Game::getFieldColumnsQuantity true\n";
 //         return room->getFieldColumnsQuantity();
 //     }
 //     else
-//         // // std::cout << "Game::getFieldColumnsQuantity true\n";
+//         // // // std::cout << "Game::getFieldColumnsQuantity true\n";
 //     return 0;
 // }
 
@@ -248,10 +248,10 @@ GameRoom<Rule> *Game::getGameRoom(std::string roomID)
 // }
 // void Game::createUnit(std::string roomID, std::string playerID, unsigned int rowNumber, unsigned int columnNumber, std::string type)
 // {
-//     // // // std::cout << "#1\n";
+//     // // // // std::cout << "#1\n";
 
 //     getGameRoom(roomID)->createUnit(playerID, rowNumber, columnNumber, type);
-//     // // // std::cout << "#1\n";
+//     // // // // std::cout << "#1\n";
 // }
 
 std::string Game::executeСommand(std::string playerID, std::string command)
@@ -300,7 +300,7 @@ void Game::loadRoom(std::string editorID, std::string roomID, unsigned int saveI
     GameRoom<Rule> *gameRoom = getGameRoom(roomID);
     if (gameRoom->getEditor())
     {
-        // // std::cout << "##########Game::loadRoom\n";
+        // // // std::cout << "##########Game::loadRoom\n";
         // std::__1::__wrap_iter<GameRoomMemento **> gameRoomMemento = std::find_if(historyGameRooms[roomID].begin(), historyGameRooms[roomID].end(), [saveID](GameRoomMemento *gameRoomMemento) { return gameRoomMemento->getSaveID() == saveID; });
         historyGameRooms[roomID][saveID]->restoreMemento();
     }
