@@ -217,15 +217,18 @@ Editor *GameRoom<Rule>::getEditor()
 template </* class T */>
 Player *GameRoom<Rule>::getPlayer(std::string playerID)
 {
-    std::cout << "playeer id: " << playerID << "-----\n";
-    auto player = (std::find_if(players.begin(), players.end(), [playerID](Player *player) {
-        return (player->getPlayerID() == playerID);
-    }));
-    std::cout << "---------" << players[0]->getPlayerID() << "-------\n";
-    if (player != players.end())
-        return *player;
-    std::cout << "---:(-----" << (*player)->getPlayerID() << "-------\n";
-    // std::cout << "---:(-----" << (player == nullptr) << "-------\n";
+    if (players.size() > 0)
+    {
+        std::cout << "playeer id: " << playerID << "-----\n";
+        auto player = (std::find_if(players.begin(), players.end(), [playerID](Player *player) {
+            return (player->getPlayerID() == playerID);
+        }));
+        // std::cout << "---------" << players[0]->getPlayerID() << "-------\n";
+        if (player != players.end())
+            return *player;
+        // std::cout << "---:(-----" << (*player)->getPlayerID() << "-------\n";
+        // std::cout << "---:(-----" << (player == nullptr) << "-------\n";}
+    }
     return nullptr;
 }
 
@@ -267,8 +270,10 @@ std::vector<std::string> GameRoom<Rule>::getPlayersNames()
 template </* class T */>
 void GameRoom<Rule>::addPlayer(std::string playerID, std::string PlayerName)
 {
+    std::cout << "GameRoom::addPlayer\n";
+    if (getPlayer(playerID) != nullptr)
+        return;
     Player *player = new Player(playerID, PlayerName, field, uuidGen, combatObjectTypeFactory);
-    // std::cout << "GameRoom::addPlayer\n";
 
     if (nowPlayer == nullptr)
     {

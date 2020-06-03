@@ -386,7 +386,7 @@ v8::Local<v8::Array> Field::getObjectsData()
 
 v8::Local<v8::Object> Field::getObjectData(unsigned int rowNumber, unsigned int columnNumber)
 {
-    std::cout << "##########Field::getObjectData1111\n";
+    std::cout << "#1#########Field::getObjectData1111\n";
 
     // return getObjectData(fieldGrid[rowNumber][columnNumber].getObject());
     v8::Local<v8::Object> data = Nan::New<v8::Object>();
@@ -405,22 +405,22 @@ v8::Local<v8::Object> Field::getObjectData(unsigned int rowNumber, unsigned int 
 
 v8::Local<v8::Object> Field::getObjectData(Object *object)
 {
-    std::cout << "##########Field::getObjectData\n";
-    std::cout << JSONStringified(object->getFullInfo()) << "\n";
+    std::cout << "#2#########Field::getObjectData\n";
 
     for (unsigned int rowNumber = 0; rowNumber < rowsQuantity; rowNumber++)
         for (unsigned int columnNumber = 0; columnNumber < columnsQuantity; columnNumber++)
         {
-            std::cout << rowNumber << "_" << columnNumber << "##########Field::getObjectData\n";
-            if (fieldGrid[rowNumber][columnNumber].getObject() != nullptr)
-            {
-                std::cout << JSONStringified(fieldGrid[rowNumber][columnNumber].getObject()->getFullInfo()) << "\n";
-            }
+            // std::cout << rowNumber << "_" << columnNumber << "##########Field::getObjectData\n";
+            // if (fieldGrid[rowNumber][columnNumber].getObject() != nullptr)
+            // {
+            //     std::cout << JSONStringified(fieldGrid[rowNumber][columnNumber].getObject()->getFullInfo()) << "\n";
+            // }
             if (object == fieldGrid[rowNumber][columnNumber].getObject())
             {
                 return getObjectData(rowNumber, columnNumber);
             }
         }
+    return Nan::New<v8::Object>();
 }
 
 v8::Local<v8::Object> Field::getLandscapeData(unsigned int rowNumber, unsigned int columnNumber)

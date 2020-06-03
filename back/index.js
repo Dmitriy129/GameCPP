@@ -12,13 +12,13 @@ var path = require('path');
 const PORT = 3030;
 
 
-app.use(express.static(path.join(__dirname, '../front/build/')));
+app.use(express.static(path.join(__dirname, '/../front/build/')));
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '../front/build/index.html');
+    res.sendFile(__dirname + '/../front/build/index.html');
 });
 
 
@@ -46,10 +46,12 @@ io.on('connection', (socket) => {
 
 
     socket.on('command', (data) => {
+        console.log(data);
         if (data.task == 1)
             socket.join(data.params.roomID);
-
-        gameTest.sendRequest(data).map(elem => {
+        let res = game.sendRequest(data)
+        console.log(res);
+        res.map(elem => {
             emitManager(socket, elem);
         })
     });
@@ -87,9 +89,15 @@ function getPlayerIDBySocket(socket) {
 }
 
 function emitManager(socket, data) {
-    if (data.eventType == "object updated" || data.eventType == "tabel of GameRooms update")
-        io.to(data.data.roomID).emit("object updated", data.data);
+    console.log(data);
+    if (data.eventType == "object updated")
+        io.to(data.data.roomID).emit(data.eventType, data.data);
+    if (data.eventType == "tabel of GameRooms update")
+        io.emit(data.eventType, data.data);
+    if (data.eventType == "get full room")
+        socket.emit(data.eventType, data.data);
 }
+
 
 function getFullRoomInfo(socket, roomID) {
     game.sendRequest({

@@ -39,6 +39,7 @@ Game *Game::getInstance()
 void Game::addGameRoom(std::string editorID, std::string roomID, std::string roomName, unsigned int rowsQuantity, unsigned int columnsQuantity, unsigned int rule)
 {
     // // std::cout << "#3#\n";
+    std::cout << "fireEvent( tabel of GameRooms update , getGameRoomsInfo());\n";
 
     GameRoom<Rule> *room = new GameRoom<Rule>(editorID, roomID, roomName, rowsQuantity, columnsQuantity, uuidGen, neutralObjectFactory, combatObjectTypeFactory, rule);
     // // std::cout << "#4#\n";
@@ -52,7 +53,6 @@ void Game::addGameRoom(std::string editorID, std::string roomID, std::string roo
     room->attachEvent("get full room", this);
     room->attachEvent("winner found", this);
 
-    // // std::cout << "#9#\n";
     fireEvent("tabel of GameRooms update", getGameRoomsInfo());
 }
 
@@ -263,15 +263,10 @@ std::string Game::executeСommand(std::string playerID, std::string command)
 v8::Local<v8::Object> Game::getGameRoomsInfo()
 {
     v8::Local<v8::Object> data = Nan::New<v8::Object>();
-    // // std::cout << "#10#\n";
-
     unsigned int index = 0;
     std::for_each(gameRooms.begin(), gameRooms.end(), [&data, &index, this](GameRoom<Rule> *gameRoom) {
-        // // std::cout << "#11#\n";
         SetObjProperty(data, index++, gameRoom->getGameRoomData());
-        // // std::cout << "#12#\n";
     });
-    // fireEvent("tabel of GameRooms update", data);
 
     return data;
 }

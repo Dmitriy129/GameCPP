@@ -11,6 +11,7 @@ enum eTask
     GET_FULL,  //in room
     SAVE_ROOM,  //add
     LOAD_ROOM,  //add
+    ROOMS_LIST,
 };
 
 enum eLandscapeType

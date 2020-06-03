@@ -110,35 +110,35 @@ console.log(JSON.stringify(gameTest.sendRequest({
 // console.log("----------------------------");
 
 
-// console.log(gameTest.sendRequest({
-//     task: 2,
-//     params: {
-//         roomID: roomID,
-//         playerID: "USER1234567890",
-//         objectType: 0,
-//         combatObjectInfo: {
-//             x: 2,
-//             y: 1,
-//             combatObjectType: 3,
-//         }
-//     }
-// }))
+console.log(gameTest.sendRequest({
+    task: 2,
+    params: {
+        roomID: roomID,
+        playerID: "USER1234567890",
+        objectType: 0,
+        combatObjectInfo: {
+            x: 2,
+            y: 1,
+            combatObjectType: 3,
+        }
+    }
+}))
 
-// //create resGen
+//create resGen
 
-// console.log(gameTest.sendRequest({
-//     task: 2,
-//     params: {
-//         roomID: roomID,
-//         editorID: "EDITOR1234567890",
-//         objectType: 1,
-//         neutralObjectInfo: {
-//             x: 1,
-//             y: 2,
-//             neutralObjectType: 7,
-//         }
-//     }
-// }))
+console.log(gameTest.sendRequest({
+    task: 2,
+    params: {
+        roomID: roomID,
+        editorID: "EDITOR1234567890",
+        objectType: 1,
+        neutralObjectInfo: {
+            x: 1,
+            y: 2,
+            neutralObjectType: 7,
+        }
+    }
+}))
 
 
 //move

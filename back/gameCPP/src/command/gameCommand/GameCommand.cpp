@@ -22,12 +22,18 @@ void GameCommand::execute(v8::Local<v8::Value> request)
 
     /* * * * * */
     unsigned int task;
+    if (!GetObjProperty(objRequest, "task", task))
+        return;
+
+    if (task == ROOMS_LIST)
+    {
+        game->fireEvent("tabel of GameRooms update", game->getGameRoomsInfo());
+        return;
+    }
+
     v8::Local<v8::Object> params;
     /*  */ std::string roomID;
     /* * * * * */
-
-    if (!GetObjProperty(objRequest, "task", task))
-        return;
     if (!GetObjProperty(objRequest, "params", params))
         return;
     if (!GetObjProperty(params, "roomID", roomID))
@@ -94,5 +100,6 @@ void GameCommand::execute(v8::Local<v8::Value> request)
         delete gameRoomCommand;
         // // // std::cout << "#5#\n";
     }
+
     // // // std::cout << "#gcee#\n";
 }

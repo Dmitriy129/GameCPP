@@ -27,10 +27,14 @@ class RoomTable extends Component {
             rows: {}
         }
 
-        socket.on("tableRoomToC", (data) => {
-            console.log("on", "tableRoomToC")
+        socket.on("tabel of GameRooms update", (data) => {
+            console.log("tabel of GameRooms update")
+            console.log(data)
             if (this._isMounted)
-                this.setState({ rows: data.rows }, () => console.log("rows:", data.rows))
+                this.setState({ rows: data })
+            //     console.log("on", "tableRoomToC")
+            //     if (this._isMounted)
+            //         this.setState({ rows: data.rows }, () => console.log("rows:", data.rows))
         })
     }
 
@@ -45,21 +49,32 @@ class RoomTable extends Component {
         this._isMounted = false;
     }
     updateData() {
-        socket.emit("tableRoomToS", {})
+        socket.emit("command", { task: 8 })
     }
 
     handleClick(id, name) {
-        socket.emit("joinTheRoom", {
-            userName: localStorage.getItem("userName"),
-            roomName: name,
-            roomID: id,
+
+        // socket.emit("joinTheRoom", {
+        //     userName: localStorage.getItem("userName"),
+        //     roomName: name,
+        //     roomID: id,
+        // })
+
+        socket.emit("command", {
+            task: 1,
+            params: {
+                roomID: id,
+                playerInfo: {
+                    playerID: localStorage.getItem("userID"),
+                    playerName: localStorage.getItem("userName"),
+                }
+            }
         })
 
     }
 
 
     render() {
-        debugger
         return (
             <div>
                 <button onClick={this.updateData}>Update</button>
@@ -76,15 +91,14 @@ class RoomTable extends Component {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {Object.keys(this.state.rows).map((id) => {
-                                let row = this.state.rows[id]
+                            {Object.values(this.state.rows).map((elem) => {
                                 return (
-                                    <TableRow key={id}>
-                                        <TableCell component="th" scope="row"> {row.roomName} </TableCell>
-                                        <TableCell align="right">{id}</TableCell>
-                                        <TableCell align="right">{Object.values(row.players).length}</TableCell>
-                                        <TableCell align="right">{row.rows + "*" + row.columns}</TableCell>
-                                        <TableCell align="right"><Link to={"/game/" + id} onClick={() => { this.handleClick(id, row.name) }}>CON</Link></TableCell>
+                                    <TableRow key={elem.roomID}>
+                                        <TableCell component="th" scope="row"> {elem.roomName} </TableCell>
+                                        <TableCell align="right">{elem.roomID}</TableCell>
+                                        <TableCell align="right">{elem.players}</TableCell>
+                                        <TableCell align="right">{elem.fieldSize}</TableCell>
+                                        <TableCell align="right"><Link to={"/game/" + elem.roomID} onClick={() => { this.handleClick(elem.roomID, elem.roomName) }}>CON</Link></TableCell>
                                     </TableRow>
                                 )
                             })}

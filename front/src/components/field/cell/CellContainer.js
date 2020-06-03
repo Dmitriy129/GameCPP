@@ -85,7 +85,7 @@ class CellContainer extends Component {
                 <div key={customKey + "_"} id={this.props.id} className="cell" style={{ width: this.props.size, height: this.props.size }} onClick={this.handleOpen} >
                     <Landscape key={"landscape" + customKey.toString()} type={this.state.content.landscape} id={"landscape" + customKey.toString() + "id"} >
 
-                        {this.state.content.object ? <BaseObject key={"object" + customKey.toString()} type={this.props.object} id={"object" + customKey.toString() + "id"} size={this.props.size} /> : <p>empty</p>}
+                        {<BaseObject key={"object" + customKey.toString()} type={this.props.object} id={"object" + customKey.toString() + "id"} size={this.props.size} />}
                     </Landscape>
 
 

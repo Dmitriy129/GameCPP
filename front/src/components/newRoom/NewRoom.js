@@ -18,6 +18,7 @@ class NewRoom extends Component {
             name: 'edit name',
             row: '50',
             column: '50',
+            rule: '1',
         }
 
 
@@ -48,6 +49,10 @@ class NewRoom extends Component {
                 this.setState({ name: this.refs.roomInput.value })
                 break
             }
+            case "rule": {
+                this.setState({ rule: this.refs.ruleInput.value })
+                break
+            }
             default: {
                 console.log("none")
                 break
@@ -57,11 +62,21 @@ class NewRoom extends Component {
 
 
     async createRoom() {
-        socket.emit("newRoom", {
-            room: this.state.name,
-            row: this.state.row,
-            column: this.state.column
-        });
+        socket.emit("command", {
+            task: 0,
+            params: {
+                roomID: "ROOM" + Date.now(),
+                roomName: this.state.name,
+                editorID: localStorage.getItem("userID"),
+                rule: parseInt(this.state.rule),
+                fieldInfo: {
+                    rowsQuantity: parseInt(this.state.row),
+                    columnsQuantity: parseInt(this.state.column),
+                    maximumObjectsQuantity: 100,
+                }
+            }
+        }
+        )
 
     }
 
@@ -80,12 +95,17 @@ class NewRoom extends Component {
                     </div>
                     <div>
                         <label>Number of rows: {this.state.row}</label>
-                        <p>1 <input ref="rowsInput" type="range" min={1} max={100} onChange={() => { this.handleClick("row") }} /> 100</p>
+                        <p>1 <input ref="rowsInput" type="range" min={10} max={100} onChange={() => { this.handleClick("row") }} /> 100</p>
                     </div>
 
                     <div>
                         <label>Number of columns: {this.state.column}</label>
-                        <p>1 <input ref="columnsInput" type="range" min={1} max={100} onChange={() => { this.handleClick("column") }} /> 100</p>
+                        <p>1 <input ref="columnsInput" type="range" min={10} max={100} onChange={() => { this.handleClick("column") }} /> 100</p>
+
+                    </div>
+                    <div>
+                        <label>Rule: {this.state.rule}</label>
+                        <p>0 <input ref="ruleInput" type="range" min={0} max={1} onChange={() => { this.handleClick("rule") }} /> 1</p>
 
                     </div>
 
