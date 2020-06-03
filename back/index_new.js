@@ -8,7 +8,10 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require('path');
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 16fac3fcf786cc7fc4a266269a528f6ab854c7db
 const PORT = 3030;
 
 
@@ -27,16 +30,26 @@ http.listen(PORT, function () {
 });
 
 var clients = {}
+<<<<<<< HEAD
+=======
+var rooms = {}
+
+>>>>>>> 16fac3fcf786cc7fc4a266269a528f6ab854c7db
 
 
 io.on('connection', (socket) => {
     console.log("*User connected*")
+<<<<<<< HEAD
+=======
+
+>>>>>>> 16fac3fcf786cc7fc4a266269a528f6ab854c7db
     socket.emit("toStart", { error: "start there" })
 
 
     socket.on('save', (id) => {
         clients[id] = socket;
         console.log("*User saved: " + id + "*")
+<<<<<<< HEAD
     });
 
 
@@ -57,6 +70,13 @@ io.on('connection', (socket) => {
         let userID = getPlayerIDBySocket(socket)
         console.log("*User removed: " + userID + "*")
         delete clients[userID]
+=======
+    })
+    
+
+    socket.on('disconnect', () => {
+        console.log("*User disconnected*")
+>>>>>>> 16fac3fcf786cc7fc4a266269a528f6ab854c7db
     })
 })
 
@@ -64,6 +84,7 @@ io.on('connection', (socket) => {
 
 
 
+<<<<<<< HEAD
 
 
 
@@ -89,3 +110,5 @@ function getFullRoomInfo(socket, roomID) {
         }
     })
 }
+=======
+>>>>>>> 16fac3fcf786cc7fc4a266269a528f6ab854c7db
