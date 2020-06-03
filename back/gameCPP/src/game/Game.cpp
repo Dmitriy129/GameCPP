@@ -22,7 +22,7 @@ Game::~Game()
 //     // gameRooms.push_back(new GameRoom(roomID, roomName, new Field(rowsQuantity, columnsQuantity, maximumObjectsQuantity, mediator), uuidGen, NeutralObjectFactory, combatObjectTypeFactory));
 //     room->attachEvent("object updated", this);
 //     room->attachEvent("tabel of GameRooms update", this);
-//     room->attachEvent("get full field", this);
+//     room->attachEvent("get full room", this);
 
 //     fireEvent("tabel of GameRooms update", getGameRoomsInfo());
 // }
@@ -49,7 +49,7 @@ void Game::addGameRoom(std::string editorID, std::string roomID, std::string roo
     // gameRooms.push_back(new GameRoom(roomID, roomName, new Field(rowsQuantity, columnsQuantity, maximumObjectsQuantity, mediator), uuidGen, NeutralObjectFactory, combatObjectTypeFactory));
     room->attachEvent("object updated", this);
     room->attachEvent("tabel of GameRooms update", this);
-    room->attachEvent("get full field", this);
+    room->attachEvent("get full room", this);
     room->attachEvent("winner found", this);
 
     // // std::cout << "#9#\n";
@@ -287,9 +287,9 @@ void Game::eventHandler(Event *event)
     {
         fireEvent("tabel of GameRooms update", getGameRoomsInfo());
     }
-    else if (event->getSEventId() == "get full field")
+    else if (event->getSEventId() == "get full room")
     {
-        fireEvent("get full field", event->getData());
+        fireEvent("get full room", event->getData());
     }
 };
 

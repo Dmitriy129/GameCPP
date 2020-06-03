@@ -331,7 +331,7 @@ v8::Local<v8::Object> GameRoom<Rule>::getGameRoomFieldData()
     SetObjProperty(data, "objects", field->getObjectsData());
     SetObjProperty(data, "rowsQuantity", getFieldRowsQuantity());
     SetObjProperty(data, "columnsQuantity", getFieldColumnsQuantity());
-    fireEvent("get full field", data);
+    fireEvent("get full room", data);
     return data;
 }
 

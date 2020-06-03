@@ -33,12 +33,13 @@ void GameRoomCommand::execute(v8::Local<v8::Value> request)
 
     // // // std::cout << "#grce 1#\n";
 
-    if (task == GET_FIELD)
+    if (task == GET_FULL)
     {
         //TODO add
         try
         {
-            gameRoom->getGameRoomFieldData(); //add except
+            // gameRoom->getGameRoomFieldData(); //add except
+            gameRoom->fireEvent("get full room", gameRoom->getFullInfo());
         }
         catch (Except &except)
         {

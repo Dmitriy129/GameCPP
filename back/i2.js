@@ -259,6 +259,13 @@ console.log(gameTest.sendRequest({
     }
 }))
 
+console.log(JSON.stringify(gameTest.sendRequest({
+    task: 5,
+    params: {
+        roomID: roomID,
+    }
+})))
+
 
 
 // console.log("---------------SAVE-------------");

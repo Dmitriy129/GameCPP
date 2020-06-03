@@ -8,7 +8,7 @@ enum eTask
     ADD_OBJ,    //\/ \/ \/ eObjectType
     MOVE,       //in player
     UPD_LAND,   //in editor
-    GET_FIELD,  //in room
+    GET_FULL,  //in room
     SAVE_ROOM,  //add
     LOAD_ROOM,  //add
 };

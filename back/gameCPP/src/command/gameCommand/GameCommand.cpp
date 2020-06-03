@@ -83,7 +83,7 @@ void GameCommand::execute(v8::Local<v8::Value> request)
         }
         //     std::cout << "#112#\n";
     }
-    else if (task == GET_FIELD || task == ADD_OBJ || task == ADD_PLAYER || task == MOVE)
+    else if (task == GET_FULL || task == ADD_OBJ || task == ADD_PLAYER || task == MOVE)
     {
         GameRoomCommand *gameRoomCommand = new GameRoomCommand(game->getGameRoom(roomID) /* , isolate */);
         gameRoomCommand->attachEvent("except", this);

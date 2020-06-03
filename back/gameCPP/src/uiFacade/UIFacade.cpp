@@ -9,7 +9,7 @@ UIFacade::UIFacade()
     logger = new LoggerProxy("file", "GameLogs");
     game->attachEvent("object updated", this);
     game->attachEvent("tabel of GameRooms update", this);
-    game->attachEvent("get full field", this);
+    game->attachEvent("get full room", this);
     game->attachEvent("log", logger);
     this->attachEvent("command", logger);
 }
