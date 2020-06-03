@@ -26,11 +26,8 @@ ResourceBag *Player::getResourceBag() { return resourceBag; }
 void Player::createBase(unsigned int rowNumber, unsigned int columnNumber)
 {
 
-    std::cout << "base started";
     this->base = new Base(playerID, uuidGen->generateUUID(), 100, 1000, 4, combatObjectTypeFactory);
-    std::cout << "base instance";
     this->field->addObject(rowNumber, columnNumber, base);
-    std::cout << "base added";
 }
 
 void Player::createUnit(unsigned int rowNumber, unsigned int columnNumber, unsigned int type)
@@ -38,55 +35,11 @@ void Player::createUnit(unsigned int rowNumber, unsigned int columnNumber, unsig
     if (base == nullptr)
     {
         // // std::cout << "error# in file *Player*\n\tCerate the base first.\n";
+        throw(Except("Create the base first", "Player::createUnit(unsigned int rowNumber, unsigned int columnNumber, unsigned int type)", 0));
+
         return;
     }
 
-    // std::string classUnit;
-    // std::string typeUnit;
-
-    // if (type == ARCH_TANK || type == ARCH_DPS)
-    //     classUnit = "archer";
-    // else if (type == CAV_TANK || type == CAV_DPS)
-    //     classUnit = "cavalry";
-    // else if (type == INF_TANK || type == INF_DPS)
-    //     classUnit = "infantry";
-    // else
-    // {
-    //     // // std::cout << "error1# in file *Player*\n";
-    //     return;
-    // }
-
-    // if (type == ARCH_DPS || type == INF_DPS || type == CAV_DPS)
-    //     typeUnit = "DPS";
-    // else if (type == ARCH_TANK || type == INF_TANK || type == CAV_TANK)
-    //     typeUnit = "TANK";
-    // else
-    // {
-    //     // // std::cout << "error2# in file *Player*\n";
-    //     return;
-    // }
-    // if (type.find("archer") != std::string::npos)
-    //     classUnit = "archer";
-    // else if (type.find("cavalry") != std::string::npos)
-    //     classUnit = "cavalry";
-    // else if (type.find("infantry") != std::string::npos)
-    //     classUnit = "infantry";
-    // else
-    // {
-    //     // // std::cout << "error# in file *Player*\n";
-    //     return;
-    // }
-
-    // if (type.find("DPS") != std::string::npos)
-    //     typeUnit = "DPS";
-    // else if (type.find("TANK") != std::string::npos)
-    //     typeUnit = "TANK";
-    // else
-    // {
-    //     // // std::cout << "error# in file *Player*\n";
-    //     return;
-    // }
-    // Unit *unit = base->createUnit(classUnit, typeUnit, uuidGen->generateUUID(), combatObjectTypeFactory);
     Unit *unit = base->createUnit(type, uuidGen->generateUUID(), combatObjectTypeFactory);
 
     unit->attachEvent("object death", field);

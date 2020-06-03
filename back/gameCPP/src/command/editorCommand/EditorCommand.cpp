@@ -55,7 +55,15 @@ void EditorCommand::execute(v8::Local<v8::Value> request)
             return;
         // // // std::cout << "#pcem#\n";
 
-        editor->moveObject(fromY, fromX, toY, toX);
+        try
+        {
+            editor->moveObject(fromY, fromX, toY, toX); //add except
+        }
+        catch (Except &except)
+        {
+            fireEvent("except", except.getLog());
+            // throw(Except("The object cannot be moved to this cell.(landscape)", "void Field::moveObject(unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber)", 0));
+        }
     }
     else if (task == ADD_OBJ)
     {
@@ -80,6 +88,6 @@ void EditorCommand::execute(v8::Local<v8::Value> request)
 
         // // // std::cout << "#grce add obj comb check#\n";
 
-        editor->createResourceGenerator(y, x, neutralObjectType);
+        editor->createResourceGenerator(y, x, neutralObjectType); //add except
     }
 }

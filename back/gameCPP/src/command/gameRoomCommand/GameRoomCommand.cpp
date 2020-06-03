@@ -36,7 +36,15 @@ void GameRoomCommand::execute(v8::Local<v8::Value> request)
     if (task == GET_FIELD)
     {
         //TODO add
-        gameRoom->getGameRoomFieldData();
+        try
+        {
+            gameRoom->getGameRoomFieldData(); //add except
+        }
+        catch (Except &except)
+        {
+            fireEvent("except", except.getLog());
+            // throw(Except("The object cannot be moved to this cell.(landscape)", "void Field::moveObject(unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber)", 0));
+        }
     }
     else if (task == ADD_PLAYER)
     {
@@ -56,28 +64,38 @@ void GameRoomCommand::execute(v8::Local<v8::Value> request)
 
         // std::cout << "#grce addpl#\n";
 
-        gameRoom->addPlayer(playerID, playerName);
+        try
+        {
+            gameRoom->addPlayer(playerID, playerName); //add except
+        }
+        catch (Except &except)
+        {
+            fireEvent("except", except.getLog());
+            // throw(Except("The object cannot be moved to this cell.(landscape)", "void Field::moveObject(unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber)", 0));
+        }
     }
     else
     {
-
         /* * * * * */
         std::string userID;
         /* * * * * */
+        std::cout << "#2#\n";
 
         Command *command;
+        // command->attachEvent("except", this);
 
         if (GetObjProperty(params, "playerID", userID))
         {
-            //     std::cout << "######1####\n";
+            std::cout << "######1####\n";
             if (gameRoom->checkPermission(userID))
             {
                 Player *player = gameRoom->getPlayer(userID);
                 if (player == nullptr)
                     return;
-                //     std::cout << "######2####\n";
+                std::cout << "######2####\n";
 
                 command = new PlayerCommand(player);
+                command->attachEvent("except", this);
 
                 gameRoom->nextPlayer();
             }
@@ -98,6 +116,7 @@ void GameRoomCommand::execute(v8::Local<v8::Value> request)
             if (editor == nullptr)
                 return;
             command = new EditorCommand(editor);
+            command->attachEvent("except", this);
         }
 
         if (task == MOVE)
@@ -106,6 +125,8 @@ void GameRoomCommand::execute(v8::Local<v8::Value> request)
         }
         else if (task == ADD_OBJ)
         {
+            std::cout << "#3#\n";
+
             command->execute(request);
 
             // // // std::cout << "#grce add obj#\n";

@@ -192,41 +192,7 @@ void GameRoom<T>::nextPlayer()
 
         fireEvent("active player has changed", data);
     }
-    // {
-    //     this->clear = false;
-    //     std::thread t([=]() {
-    //         if (this->clear)
-    //             return;
-    //         std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(rule->getStepTime())));
-    //         if (this->clear)
-    //             return;
-    //         nextPlayer();
-    //     });
-    //     t.detach();
-    // }
-    // delete info;
-    // std::cout << "RuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule\n";
 }
-
-// template <class T>
-// void GameRoom<T>::nextPlayer()
-// {
-
-//     // timer->stop();)
-//     std::vector<Player *>::iterator it = std::find(players.begin(), players.end(), nowPlayer);
-//     if (it != players.end())
-//         if (std::distance(players.begin(), it) == players.size() - 1)
-//             nowPlayer = players[0];
-//         else
-//             nowPlayer = *(it++);
-//     v8::Local<v8::Object> res = Nan::New<v8::Object>();
-//     SetObjProperty(res, "roomID", roomID);
-//     SetObjProperty(res, "playerName", nowPlayer->getPlayerName());
-//     fireEvent("active player has changed", res);
-//     auto f = [&]() { std::cout << "ff"; };
-
-//     timer->setTimeout([this]() { nextPlayer(); }, rule->getStepTime());
-// }
 
 template </* class T */>
 UUID *GameRoom<Rule>::getUuidGen() { return uuidGen; }
@@ -334,30 +300,6 @@ void GameRoom<Rule>::addPlayer(std::string playerID, std::string PlayerName)
     // SetObjProperty(data, "playerInfo", playerInfo);
     // fireEvent("log", data);
 }
-
-// void GameRoom<Rule>::createBase(std::string playerID, unsigned int rowNumber, unsigned int columnNumber)
-// {
-
-//     Player *player = (*std::find_if(players.begin(), players.end(), [playerID](Player *player) {
-//         return (player->getPlayerID() == playerID);
-//     }));
-//     if (player != *players.end())
-//         player->createBase(rowNumber, columnNumber);
-// }
-// void GameRoom<Rule>::createUnit(std::string playerID, unsigned int rowNumber, unsigned int columnNumber, std::string type)
-// {
-//     Player *player = (*std::find_if(players.begin(), players.end(), [playerID](Player *player) {
-//         return (player->getPlayerID() == playerID);
-//     }));
-//     if (player != *players.end())
-//         player->createUnit(rowNumber, columnNumber, type);
-// }
-// void GameRoom<Rule>::moveObject(std::string playerID, unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber)
-// {
-// }
-// void GameRoom<Rule>::interactionObject(std::string playerID, unsigned int fromRowNumber, unsigned int fromColumnNumber, unsigned int toRowNumber, unsigned int toColumnNumber)
-// {
-// }
 
 template </* class T */>
 void GameRoom<Rule>::removePlayer(std::string playerID)
