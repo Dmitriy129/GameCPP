@@ -10,8 +10,6 @@
 class GameRoomState
 {
 protected:
-    
-    
     Player *nowPlayer;
 
 public:

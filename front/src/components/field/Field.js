@@ -55,55 +55,26 @@ class Field extends Component {
             console.log("object updated");
             console.log(data);
             debugger
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+  
             if (this._isMounted) {
 
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                this.setState(prevState => {
+
+            //     this.setState(prevState => {
                     
 
                     
-                    prevState.cells[data.objectInfo.x * this.state.form.rows + data.objectInfo.y] = < CellContainer
-                        size={BASE_WIDTH}
-                        key={"CellContainer" + data.objectInfo.x + "_" + data.objectInfo.y}
-                        id={data.objectInfo.x + "_" + data.objectInfo.y}
-                        x={data.objectInfo.x}
-                        y={data.objectInfo.y}
-                        landscape={/* props.field[data.objectInfo.x][data.objectInfo.y].landscape */0}
-                        object={/* data.objectInfo.objectType */1}
-                    />
-                    return prevState
-                })
-            }
+            //         prevState.cells[data.objectInfo.x * this.state.form.rows + data.objectInfo.y] = < CellContainer
+            //             size={BASE_WIDTH}
+            //             key={"CellContainer" + data.objectInfo.x + "_" + data.objectInfo.y}
+            //             id={data.objectInfo.x + "_" + data.objectInfo.y}
+            //             x={data.objectInfo.x}
+            //             y={data.objectInfo.y}
+            //             landscape={/* props.field[data.objectInfo.x][data.objectInfo.y].landscape */0}
+            //             object={/* data.objectInfo.objectType */1}
+            //         />
+            //         return prevState
+            //     })
+            // }
 
         })
         
@@ -165,7 +136,7 @@ class Field extends Component {
 
         
 
-        socket.emit("firstFieldBuildToS", { roomID: this.state.roomID })
+
 
     }
 
@@ -231,13 +202,6 @@ class Field extends Component {
         
         
         
-        
-        
-        
-        
-        
-        
-
 
         return (
 
@@ -245,22 +209,7 @@ class Field extends Component {
                 <div key="fieldKey" className="field" ref="mainField" >
                     {/* {this.state.cells.map(elem => elem)} */}
                     {this.state.cells}
-                    {/* 
-
-                        this.state.fieldGrid.map((row, rowI) =>
-                            row.map((cell, cellI) =>
-                                <CellContainer
-                                    size={BASE_WIDTH}
-                                    key={"CellContainer" + rowI + "_" + cellI}
-                                    id={rowI + "_" + cellI}
-                                    x={rowI}
-                                    y={cellI}
-                                    landscape={cell.landscape}
-                                    object={cell.object.type}
-                                />
-                            )
-                        ) */
-                    }
+                    
 
                 </div>
             </div>

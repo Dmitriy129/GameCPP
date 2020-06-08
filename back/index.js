@@ -1,5 +1,3 @@
-
-
 const my_game = require('./gameCPP/build/Release/my_game_cpp.node');
 const game = new my_game.UIFacade();
 var express = require('express');
@@ -8,9 +6,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require('path');
 
-
 const PORT = 3030;
-
 
 app.use(express.static(path.join(__dirname, '/../front/build/')));
 var bodyParser = require("body-parser");
@@ -28,22 +24,16 @@ http.listen(PORT, function () {
 
 var clients = {}
 
-
-
 io.on('connection', (socket) => {
     console.log("*User connected*")
 
-
-
     socket.emit("toStart", { error: "start there" })
-
 
     socket.on('save', (id) => {
         clients[id] = socket;
         console.log("*User saved: " + id + "*")
 
     });
-
 
     socket.on('command', (data) => {
         console.log(data);
@@ -56,9 +46,6 @@ io.on('connection', (socket) => {
         })
     });
 
-
-
-
     socket.on('disconnect', () => {                             
         console.log("*User disconnected*")
         let userID = getPlayerIDBySocket(socket)
@@ -67,17 +54,7 @@ io.on('connection', (socket) => {
 
     })
 
-
-
 })
-
-
-
-
-
-
-
-
 
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
