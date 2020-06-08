@@ -14,10 +14,8 @@ class Field extends Component {
     cells = Array()
 
     constructor(props) {
-
         super(props);
         this.cells = Array()
-        
         this.state = {
             cells: (() => {
                 let cells = [];
@@ -41,7 +39,7 @@ class Field extends Component {
                 rows: props.field.length,
                 columns: props.field[0].length,
             },
-            
+
             /* {
                 landscapes: props.landscape || [[]],
                 objects: props.objects || [[]]
@@ -55,87 +53,28 @@ class Field extends Component {
             console.log("object updated");
             console.log(data);
             debugger
-  
+
             if (this._isMounted) {
 
 
-            //     this.setState(prevState => {
-                    
+                this.setState(prevState => {
 
-                    
-            //         prevState.cells[data.objectInfo.x * this.state.form.rows + data.objectInfo.y] = < CellContainer
-            //             size={BASE_WIDTH}
-            //             key={"CellContainer" + data.objectInfo.x + "_" + data.objectInfo.y}
-            //             id={data.objectInfo.x + "_" + data.objectInfo.y}
-            //             x={data.objectInfo.x}
-            //             y={data.objectInfo.y}
-            //             landscape={/* props.field[data.objectInfo.x][data.objectInfo.y].landscape */0}
-            //             object={/* data.objectInfo.objectType */1}
-            //         />
-            //         return prevState
-            //     })
-            // }
+                    debugger
+                    prevState.cells[data.objectInfo.x * this.state.form.rows + data.objectInfo.y] = < CellContainer
+                        size={BASE_WIDTH}
+                        key={"CellContainer" + data.objectInfo.x + "_" + data.objectInfo.y}
+                        id={data.objectInfo.x + "_" + data.objectInfo.y}
+                        x={data.objectInfo.x}
+                        y={data.objectInfo.y}
+                        landscape={props.field[data.objectInfo.x][data.objectInfo.y].landscape}
+                        object={data.objectInfo.objectType}
+                    />
+                    return prevState
+                })
+            }
+
 
         })
-        
-        
-
-
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
-        
-
-        
-        
-
-
-        
-        
-
-        
-        
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
-        
-        
-
-        
-
 
 
     }
@@ -146,7 +85,7 @@ class Field extends Component {
         this._isMounted = true;
         this.refs.mainField.style.height = (BASE_WIDTH * this.state.form.rows) + "px"
         this.refs.mainField.style.width = (BASE_WIDTH * this.state.form.columns) + "px"
-        
+
     }
     componentWillUnmount() {
 
@@ -154,62 +93,14 @@ class Field extends Component {
         this._isMounted = false;
     }
 
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-
     render() {
-
-        
-
-
-        
-
-        
-        
-        
-
-        
-        
-        
-        
-        
-        
-
+        console.log("rendering", this.state.cells);
         return (
-
             <div key="fieldBoxKey" className="fieldBox unselectable" >
                 <div key="fieldKey" className="field" ref="mainField" >
                     {/* {this.state.cells.map(elem => elem)} */}
                     {this.state.cells}
-                    
+
 
                 </div>
             </div>

@@ -16,9 +16,9 @@ class CellContainer extends Component {
         super(props);
         this.handleOpen = this.handleOpen.bind(this)
         this.handleClose = this.handleClose.bind(this)
-        
-        
-        
+
+
+
 
         this.state = {
             id: props.id,
@@ -37,6 +37,7 @@ class CellContainer extends Component {
         }
     }
     componentDidUpdate() {
+        console.log("component did update...")
     }
 
     handleOpen = (event) => {
@@ -85,7 +86,7 @@ class CellContainer extends Component {
                 <div key={customKey + "_"} id={this.props.id} className="cell" style={{ width: this.props.size, height: this.props.size }} onClick={this.handleOpen} >
                     <Landscape key={"landscape" + customKey.toString()} type={this.state.content.landscape} id={"landscape" + customKey.toString() + "id"} >
 
-                        {<BaseObject key={"object" + customKey.toString()} type={this.props.object} id={"object" + customKey.toString() + "id"} size={this.props.size} />}
+                        <BaseObject key={"object" + customKey.toString()} type={this.props.object/* this.state.content.object */} id={"object" + customKey.toString() + "id"} size={this.props.size} />
                     </Landscape>
 
 

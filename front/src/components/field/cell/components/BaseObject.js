@@ -16,7 +16,11 @@ class BaseObject extends Component {
     handleClick() {
     }
     componentDidMount() {
-        
+        // this.setState({
+        //     size: this.props.size,
+        //     type: this.props.type,
+        //     id: this.props.id
+        // })
     }
 
     componentDidUpdate() {
@@ -26,14 +30,17 @@ class BaseObject extends Component {
 
 
     render() {
-        
+
         return (
-            
+
             <div key={this.state.id}
-                style={{ background: "url(/components/field/cell/components/units/" + this.state.type + ".png)", transform: `matrix(1, 0, 0, 1, ${this.state.size * 0.25}, ${this.state.size * 0.25})` }}
+                style={{
+                    background: "url(/components/field/cell/components/units/" + this.props.type + ".png)",
+                    transform: `matrix(1, 0, 0, 1, ${this.state.size * 0.25}, ${this.state.size * 0.25})`
+                }}
                 onClick={this.handleClick} alt={"BaseObject *" + this.state.type + "*"}
                 className="object" ></div>
-            
+
         )
     }
 }
